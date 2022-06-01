@@ -1,0 +1,31 @@
+{
+  "name": "helea",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhan1602/Helea.git"
+  },
+  "keywords": [
+    "project",
+    "knowledge",
+    "social",
+    "network"
+  ],
+  "author": "Daniel Velasquez, Rafael Seoanes, Aaron Alicastro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dhan1602/Helea/issues"
+  },
+  "homepage": "https://github.com/Dhan1602/Helea#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5"
+  }
+}

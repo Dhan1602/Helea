@@ -1,0 +1,36 @@
+.home {
+  height: 100vh;
+  background-image: url(https://i.imgur.com/il6TlTp.png);
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #DEE3F5;
+  margin-left: 8rem;
+  margin-top: 8.5rem;
+}
+#heroBtn{
+    margin-left: 8rem;
+}
+
+#hero {
+  display: flex;
+}
+
+#hero img{
+    margin-top: 3.5rem;
+    margin-left: 8rem;
+    height: 70vh;
+}
+#hero button{
+    margin: 4px;
+    border: none;
+    width: 200px;
+    height: 60px;
+    background-color: #5675E5;
+    font-size: medium;
+    font-weight: 600;
+    color: white;
+    border-radius: 10px;
+}

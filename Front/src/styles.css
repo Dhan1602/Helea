@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+.cyan{
+    color: #32EEFF;
+}
+.blue{
+    color: #5675E5;
+}
+.pink{
+    color: #F10CC2;
+}

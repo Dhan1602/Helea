@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 body{
     margin: 0; padding: 0;
     background-color: #1e193d;
+=======
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+.cyan{
+    color: #32EEFF;
+}
+.blue{
+    color: #5675E5;
+}
+.pink{
+    color: #F10CC2;
+>>>>>>> 9723205d826f062d946c7b31fa02b73c79d2862f
 }

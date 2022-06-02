@@ -13,6 +13,17 @@ mongoose.connect(process.env.LINK)
     .then((db) => { console.log("Se ha conectado a la BD") })
     .catch((err) => { console.log(err) });
 
+var publicaciones = require("./models/publicaciones");
 
-    
+app.get("/posts", async(req, res)=>{
+    var content = await publicaciones.find();
+    res.send(content);
+});
+
+app.post("/posts", async(req, res)=>{
+    var saving = new publicaciones(req.body);
+    await saving.save();
+    res.send(saving);
+});
+
 app.listen(3000);

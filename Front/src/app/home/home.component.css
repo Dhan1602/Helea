@@ -1,9 +1,11 @@
-.home {
+#home {
   height: 100vh;
   background-image: url(https://i.imgur.com/il6TlTp.png);
+  background-repeat: no-repeat;
+  object-fit: cover;
 }
 
-h2 {
+#HeroTxt{
   font-size: 4rem;
   font-weight: 800;
   color: #DEE3F5;
@@ -26,11 +28,55 @@ h2 {
 #hero button{
     margin: 4px;
     border: none;
-    width: 200px;
-    height: 60px;
+    width: 15rem;
+    height: 3.5rem;
     background-color: #5675E5;
     font-size: medium;
     font-weight: 600;
     color: white;
     border-radius: 10px;
+}
+
+#destacados{
+    height: 100vh;
+    margin: 0;
+    background-color: #10012D;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+#destacados h2{
+   
+    margin: 0;
+    font-size: 4rem;
+  font-weight: 800;
+  color: #DEE3F5;
+  
+}
+#grupoDestacados{
+    display: grid;
+    justify-items: center;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, auto);
+grid-gap: 5px;
+width: 27rem;
+height: 33rem;
+-moz-transform: skew(-18deg, 0deg);
+-webkit-transform: skew(-18deg, 0deg);
+-o-transform: skew(-18deg, 0deg);
+-ms-transform: skew(-18deg, 0deg);
+transform: skew(-18deg, 0deg);
+
+}
+.cards{
+    height: 15rem;
+    width: 12rem;
+    background-color: #AAB7E8;
+    border-radius: 15px;
+    margin: 4px;
+}
+.desElements{
+    width: 50%;
+    padding: 2rem;
 }

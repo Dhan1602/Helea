@@ -1,6 +1,8 @@
 .home {
   height: 100vh;
-  background-image: url(https://i.imgur.com/il6TlTp.png);
+  background: url(https://i.imgur.com/il6TlTp.png) no-repeat;
+  object-fit: cover;
+  background-size: cover;
 }
 
 h2 {

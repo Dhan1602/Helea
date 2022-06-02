@@ -1,8 +1,12 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 #Crear{
     background-color: #1e193d;
     color: #dee3f5;
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
 #Information{
@@ -20,6 +24,7 @@ input, textarea{
     border: none;
     border-radius: 5px;
     padding: 5px;
+    padding-left: 15px;
     outline: none;
 }textarea{
     resize: none;
@@ -27,7 +32,7 @@ input, textarea{
     color: #FFF;
 }input::placeholder, textarea::placeholder{
     color: #dee3f5;
-    font: sans-serif;
+    font-weight: 600;
 
 }
 

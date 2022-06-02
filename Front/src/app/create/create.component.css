@@ -1,0 +1,48 @@
+#Crear{
+    background-color: #1e193d;
+    color: #dee3f5;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#Information{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+input, textarea{
+    font-size: 20px;
+    display: block;
+    width: 35vw;
+    margin-bottom: 10px;
+    background-color: #aab7e8;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+}textarea{
+    resize: none;
+}textarea:focus::placeholder,input:focus::placeholder{
+    color: #FFF;
+}input::placeholder, textarea::placeholder{
+    color: #dee3f5;
+    font: sans-serif;
+
+}
+
+button{
+    background-color: #5675e5;
+    color: #FFF;
+    border: none;
+    border-radius:  7px;
+    width: 6vw;
+    height: 3vh;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover{
+    background-color: #30479b;
+}

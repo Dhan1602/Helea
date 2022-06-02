@@ -1,12 +1,18 @@
 *{
     font-family: 'Montserrat', sans-serif;
 }
+#createGroup{
+    margin-top: 40px;
+}
 #Crear{
-    background-color: #1e193d;
+    background: url(https://i.imgur.com/il6TlTp.png) no-repeat #1e193d;
+    object-fit: cover;
+    background-size: cover;
     color: #dee3f5;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    min-height: 100vh;
 }
 
 #Information{

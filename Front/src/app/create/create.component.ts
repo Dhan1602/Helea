@@ -25,9 +25,11 @@ export class CreateComponent implements OnInit {
       let hoy = new Date();
       this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
       form.value.fecha = this.fecha;
+      form.value.calificacion = 5;
       this.peticiones.createPost(form.value).subscribe({
         next: (res) => {
           alert("Publicado exitosamente!")
+          form.reset();
           this.router.navigate(['feed']);
         },
         error: (err) => console.log(err)

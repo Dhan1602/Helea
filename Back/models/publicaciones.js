@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 var publicaciones = new Schema({
     titulo: String,
     descripcion: String,
-    calificacion: Number,
+    calificacion: String,
     background: String,
     categoria: String,
     fecha: String,

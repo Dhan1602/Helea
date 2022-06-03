@@ -94,14 +94,39 @@ input::placeholder {
     border-radius: 15px;
     margin: 4px;
     color: #3a2c93;
+}.gridContent h3{
+    font-size: 1.3em;
 }
 .gridContent button{
+    font-size: 1.2em;
     background-color: #3a2c93;
     color: white;
     border: none;
+    border-radius: 5px;
 }.calificAndButton{
     position: absolute;
     bottom: 3px;
     display: block;
     width: 12rem;
+}.calificAndButton button{
+    cursor: pointer;
+}
+
+.star-widget{
+    display: inline;
+    margin: 0; padding: 0; box-sizing: border-box;
+    z-index: 4;
+}
+
+.gridStars{
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+}.star-widget input{
+    display: none;
+}
+
+input[type=radio]{
+    width: auto;
 }

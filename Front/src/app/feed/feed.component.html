@@ -21,8 +21,27 @@
             <div class="gridContent" *ngFor="let card of peticiones.documentos">
                 <h3>{{card.titulo}}</h3>
                 <div class="calificAndButton">
-                <label>Calificacion: {{card.calificacion}}</label><br>
-                <a><button>Ver más</button></a></div>
+                    <!-- <label>Calificacion: {{card.calificacion}}</label><br> -->
+                    <div class="gridStars">
+                    <div class="star-widget">
+                        <input type="radio" name="rate" class="rate-5">
+                        <label for="rate-5" class="fas fa-star"></label>
+
+                        <input type="radio" name="rate" class="rate-4">
+                        <label for="rate-4" class="fas fa-star"></label>
+
+                        <input type="radio" name="rate" class="rate-3">
+                        <label for="rate-3" class="fas fa-star"></label>
+
+                        <input type="radio" name="rate" class="rate-2">
+                        <label for="rate-2" class="fas fa-star"></label>
+
+                        <input type="radio" name="rate" class="rate-1">
+                        <label for="rate-1" class="fas fa-star"></label>
+
+                    </div></div><br>
+                    <a routerLink="/"><button>Ver más</button></a>
+                </div>
             </div>
         </div>
     </div>

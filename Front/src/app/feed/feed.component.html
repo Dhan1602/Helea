@@ -17,32 +17,40 @@
             </select>
         </div>
 
-        <div id="Content">
-            <div class="gridContent" *ngFor="let card of peticiones.documentos">
-                <h3>{{card.titulo}}</h3>
+        <section id="dataBaseCards">
+            <div id="Content">
+                <article class="card" *ngFor="let card of peticiones.documentos">
+
+                    <div class="gridContent">
+
+                        <div class="card__info-hover">
+                            <div class="card__clock-info">
+                                <span class="card__time">{{card.fecha}}</span>
+                            </div>
+                        </div>
+
+                        <div style="background: url({{card.background}});     background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat; " class="card__img"></div>
+                        <a routerLink="/verMas/{{card._id}}">
+                            <div style="background: url({{card.background}});      background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat; " class="card__img--hover" ></div>
+                        </a>
+                        <div class="card__info">
+                            <span class="card__category">{{card.categoria}}</span>
+                            <h3 class="card__title">{{card.titulo}}</h3>
+                            <span class="card__by">por <a routerLink="/perfil/" class="card__author" title="Autor">Autor</a></span>
+                        </div>
+
+                        <!-- <h3>{{card.titulo}}</h3>
                 <div class="calificAndButton">
-                    <!-- <label>Calificacion: {{card.calificacion}}</label><br> -->
-                    <div class="gridStars">
-                    <div class="star-widget">
-                        <input type="radio" name="rate" class="rate-5">
-                        <label for="rate-5" class="fas fa-star"></label>
-
-                        <input type="radio" name="rate" class="rate-4">
-                        <label for="rate-4" class="fas fa-star"></label>
-
-                        <input type="radio" name="rate" class="rate-3">
-                        <label for="rate-3" class="fas fa-star"></label>
-
-                        <input type="radio" name="rate" class="rate-2">
-                        <label for="rate-2" class="fas fa-star"></label>
-
-                        <input type="radio" name="rate" class="rate-1">
-                        <label for="rate-1" class="fas fa-star"></label>
-
-                    </div></div><br>
+                    <label>Calificacion: {{card.calificacion}}</label><br>
                     <a routerLink="/"><button>Ver más</button></a>
-                </div>
+                </div> -->
+                    </div>
+                </article>
             </div>
-        </div>
+        </section>
     </div>
 </section>

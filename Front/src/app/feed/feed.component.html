@@ -1,1 +1,29 @@
-<p>feed works!</p>
+<section id="Feed">
+    <navBar></navBar>
+    <div id="principalFlex">
+        <div>
+            <form id="search">
+                <input type="text" placeholder="Ingresa tu búsqueda...">
+                <button id="btnSearch" type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <div id="addAndFilter">
+            <a routerLink="/create">Crear</a>&nbsp;&nbsp;
+            <select>
+                <option>Mostrar todos</option>
+                <option>Títulos</option>
+                <option>Autores</option>
+            </select>
+        </div>
+
+        <div id="Content">
+            <div class="gridContent" *ngFor="let card of peticiones.documentos">
+                <h3>{{card.titulo}}</h3>
+                <div class="calificAndButton">
+                <label>Calificacion: {{card.calificacion}}</label><br>
+                <a><button>Ver más</button></a></div>
+            </div>
+        </div>
+    </div>
+</section>

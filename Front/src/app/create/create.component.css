@@ -32,8 +32,6 @@ input, textarea{
     padding: 5px;
     padding-left: 15px;
     outline: none;
-}textarea{
-    resize: none;
 }textarea:focus::placeholder,input:focus::placeholder{
     color: #FFF;
 }input::placeholder, textarea::placeholder{

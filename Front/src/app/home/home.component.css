@@ -35,6 +35,9 @@
     font-weight: 600;
     color: white;
     border-radius: 10px;
+    cursor: pointer;
+}#heroBtn a{
+    cursor: default;
 }
 
 #destacados{
@@ -80,3 +83,4 @@ transform: skew(-18deg, 0deg);
     width: 50%;
     padding: 2rem;
 }
+

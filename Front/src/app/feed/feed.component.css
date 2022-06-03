@@ -1,0 +1,107 @@
+#Feed {
+    background: url(https://i.imgur.com/il6TlTp.png) no-repeat #1e193d;
+    object-fit: cover;
+    background-size: cover;
+    color: #dee3f5;
+    font-weight: 500;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+input {
+    color: #ffffff;
+    font-size: 20px;
+    display: block;
+    width: 35vw;
+    margin-bottom: 10px;
+    background-color: #aab7e8;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    outline: none;
+    display: inline-block;
+}
+
+input:focus::placeholder {
+    color: #FFF;
+}
+
+input::placeholder {
+    color: #dee3f5;
+    font-weight: 600;
+
+}
+
+#search {
+    margin: 40px auto auto;
+}
+
+#btnSearch {
+    margin: -8.08rem;
+    border: none;
+    width: 8rem;
+    height: 2rem;
+    background-color: #5675E5;
+    font-size: 20px;
+    font-weight: 100;
+    color: white;
+    border-radius: 5px;
+}
+
+#principalFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addAndFilter {
+    margin-top: 2.6rem;
+    align-self: flex-end;
+    margin-right: 2rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+#addAndFilter select {
+    font-size: 1.25rem;
+    border: none !important;
+    outline: none;
+    background-color: #aab7e8;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+#addAndFilter a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#Content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(auto, auto);
+    grid-gap: 5px;
+}
+
+.gridContent {
+    position: relative;
+    text-align: center;
+    height: 15rem;
+    width: 12rem;
+    background-color: #AAB7E8;
+    border-radius: 15px;
+    margin: 4px;
+    color: #3a2c93;
+}
+.gridContent button{
+    background-color: #3a2c93;
+    color: white;
+    border: none;
+}.calificAndButton{
+    position: absolute;
+    bottom: 3px;
+    display: block;
+    width: 12rem;
+}

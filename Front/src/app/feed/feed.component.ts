@@ -23,7 +23,6 @@ export class FeedComponent implements OnInit {
       },
       error: (err) => console.log(err),
       });
-     
   }
 
 }

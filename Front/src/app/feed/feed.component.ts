@@ -12,10 +12,10 @@ export class FeedComponent implements OnInit {
   constructor(public peticiones: PublicacionesService) { }
 
   ngOnInit(): void {
-    this.get();
+    this.getContent();
   }
 
-  get(){
+  getContent(){
     this.peticiones.getPost().subscribe({
       next: (res) => {
       console.log(res);

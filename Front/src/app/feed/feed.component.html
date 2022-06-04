@@ -10,10 +10,10 @@
 
         <div id="addAndFilter">
             <a routerLink="/create">Crear</a>&nbsp;&nbsp;
-            <select>
-                <option>Mostrar todos</option>
-                <option>Categorias</option>
-                <option>Autores</option>
+            <select id="filtroSelect" #filter (change)="filtro(filter)">
+                <option name="all">Mostrar todos</option>
+                <option name="category"><a routeLink="/">Categorías</a></option>
+                <option name="author">Autores</option>
             </select>
         </div>
 

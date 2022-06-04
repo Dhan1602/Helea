@@ -12,7 +12,7 @@
             <a routerLink="/create">Crear</a>&nbsp;&nbsp;
             <select>
                 <option>Mostrar todos</option>
-                <option>Títulos</option>
+                <option>Categorias</option>
                 <option>Autores</option>
             </select>
         </div>
@@ -29,18 +29,18 @@
                             </div>
                         </div>
 
-                        <div style="background: url({{card.background}});     background-size: cover;
-                        background-position: center;
-                        background-repeat: no-repeat; " class="card__img"></div>
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
                         <a routerLink="/verMas/{{card._id}}">
                             <div style="background: url({{card.background}});      background-size: cover;
                             background-position: center;
-                            background-repeat: no-repeat; " class="card__img--hover" ></div>
+                            background-repeat: no-repeat; " class="card__img--hover"></div>
                         </a>
                         <div class="card__info">
                             <span class="card__category">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
-                            <span class="card__by">por <a routerLink="/perfil/" class="card__author" title="Autor">Autor</a></span>
+                            <span class="card__by">por <a routerLink="/perfil/" class="card__author"
+                                    title="Autor">Autor</a></span>
                         </div>
 
                         <!-- <h3>{{card.titulo}}</h3>

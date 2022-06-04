@@ -77,7 +77,7 @@ export class FeedComponent implements OnInit {
 
         });
       } else {
-        this.getContent()
+        this._router.navigate(["/feed"]);
       }
     } else if (this.opcion == 1) {
       if (search.value != "") {

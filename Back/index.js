@@ -38,7 +38,6 @@ app.get("/searchCategory/:name", async(req, res)=>{
 
 app.get("/searchByCategory/:name", async(req, res)=>{
     var content = await publicaciones.find({categoria:{$regex:req.params.name,$options:"i"}}).sort({name:1});
-    console.log(req.params.name)
     res.send(content);
 });
 app.post("/posts", async(req, res)=>{

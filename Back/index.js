@@ -14,9 +14,15 @@ mongoose.connect(process.env.LINK)
     .catch((err) => { console.log(err) });
 
 var publicaciones = require("./models/publicaciones");
+var categorias = require("./models/categories");
 
 app.get("/posts", async(req, res)=>{
     var content = await publicaciones.find();
+    res.send(content);
+});
+
+app.get("/posts/categories", async(req, res)=>{
+    var content = await categorias.find();
     res.send(content);
 });
 

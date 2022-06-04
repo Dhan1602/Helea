@@ -240,3 +240,5 @@ input::placeholder {
 input[type=radio] {
     width: auto;
 } */
+
+/* estos son los estilos basicos del select, cuidado con los flex :) */

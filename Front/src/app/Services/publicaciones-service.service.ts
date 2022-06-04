@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { post_model } from '../Models/publicaciones';
+import { categoria_model } from '../Models/categorias';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class PublicacionesService {
   constructor(private http: HttpClient) {}
 
   documentos: post_model[] = []
+  doccategorias: categoria_model[] = []
 
   data: post_model = {
     titulo: "",
@@ -30,6 +32,10 @@ export class PublicacionesService {
 
   getPost(){
     return this.http.get<post_model[]>(this.URL_API+"/posts");
+  }
+
+  getCategories(){
+    return this.http.get<categoria_model[]>(this.URL_API+"/posts/categories");
   }
 
 

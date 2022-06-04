@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   getContent(){
     this.peticiones.getPost().subscribe({
       next: (res) => {
-      console.log(res);
       this.peticiones.documentos = res;
       },
       error: (err) => console.log(err),

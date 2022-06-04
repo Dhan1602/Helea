@@ -17,7 +17,7 @@ var publicaciones = require("./models/publicaciones");
 var categorias = require("./models/categories");
 
 app.get("/posts", async(req, res)=>{
-    var content = await publicaciones.find();
+    var content = await publicaciones.find().sort({fecha:-1});
     res.send(content);
 });
 

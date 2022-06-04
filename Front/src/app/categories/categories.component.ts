@@ -4,31 +4,19 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  selector: 'app-categories',
+  templateUrl: './categories.component.html',
+  styleUrls: ['./categories.component.css']
 })
-export class FeedComponent implements OnInit {
+export class CategoriesComponent implements OnInit {
 
   constructor(public peticiones: PublicacionesService, private _router: Router) { }
 
-  opcion = 0;
-
   ngOnInit(): void {
     this.getContent();
-    this.getCategory();
   }
 
   getContent() {
-    this.peticiones.getPost().subscribe({
-      next: (res) => {
-        this.peticiones.documentos = res;
-      },
-      error: (err) => console.log(err),
-    });
-  }
-
-  getCategory(){
     this.peticiones.getCategories().subscribe({
       next: (res) => {
         this.peticiones.doccategorias = res;
@@ -39,10 +27,9 @@ export class FeedComponent implements OnInit {
 
   filtro(filtro: any) {
     if (filtro.value == "Mostrar todos") {
-      this.opcion = 0;
-    } else if (filtro.value == "Categorías") {
-      this._router.navigate(["/categorias"]);
-    }else console.log(filtro.value)
+      this._router.navigate(["/feed"]);
+    } else if (filtro.value == "Autores") {
+      console.log("Autores")
+    }
   }
-
 }

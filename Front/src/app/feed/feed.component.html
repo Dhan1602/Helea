@@ -12,14 +12,14 @@
             <a routerLink="/create">Crear</a>&nbsp;&nbsp;
             <select id="filtroSelect" #filter (change)="filtro(filter)">
                 <option name="all">Mostrar todos</option>
-                <option name="category"><a routeLink="/">Categorías</a></option>
+                <option name="category">Categorías</option>
                 <option name="author">Autores</option>
             </select>
-        
-
         </div>
 
-        <section id="dataBaseCards">
+        <!-- Mostrar todo -->
+
+        <section id="dataBaseCards" *ngIf="opcion == 0">
             <div id="Content">
                 <article class="card" *ngFor="let card of peticiones.documentos">
 
@@ -44,15 +44,34 @@
                             <span class="card__by">por <a routerLink="/perfil/" class="card__author"
                                     title="Autor">Autor</a></span>
                         </div>
-
-                        <!-- <h3>{{card.titulo}}</h3>
-                <div class="calificAndButton">
-                    <label>Calificacion: {{card.calificacion}}</label><br>
-                    <a routerLink="/"><button>Ver más</button></a>
-                </div> -->
                     </div>
                 </article>
             </div>
         </section>
+
+        <!-- Categoria -->
+
+        <section id="dataBaseCards" *ngIf="opcion == 1">
+            <div id="Content">
+                <article class="card" *ngFor="let card of peticiones.doccategorias">
+
+                    <div class="gridContent">
+
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/category/{{card.basicName}}">
+                            <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                                class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <h3 class="card__title">{{card.name}}</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Perfiles -->
+
     </div>
 </section>

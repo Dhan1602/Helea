@@ -1,5 +1,6 @@
 export interface categoria_model {
     name: "string",
-    background: "string"
-    id?: "string"
+    background: "string",
+    basicName: "string",
+    _id?: "string"
 }

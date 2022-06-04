@@ -9,6 +9,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { RegistroComponent } from './registro/registro.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FeedComponent } from './feed/feed.component';
     NavBarComponent,
     HomeComponent,
     CreateComponent,
-    FeedComponent
+    FeedComponent,
+    InicioSesionComponent,
+    RegistroComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

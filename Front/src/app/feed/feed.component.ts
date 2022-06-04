@@ -41,7 +41,7 @@ export class FeedComponent implements OnInit {
     if (filtro.value == "Mostrar todos") {
       this.opcion = 0;
     } else if (filtro.value == "Categorías") {
-      this._router.navigate(["/categorias"]);
+      this.opcion = 1;
     }else console.log(filtro.value)
   }
 

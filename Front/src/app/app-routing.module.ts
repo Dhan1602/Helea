@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
+import { ContenidoComponent } from './contenido/contenido.component';
+
 
 const routes: Routes = [{
   path:"feed",
@@ -15,6 +17,10 @@ const routes: Routes = [{
 {
   path:"",
   component:HomeComponent
+},
+{
+  path:"contenido",
+  component:ContenidoComponent
 }
 ];
 

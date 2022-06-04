@@ -9,6 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
+import { ContenidoComponent } from './contenido/contenido.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FeedComponent } from './feed/feed.component';
     NavBarComponent,
     HomeComponent,
     CreateComponent,
-    FeedComponent
+    FeedComponent,
+    ContenidoComponent
   ],
   imports: [
     BrowserModule,

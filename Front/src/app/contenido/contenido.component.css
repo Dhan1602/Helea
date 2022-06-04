@@ -1,0 +1,25 @@
+#contenido{
+    background: url(https://i.imgur.com/il6TlTp.png) no-repeat #1e193d;
+    object-fit: cover;
+    background-size: cover;
+    color: #dee3f5;
+    font-weight: 500;
+    min-height: 100vh;
+    width: 100vw;
+}
+#padre{
+    display: flex;
+    justify-content: center;
+}
+#cuerpo{
+    padding-top: 4rem;
+    display: inline-block;
+    text-align: center;
+    width: 50vw;
+}
+#cuerpo p{
+    text-align: justify;
+}
+#cuerpo img{
+    height: 20rem;
+}

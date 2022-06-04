@@ -9,7 +9,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
-import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { CategoriesComponent } from './categories/categories.component';
     NavBarComponent,
     HomeComponent,
     CreateComponent,
-    FeedComponent,
-    CategoriesComponent
+    FeedComponent
   ],
   imports: [
     BrowserModule,

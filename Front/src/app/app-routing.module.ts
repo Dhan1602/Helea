@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
-import { CategoriesComponent } from './categories/categories.component';
 
 const routes: Routes = [{
   path:"feed",
@@ -17,10 +16,6 @@ const routes: Routes = [{
   path:"",
   component:HomeComponent
 },
-{
-  path:"categorias",
-  component:CategoriesComponent
-}
 ];
 
 @NgModule({

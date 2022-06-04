@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-feed',
@@ -13,6 +14,10 @@ export class FeedComponent implements OnInit {
   constructor(public peticiones: PublicacionesService, private _router: Router) { }
 
   opcion = 0;
+
+  searchPlaceholder = "Ingresa un tema";
+
+  searchValue = "";
 
   ngOnInit(): void {
     this.getContent();
@@ -28,7 +33,7 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  getCategory(){
+  getCategory() {
     this.peticiones.getCategories().subscribe({
       next: (res) => {
         this.peticiones.doccategorias = res;
@@ -40,9 +45,43 @@ export class FeedComponent implements OnInit {
   filtro(filtro: any) {
     if (filtro.value == "Mostrar todos") {
       this.opcion = 0;
+      this.searchPlaceholder = "Ingresa un tema";
+      this.getContent();
     } else if (filtro.value == "Categorías") {
       this.opcion = 1;
-    }else console.log(filtro.value)
+      this.searchPlaceholder = "Ingresa una categoría";
+      this.getCategory();
+    } else console.log(filtro.value)
+  }
+
+  buscar(search: any) {
+    if (this.opcion == 0) {
+      if (search.value != "") {
+        this.peticiones.searchOne(search.value).subscribe({
+          next: (res) => {
+            this.peticiones.documentos = res;
+            this.searchValue = "";
+          },
+          error: (err) => console.log(err),
+
+        });
+      } else {
+        this.getContent()
+      }
+    } else if (this.opcion == 1) {
+      if (search.value != "") {
+        this.peticiones.searchTwo(search.value).subscribe({
+          next: (res) => {
+            this.peticiones.doccategorias = res;
+            this.searchValue = "";
+          },
+          error: (err) => console.log(err),
+        });
+      }else{
+        this.getCategory();
+      }
+      
+    }
   }
 
 }

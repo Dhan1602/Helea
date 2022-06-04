@@ -2,10 +2,8 @@
     <navBar></navBar>
     <div id="principalFlex">
         <div>
-            <form id="search">
-                <input type="text" placeholder="Ingresa tu búsqueda...">
-                <button id="btnSearch" type="submit">Buscar</button>
-            </form>
+                <input id="barraBusqueda" #search type="text" placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
+                <button (click)="buscar(search)" id="btnSearch">Buscar</button>
         </div>
 
         <div id="addAndFilter">

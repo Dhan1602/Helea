@@ -55,6 +55,10 @@ input::placeholder {
     align-items: center;
 }
 
+#barraBusqueda{
+    margin-top: 2.6rem;
+}
+
 #addAndFilter {
     margin-top: 2.6rem;
     align-self: flex-end;

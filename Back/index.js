@@ -22,7 +22,17 @@ app.get("/posts", async(req, res)=>{
 });
 
 app.get("/posts/categories", async(req, res)=>{
-    var content = await categorias.find();
+    var content = await categorias.find().sort({name:1});
+    res.send(content);
+});
+
+app.get("/searchName/:name", async(req, res)=>{
+    var content = await publicaciones.find({titulo:{$regex:req.params.name,$options:"i"}}).sort({name:1});
+    res.send(content);
+});
+
+app.get("/searchCategory/:name", async(req, res)=>{
+    var content = await categorias.find({name:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(content);
 });
 

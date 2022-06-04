@@ -16,6 +16,10 @@ const routes: Routes = [{
   path:"",
   component:HomeComponent
 },
+{
+  path:"category/:name",
+  component:FeedComponent
+},
 ];
 
 @NgModule({

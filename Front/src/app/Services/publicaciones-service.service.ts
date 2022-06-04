@@ -47,5 +47,8 @@ export class PublicacionesService {
   searchThree(busqueda: any){
     return this.http.get<post_model[]>(this.URL_API+"/searchAuthor", busqueda)
   }
+  getPostByCategory(busqueda: any){
+    return this.http.get<post_model[]>(this.URL_API+"/searchByCategory/" + busqueda)
+  }
 
 }

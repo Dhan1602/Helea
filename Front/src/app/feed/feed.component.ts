@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
 import { Router } from '@angular/router';
-import { ThisReceiver } from '@angular/compiler';
+import { ActivatedRoute } from "@angular/router"
 
 @Component({
   selector: 'app-feed',
@@ -11,7 +10,7 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class FeedComponent implements OnInit {
 
-  constructor(public peticiones: PublicacionesService, private _router: Router) { }
+  constructor(public peticiones: PublicacionesService, private _router: Router, private route : ActivatedRoute) { }
 
   opcion = 0;
 
@@ -19,18 +18,30 @@ export class FeedComponent implements OnInit {
 
   searchValue = "";
 
+  nameParam = this.route.snapshot.params["name"];
+
   ngOnInit(): void {
     this.getContent();
     this.getCategory();
   }
 
   getContent() {
-    this.peticiones.getPost().subscribe({
-      next: (res) => {
-        this.peticiones.documentos = res;
-      },
-      error: (err) => console.log(err),
-    });
+    if(this.nameParam == null){
+      this.peticiones.getPost().subscribe({
+        next: (res) => {
+          this.peticiones.documentos = res;
+        },
+        error: (err) => console.log(err),
+      });
+    }else{
+      this.peticiones.getPostByCategory(this.nameParam).subscribe({
+        next: (res) => {
+          this.peticiones.documentos = res;
+        },
+        error: (err) => console.log(err),
+      });
+    }
+    
   }
 
   getCategory() {

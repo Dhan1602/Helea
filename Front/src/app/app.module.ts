@@ -12,6 +12,7 @@ import { FeedComponent } from './feed/feed.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
+import { ContenidoComponent } from './contenido/contenido.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChatComponent } from './chat/chat.component';
     FeedComponent,
     InicioSesionComponent,
     RegistroComponent,
-    ChatComponent
+    ChatComponent,
+    ContenidoComponent
   ],
   imports: [
     BrowserModule,

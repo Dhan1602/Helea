@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
 import { RedirectorComponent } from './redirector/redirector.component';
+import { ContenidoComponent } from './contenido/contenido.component';
+
 
 const routes: Routes = [{
   path:"feed",
@@ -24,6 +26,11 @@ const routes: Routes = [{
 {
   path:"red/:name",
   component:RedirectorComponent
+ 
+},
+{
+  path:"contenido",
+  component:ContenidoComponent
 }
 ];
 

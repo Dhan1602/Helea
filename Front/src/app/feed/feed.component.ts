@@ -60,6 +60,7 @@ export class FeedComponent implements OnInit {
       this.getContent();
     } else if (filtro.value == "Categorías") {
       this.opcion = 1;
+      this.peticiones.documentos = [];
       this.searchPlaceholder = "Ingresa una categoría";
       this.getCategory();
     } else console.log(filtro.value)

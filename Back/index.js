@@ -40,6 +40,12 @@ app.get("/searchByCategory/:name", async(req, res)=>{
     var content = await publicaciones.find({categoria:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(content);
 });
+
+app.get("/searchArticle/:id", async (req, res)=>{
+    var article = await publicaciones.find({_id: req.params.id});
+    res.send(article);
+});
+
 app.post("/posts", async(req, res)=>{
     var saving = new publicaciones(req.body);
     await saving.save();

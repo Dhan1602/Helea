@@ -2,27 +2,14 @@
   <navBar></navBar>
 
 
-<div id="padre">
+<div id="padre" *ngIf="temporizador==1">
   <div id="cuerpo">
 
-    <h2>Titulo</h2>
+    <h2>{{peticion.documentos[0].titulo}}</h2>
 
-    <img src="https://static.independent.co.uk/2021/11/18/09/music%20therapy.jpg" alt="">
+    <img src="{{peticion.documentos[0].background}}" alt="">
 
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime consequatur odio excepturi fugiat et commodi
-      porro alias corrupti aliquid mollitia ut, recusandae quos perspiciatis nihil doloremque aut asperiores impedit
-      tempora.
-      Quia minus tempora voluptatibus voluptates explicabo, repudiandae inventore, debitis ipsam iure dolores ratione!
-      Reiciendis laboriosam libero est corporis incidunt, id dolorum quaerat, harum, repellendus beatae voluptates nulla
-      dolores! Delectus, voluptas.
-      Rem voluptatibus itaque similique voluptate odit aut ipsam distinctio hic obcaecati asperiores. Vel, adipisci
-      officia sint aut, dolores sequi quibusdam natus eum, debitis dolorum harum nihil quaerat sed saepe at.
-      Nesciunt voluptas nostrum voluptatum voluptatem? Quae, laboriosam nemo cumque nesciunt quam quos, nisi eius,
-      accusantium explicabo natus fugiat asperiores repudiandae architecto commodi fugit dignissimos quisquam adipisci
-      consectetur iusto. Asperiores, et!
-      Laudantium iure in pariatur vel nihil, nobis laboriosam reprehenderit! Eius repellat iste, eveniet voluptate quis
-      nesciunt nam tenetur doloremque blanditiis libero minima ullam inventore aliquid veniam perspiciatis alias!
-      Aperiam, magnam.</p>
+    <p>{{peticion.documentos[0].descripcion}}</p>
       
   </div>
 </div>

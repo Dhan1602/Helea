@@ -3,6 +3,14 @@
 }
 #createGroup{
     margin-top: 40px;
+    width: 55vw;
+    padding: 2rem 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+#flexPagina{
+    display: flex;
+    justify-content: center;
 }
 #Crear{
     background: url(https://i.imgur.com/il6TlTp.png) no-repeat #1e193d;
@@ -21,7 +29,7 @@
     flex-direction: column;
 }
 
-input, textarea{
+input, textarea, select{
     font-size: 20px;
     display: block;
     width: 35vw;
@@ -38,7 +46,10 @@ input, textarea{
 }input::placeholder, textarea::placeholder{
     color: #dee3f5;
     font-weight: 600;
-
+    font-size: 18px;
+}select{
+    width: 36.5vw;
+    color:#FFF;
 }
 
 button{
@@ -46,9 +57,9 @@ button{
     color: #FFF;
     border: none;
     border-radius:  7px;
-    width: 6vw;
-    height: 3vh;
-    font-size: 15px;
+    width: 7vw;
+    height: 5vh;
+    font-size: 18px;
     cursor: pointer;
     transition: 0.3s ease;
 }

@@ -43,6 +43,7 @@ export class FeedComponent implements OnInit {
     }
     
   }
+  
 
   getCategory() {
     this.peticiones.getCategories().subscribe({
@@ -51,6 +52,12 @@ export class FeedComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  enter(event: KeyboardEvent, search : any){
+    if(event.key == "Enter"){
+      this.buscar(search)
+    }
   }
 
   filtro(filtro: any) {

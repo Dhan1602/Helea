@@ -8,7 +8,7 @@
                 <textarea name="" id="" cols="30" rows="10" placeholder="Descripción" name="descripcion"
                     [(ngModel)]="peticiones.data.descripcion" required></textarea>
                 <select name="categoria" [(ngModel)]="peticiones.data.categoria" required>
-                    <option value="" *ngFor="let categories of peticiones.doccategorias">{{categories.name}}</option>
+                    <option value="{{categories.name}}" *ngFor="let categories of peticiones.doccategorias">{{categories.name}}</option>
                 </select>
                 <input type="text" placeholder="URL del fondo" name="background"
                     [(ngModel)]="peticiones.data.background" required>

@@ -84,3 +84,24 @@ transform: skew(-18deg, 0deg);
     padding: 2rem;
 }
 
+#close{
+    height: 100vh;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#image{
+    margin-top: 17rem;
+    width: 40%;
+}
+#close h2{
+    
+    margin-bottom: 10rem;
+    margin-right: 5rem;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #DEE3F5;
+    text-align: right;
+}

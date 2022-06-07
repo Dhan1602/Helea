@@ -24,7 +24,7 @@
 
         <section id="dataBaseCards" *ngIf="opcion == 0">
             <div id="Content">
-                <article class="card" *ngFor="let card of peticiones.documentos">
+                <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
 
                     <div class="gridContent">
 
@@ -44,7 +44,7 @@
                         <div class="card__info">
                             <span class="card__category">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
-                            <ngx-star-rating [ngModel]="card.calificacion" [id]="'rating'" [disabled]="true"></ngx-star-rating>
+                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
                             <span class="card__by">por <a routerLink="/perfil/" class="card__author"
                                     title="Autor">Autor</a></span>
                         </div>

@@ -12,9 +12,9 @@ export class FeedComponent implements OnInit {
 
   constructor(public peticiones: PublicacionesService, private _router: Router, private route : ActivatedRoute) { }
 
-  rating = 3;
+  index = 0; //Iterador en el for de las cards
 
-  opcion = 0;
+  opcion = 0; //Filtro seleccionado
 
   searchPlaceholder = "Ingresa un tema";
 

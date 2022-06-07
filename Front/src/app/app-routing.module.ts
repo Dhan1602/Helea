@@ -8,6 +8,7 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
+import { PerfilComponent } from "./perfil/perfil.component"
 
 const routes: Routes = [{
   path:"chat-heleo",
@@ -45,7 +46,11 @@ const routes: Routes = [{
 {
   path:"verMas/:id",
   component:ContenidoComponent
-}
+},
+{
+  path:"perfil",
+  component: PerfilComponent
+},
 ];
 
 @NgModule({

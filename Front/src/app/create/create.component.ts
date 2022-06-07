@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   fecha = ""
 
-  camposRellenos = false
+  camposRellenos = true
 
   ngOnInit(): void {
     this.obtenerDatos();
@@ -32,9 +32,9 @@ export class CreateComponent implements OnInit {
   create(form: NgForm) {
     if (this.peticiones.data.titulo == "" || this.peticiones.data.descripcion == ""
       || this.peticiones.data.background == "" || this.peticiones.data.categoria == "") {
-      this.camposRellenos = true;
-    } else {
       this.camposRellenos = false;
+    } else {
+      this.camposRellenos = true;
       var confirmacion = confirm("¿Desea confirmar su publicación?")
       if (confirmacion) {
         let hoy = new Date();

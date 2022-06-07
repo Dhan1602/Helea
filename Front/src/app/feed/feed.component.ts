@@ -73,6 +73,10 @@ export class FeedComponent implements OnInit {
     } else console.log(filtro.value)
   }
 
+  createRedirect(){
+    this._router.navigate(["create"]);
+  }
+
   buscar(search: any) {
     if (this.opcion == 0) {
       if (search.value != "") {

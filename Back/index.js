@@ -62,10 +62,6 @@ app.get("/searchByCategory/:name", async (req, res)=>{
     let content = await publicaciones.find({categoria:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(content);
 });
-<<<<<<< Updated upstream
-app.post("/posts", async(req, res)=>{
-    var saving = new publicaciones(req.body);
-=======
 
 app.get("/searchArticle/:id", async (req, res)=>{
     let article = await publicaciones.find({_id: req.params.id});
@@ -74,7 +70,6 @@ app.get("/searchArticle/:id", async (req, res)=>{
 
 app.post("/posts", async (req, res)=>{
     let saving = new publicaciones(req.body);
->>>>>>> Stashed changes
     await saving.save();
     res.send(saving);
 });

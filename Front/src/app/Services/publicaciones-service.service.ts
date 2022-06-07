@@ -60,5 +60,8 @@ export class PublicacionesService {
   getPostByCategory(busqueda: any){
     return this.http.get<post_model[]>(this.URL_API+"/searchByCategory/" + busqueda)
   }
+  obtenerArticulo(parametro : any){
+    return this.http.get<post_model[]>(this.URL_API+"/searchArticle/"+parametro)
+  }
 
 }

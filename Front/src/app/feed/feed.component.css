@@ -13,6 +13,7 @@ input {
     font-size: 20px;
     display: block;
     width: 35vw;
+    height: 3.3rem;
     margin-bottom: 10px;
     background-color: #aab7e8;
     border: none;
@@ -38,10 +39,10 @@ input::placeholder {
 }
 
 #btnSearch {
-    margin: -8.08rem;
+    margin: -8.6rem;
     border: none;
     width: 8rem;
-    height: 2rem;
+    height: 3rem;
     background-color: #5675E5;
     font-size: 20px;
     font-weight: 100;
@@ -55,35 +56,96 @@ input::placeholder {
     align-items: center;
 }
 
-#barraBusqueda{
-    margin-top: 2.6rem;
+#barraBusqueda {
+    margin-top: 6rem;
 }
 
 #addAndFilter {
-    margin-top: 2.6rem;
-    align-self: flex-end;
-    margin-right: 2rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;
+    width: 100%;
+    align-items: flex-end;
+}
+
+/* Efectos de botón */
+#butCreate {
+    cursor: pointer;
+    --color: #5675E5;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color);
+}
+
+#butCreate:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: white;
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#butCreate:hover {
+    color: var(--color);
+}
+
+#butCreate:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+#butCreate:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+#butCreate:active:before {
+    background: #aab7e8;
+    transition: background 0s;
+}
+
+#createLink {
+    width: 8em;
+    height: 2.6em;
 }
 
 #addAndFilter select {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     border: none !important;
-    outline: none;
-    background-color: #aab7e8;
-    border-radius: 5px;
+    outline: none !important;
+    background-color: #1e193d;
+    border-radius: 6px;
+    border-style: none;
+    cursor: pointer;
     color: white;
-    font-weight: 700;
-    margin-bottom: 15px;
+    font-weight: 400;
+    padding: 6px;
 }
 
 #addAndFilter a {
-    color: #FFF;
     text-decoration: none;
 }
 
 #Content {
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 25px;

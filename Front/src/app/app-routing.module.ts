@@ -43,7 +43,7 @@ const routes: Routes = [{
  
 },
 {
-  path:"contenido",
+  path:"verMas/:id",
   component:ContenidoComponent
 }
 ];

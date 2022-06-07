@@ -1,16 +1,19 @@
 <section id="Crear">
     <navBar></navBar>
-    <div id="createGroup">
-        <h2>Crear Publicacion</h2>
-        <form id="Information" #postForm="ngForm" (ngSubmit)="create(postForm)">
-            <input type="text" placeholder="Título" name="titulo" [(ngModel)]="peticiones.data.titulo" required>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Descripción" name="descripcion"
-                [(ngModel)]="peticiones.data.descripcion" required></textarea>
-            <input type="text" placeholder="Categoría" name="categoria" [(ngModel)]="peticiones.data.categoria"
-                required>
-            <input type="text" placeholder="URL del fondo" name="background" [(ngModel)]="peticiones.data.background"
-                required>
-            <button type="submit">Crear</button>
-        </form>
+    <div id="flexPagina">
+        <div id="createGroup">
+            <h2>Crear Publicacion</h2>
+            <form id="Information" #postForm="ngForm" (ngSubmit)="create(postForm)">
+                <input type="text" placeholder="Título" name="titulo" [(ngModel)]="peticiones.data.titulo" required>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Descripción" name="descripcion"
+                    [(ngModel)]="peticiones.data.descripcion" required></textarea>
+                <select name="categoria" [(ngModel)]="peticiones.data.categoria" required>
+                    <option value="{{categories.name}}" *ngFor="let categories of peticiones.doccategorias">{{categories.name}}</option>
+                </select>
+                <input type="text" placeholder="URL del fondo" name="background"
+                    [(ngModel)]="peticiones.data.background" required>
+                <button type="submit">Crear</button>
+            </form>
+        </div>
     </div>
 </section>

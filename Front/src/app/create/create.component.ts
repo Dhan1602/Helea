@@ -15,9 +15,17 @@ export class CreateComponent implements OnInit {
   fecha = ""
 
   ngOnInit(): void {
+    this.obtenerDatos();
   }
 
-
+  obtenerDatos(){
+    this.peticiones.getCategories().subscribe({
+      next: (res) => {
+        this.peticiones.doccategorias = res;
+      },
+      error: (err) => console.log(err),
+    });
+  };
 
   create(form: NgForm) {
     var confirmacion = confirm("¿Desea confirmar su publicación?")

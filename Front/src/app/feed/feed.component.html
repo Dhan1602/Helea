@@ -1,18 +1,23 @@
 <section id="Feed">
     <navBar></navBar>
     <div id="principalFlex">
-        <div>
-                <input id="barraBusqueda" #search type="text" placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
-                <button (click)="buscar(search)" id="btnSearch">Buscar</button>
+        <div id="searchContent">
+            <input id="barraBusqueda" #search type="text" (keypress)="enter($event, search)"
+                placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
+            <button (click)="buscar(search)" id="btnSearch">Buscar</button>
         </div>
 
         <div id="addAndFilter">
-            <a routerLink="/create">Crear</a>&nbsp;&nbsp;
-            <select id="filtroSelect" #filter (change)="filtro(filter)">
-                <option name="all">Mostrar todos</option>
-                <option name="category">Categorías</option>
-                <option name="author">Autores</option>
-            </select>
+            <div>
+                <button id="butCreate" (click)="createRedirect()">Crear</button>
+            </div>
+            <div>
+                <select id="filtroSelect" #filter (change)="filtro(filter)" name="filtro">
+                    <option name="all">Mostrar todos</option>
+                    <option name="category">Categorías</option>
+                    <option name="author">Autores</option>
+                </select>
+            </div>
         </div>
 
         <!-- Mostrar todo -->

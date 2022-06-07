@@ -12,6 +12,8 @@ export class FeedComponent implements OnInit {
 
   constructor(public peticiones: PublicacionesService, private _router: Router, private route : ActivatedRoute) { }
 
+  rating = 3;
+
   opcion = 0;
 
   searchPlaceholder = "Ingresa un tema";

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router"
+import { Rutasss } from '../prueba/prueba';
 
 @Component({
   selector: 'app-feed',
@@ -10,7 +11,8 @@ import { ActivatedRoute } from "@angular/router"
 })
 export class FeedComponent implements OnInit {
 
-  constructor(public peticiones: PublicacionesService, private _router: Router, private route: ActivatedRoute) { }
+  constructor(public peticiones: PublicacionesService, private _router: Router, private route: ActivatedRoute,
+    private direccionar: Rutasss) { }
 
   index = 0; //Iterador en el for de las cards
 
@@ -71,6 +73,10 @@ export class FeedComponent implements OnInit {
     if (event.key == "Enter") {
       this.buscar(search)
     }
+  }
+
+  red(param: any){
+    this.direccionar.rect(param);
   }
 
   filtro(filtro: any) {

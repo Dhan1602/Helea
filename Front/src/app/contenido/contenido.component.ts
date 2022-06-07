@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from "@angular/router"
+import { PublicacionesService } from '../Services/publicaciones-service.service';
 
 @Component({
   selector: 'app-contenido',
@@ -8,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContenidoComponent implements OnInit {
 
-  constructor() { }
+  nameParam = this.route.snapshot.params["id"];
+  temporizador = 0;
+
+  constructor(private route : ActivatedRoute, public peticion : PublicacionesService) {}
 
   ngOnInit(): void {
+    this.obtenerArticulo();
+    // setTimeout(()=>{this.temporizador = 1},210)
+  }
+
+  obtenerArticulo(){
+    this.peticion.obtenerArticulo(this.nameParam).subscribe({
+      next: (res)=>
+      {
+        this.peticion.documentos = res
+        this.temporizador = 1
+      },
+      error: (err)=>{}
+    })
   }
 
 }

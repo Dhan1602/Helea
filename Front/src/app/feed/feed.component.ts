@@ -43,6 +43,7 @@ export class FeedComponent implements OnInit {
     }
     
   }
+  
 
   getCategory() {
     this.peticiones.getCategories().subscribe({
@@ -51,6 +52,12 @@ export class FeedComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  enter(event: KeyboardEvent, search : any){
+    if(event.key == "Enter"){
+      this.buscar(search)
+    }
   }
 
   filtro(filtro: any) {
@@ -64,6 +71,10 @@ export class FeedComponent implements OnInit {
       this.searchPlaceholder = "Ingresa una categoría";
       this.getCategory();
     } else console.log(filtro.value)
+  }
+
+  createRedirect(){
+    this._router.navigate(["create"]);
   }
 
   buscar(search: any) {

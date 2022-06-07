@@ -42,7 +42,7 @@
                             background-repeat: no-repeat; " class="card__img--hover"></div>
                         </a>
                         <div class="card__info">
-                            <span class="card__category">{{card.categoria}}</span>
+                            <span class="card__category"><a href="red/{{card.categoria}}">{{card.categoria}}</a></span>
                             <h3 class="card__title">{{card.titulo}}</h3>
                             <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
                             <span class="card__by">por <a routerLink="/perfil/" class="card__author"

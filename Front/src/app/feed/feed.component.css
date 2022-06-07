@@ -234,8 +234,10 @@ input::placeholder {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 2px;
+}.card__category a{
     font-weight: 500;
     color: #5675E5;
+    text-decoration: none;
 }
 
 .card__title {

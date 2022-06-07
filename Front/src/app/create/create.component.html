@@ -12,6 +12,7 @@
                 </select>
                 <input type="text" placeholder="URL del fondo" name="background"
                     [(ngModel)]="peticiones.data.background" required>
+                <label id="err" *ngIf="camposRellenos==true"> Debes rellenar todos los campos </label>
                 <button type="submit">Crear</button>
             </form>
         </div>

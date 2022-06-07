@@ -18,7 +18,7 @@ export class PublicacionesService {
   data: post_model = {
     titulo: "",
     descripcion: "",
-    calificacion: 5,
+    calificacion: 0,
     background: "",
     categoria: "",
     fecha: "",

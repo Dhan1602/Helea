@@ -48,6 +48,10 @@ export class PublicacionesService {
     return this.http.get<categoria_model[]>(this.URL_API+"/posts/categories");
   }
 
+  getProfiles(){
+    return this.http.get<perfiles[]>(this.URL_API+"/perfiles");
+  }
+
   searchOne(busqueda: any){
     return this.http.get<post_model[]>(this.URL_API+"/searchName/" + busqueda)
   }
@@ -55,7 +59,7 @@ export class PublicacionesService {
     return this.http.get<categoria_model[]>(this.URL_API+"/searchCategory/" + busqueda)
   }
   searchThree(busqueda: any){
-    return this.http.get<post_model[]>(this.URL_API+"/searchAuthor", busqueda)
+    return this.http.get<perfiles[]>(this.URL_API+"/searchByAuthor/" + busqueda)
   }
   getPostByCategory(busqueda: any){
     return this.http.get<post_model[]>(this.URL_API+"/searchByCategory/" + busqueda)

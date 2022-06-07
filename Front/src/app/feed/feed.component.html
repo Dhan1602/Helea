@@ -22,8 +22,8 @@
 
         <!-- Mostrar todo -->
 
-        <section id="dataBaseCards" *ngIf="opcion == 0">
-            <div id="Content">
+        <section class="dataBaseCards" *ngIf="opcion == 0">
+            <div class="Content">
                 <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
 
                     <div class="gridContent">
@@ -55,8 +55,8 @@
 
         <!-- Categoria -->
 
-        <section id="dataBaseCards" *ngIf="opcion == 1">
-            <div id="Content">
+        <section class="dataBaseCards" *ngIf="opcion == 1">
+            <div class="Content">
                 <article class="card" *ngFor="let card of peticiones.doccategorias">
 
                     <div class="gridContent">
@@ -76,6 +76,26 @@
         </section>
 
         <!-- Perfiles -->
+
+        <section class="dataBaseCards" *ngIf="opcion == 2">
+            <div class="Content">
+                <article class="card" *ngFor="let card of peticiones.docPerfiles">
+
+                    <div class="gridContent">
+
+                        <div style="background: url({{card.urlImage}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/perfil/{{card._id}}">
+                            <div style="background: url({{card.urlImage}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                                class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <h3 class="card__title">{{card.userName}}</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
 
     </div>
 </section>

@@ -10,7 +10,7 @@ import { ActivatedRoute } from "@angular/router"
 })
 export class FeedComponent implements OnInit {
 
-  constructor(public peticiones: PublicacionesService, private _router: Router, private route : ActivatedRoute) { }
+  constructor(public peticiones: PublicacionesService, private _router: Router, private route: ActivatedRoute) { }
 
   index = 0; //Iterador en el for de las cards
 
@@ -25,17 +25,18 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.getContent();
     this.getCategory();
+    this.getProfile();
   }
 
   getContent() {
-    if(this.nameParam == null){
+    if (this.nameParam == null) {
       this.peticiones.getPost().subscribe({
         next: (res) => {
           this.peticiones.documentos = res;
         },
         error: (err) => console.log(err),
       });
-    }else{
+    } else {
       this.peticiones.getPostByCategory(this.nameParam).subscribe({
         next: (res) => {
           this.peticiones.documentos = res;
@@ -43,9 +44,9 @@ export class FeedComponent implements OnInit {
         error: (err) => console.log(err),
       });
     }
-    
+
   }
-  
+
 
   getCategory() {
     this.peticiones.getCategories().subscribe({
@@ -56,8 +57,18 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  enter(event: KeyboardEvent, search : any){
-    if(event.key == "Enter"){
+  getProfile() {
+    this.peticiones.getProfiles().subscribe({
+      next: (res) => {
+        this.peticiones.docPerfiles = res;
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+
+  enter(event: KeyboardEvent, search: any) {
+    if (event.key == "Enter") {
       this.buscar(search)
     }
   }
@@ -72,10 +83,16 @@ export class FeedComponent implements OnInit {
       this.peticiones.documentos = [];
       this.searchPlaceholder = "Ingresa una categoría";
       this.getCategory();
-    } else console.log(filtro.value)
+    } else if (filtro.value == "Autores") {
+      this.opcion = 2;
+      this.peticiones.documentos = [];
+      this.peticiones.doccategorias = [];
+      this.searchPlaceholder = "Ingresa un autor";
+      this.getProfile();
+    }
   }
 
-  createRedirect(){
+  createRedirect() {
     this._router.navigate(["create"]);
   }
 
@@ -102,11 +119,24 @@ export class FeedComponent implements OnInit {
           },
           error: (err) => console.log(err),
         });
-      }else{
+      } else {
         this.getCategory();
       }
-      
-    }
-  }
+
+    } else if (this.opcion == 2) {
+      if (search.value != "") {
+        this.peticiones.searchThree(search.value).subscribe({
+          next: (res) => {
+            this.peticiones.docPerfiles = res;
+            this.searchValue = "";
+          },
+          error: (err) => console.log(err),
+        });
+      } else {
+        this.getProfile();
+      }
+    };
+
+  };
 
 }

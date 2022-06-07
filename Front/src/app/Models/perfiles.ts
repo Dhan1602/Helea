@@ -3,5 +3,6 @@ export interface perfiles {
     userDescripcion?: String
     urlImage?: String,
     email: String,
-    contrasena: String
+    contrasena: String,
+    _id?:String
 }

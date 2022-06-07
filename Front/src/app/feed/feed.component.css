@@ -144,7 +144,7 @@ input::placeholder {
     text-decoration: none;
 }
 
-#Content {
+.Content {
     margin: 1rem 0;
     display: grid;
     grid-template-columns: repeat(4, auto);

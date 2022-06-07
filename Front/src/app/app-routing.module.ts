@@ -5,6 +5,8 @@ import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
 import { RedirectorComponent } from './redirector/redirector.component';
 import { ContenidoComponent } from './contenido/contenido.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 const routes: Routes = [{
@@ -30,6 +32,14 @@ const routes: Routes = [{
 },
 {
   path:"verMas/:id",
+  component:ContenidoComponent
+},
+{
+  path:"signin",
+  component:ContenidoComponent
+},
+{
+  path:"signup",
   component:ContenidoComponent
 }
 ];

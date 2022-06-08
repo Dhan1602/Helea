@@ -98,7 +98,9 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  
+  createRedirect() {
+    this._router.navigate(["create"]);
+  }
 
   buscar(search: any) {
     if (this.opcion == 0) {

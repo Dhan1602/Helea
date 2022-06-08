@@ -16,11 +16,32 @@ mongoose.connect(process.env.LINK)
 const publicaciones = require("./models/publicaciones");
 const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
+const chatMessages_model = require("./models/chatMessages");
+
+app.get("/newChat/:idHeleo", async (req,res)=>{
+    let newChat = {
+        idHeleo: req.params.idHeleo,
+        categorysChats: [{
+            category: "General",
+            messages: []
+        }]
+    }
+    newChat = new chatMessages_model(newChat);
+    await newChat.save();
+    res.send({ response: "Chat listo para usar" });
+});
+app.get("/chats", async (req,res)=>{
+    let chats = await chatMessages_model.find();
+    res.send(chats);
+});
 
 app.post("/perfil", async (req, res)=>{
     let newPerfil = new perfil_model(req.body);
     await newPerfil.save();
-    res.send({ response: "Se ha registrado exitosamente" });
+    res.send({
+        response: "Se ha registrado exitosamente",
+        idCreado: newPerfil._id
+    });
 });
 app.post("/perfil-singIng", async (req, res)=>{
     let perfil = await perfil_model.find(req.body);

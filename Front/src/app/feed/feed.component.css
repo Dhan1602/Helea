@@ -35,7 +35,7 @@ input::placeholder {
 }
 
 #search {
-    margin: 40px auto auto;
+    margin: 20px 40px auto auto;
 }
 
 #btnSearch {
@@ -57,13 +57,13 @@ input::placeholder {
 }
 
 #barraBusqueda {
-    margin-top: 6rem;
+    margin-top: 2rem;
 }
 
 #addAndFilter {
     display: flex;
     justify-content: flex-end;
-    padding-right: 18rem;
+    margin-right: 18rem;
     margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;

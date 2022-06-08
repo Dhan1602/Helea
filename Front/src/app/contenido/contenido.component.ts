@@ -11,6 +11,7 @@ export class ContenidoComponent implements OnInit {
 
   nameParam = this.route.snapshot.params["id"];
   temporizador = 0;
+  estrellas = 0;
 
   constructor(private route : ActivatedRoute, public peticion : PublicacionesService) {}
 

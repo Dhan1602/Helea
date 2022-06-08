@@ -19,9 +19,14 @@ export class InicioSesionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  obterner(){
+    // let dato = this.servidor.pasarValor();
+    // console.log(dato);
+  }
+
   verificarSingIn(form: NgForm){
     this.servidor.singIn(form.value).subscribe({next: (r:any)=>{
-      if(r.noExiste) alert("No se ha podido niciar sesion, verifique que todo esté correctamente");
+      if(r.noExiste) alert("No se ha podido iniciar sesion, verifique que todo esté correctamente");
       else this.router.navigate(['feed']);
     },
     error: e=>{

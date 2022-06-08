@@ -22,6 +22,12 @@ export class RegistroComponent implements OnInit {
   constructor(private servidor: PublicacionesService, private router: Router) { }
   ngOnInit(): void {
   }
+
+  obterner(){
+    // let dato = this.servidor.pasarValor();
+    // console.log(dato);
+  }
+
   sendPerfil(form: NgForm){
     this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {
       alert(r.response);

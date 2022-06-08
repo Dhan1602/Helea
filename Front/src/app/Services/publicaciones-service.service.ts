@@ -8,9 +8,7 @@ import { perfiles } from '../Models/perfiles';
   providedIn: 'root'
 })
 export class PublicacionesService {
-
-  constructor(private http: HttpClient) {}
-
+  URL_API = "http://localhost:3000";
   docPerfiles: perfiles[] = [];
   documentos: post_model[] = [];
   doccategorias: categoria_model[] = [];
@@ -24,20 +22,22 @@ export class PublicacionesService {
     fecha: "",
     autorID: ""
    };
-   
 
-  URL_API = "http://localhost:3000"
+  constructor(private http: HttpClient) {}
 
+  // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
-   createChat(idHeleo: any){
-    return this.http.get(this.URL_API+"/newChat/" + idHeleo);
-  }
-
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);
   }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+   createChat(idHeleo: any){
+    return this.http.get(this.URL_API+"/newChat/" + idHeleo);
+  }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
   createPost(data : post_model){
     return this.http.post(this.URL_API+"/posts", data);

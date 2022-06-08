@@ -18,6 +18,22 @@ const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
 
+const usuariosLogeados = require("./usuariosLogeados/logeados");
+const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar logeo
+
+// verificra logeo –––––––––––––––––––––––––––––––––––––––––––––––––––
+app.get("/agregarloger", (req,res)=>{
+    res.send(loger.logearUsuario({
+        _id: "asd",
+        logeado: true,
+        userName: "pedro"
+    }));
+});
+app.get("/verificarloger", (req,res)=>{
+    res.send(loger.isLogeado("asd"));
+});
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.get("/newChat/:idHeleo", async (req,res)=>{
     let newChat = {
         idHeleo: req.params.idHeleo,
@@ -34,7 +50,8 @@ app.get("/chats", async (req,res)=>{
     let chats = await chatMessages_model.find();
     res.send(chats);
 });
-
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.post("/perfil", async (req, res)=>{
     let newPerfil = new perfil_model(req.body);
     await newPerfil.save();
@@ -57,6 +74,7 @@ app.get("/perfiles", async (req, res)=>{
     let perfiles = await perfil_model.find();
     res.send(perfiles)
 });
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 app.get("/posts", async (req, res)=>{
     let content = await publicaciones.find().sort({fecha:-1});

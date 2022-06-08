@@ -20,7 +20,9 @@
     background-color: #c4d0f881;
 }
 #cards{
-    height: 80vh;
+    padding: 1rem 0;
+   display: flex;
+   justify-content: center;
     width: 45vw;
 }
 #profile{
@@ -34,4 +36,143 @@
 }
 #descripcion{
     padding: 0 4rem;
+}
+.Content {
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 25px;
+}
+
+.gridContent {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    max-width: 820px;
+    flex-direction: column;
+    color: #5675E5;
+}
+
+.card {
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    height: 16.6rem;
+    width: 13rem;
+    background-color: #fff;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+}
+
+.card__time {
+    font-size: 0.7rem;
+    color: #5675E5;
+    vertical-align: middle;
+    margin-right: 25px;
+    font-weight: 600;
+}
+
+.card__clock-info {
+    float: right;
+}
+
+.card__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 180px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+}
+
+.card__info-hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+}
+
+.card__img--hover {
+    cursor: pointer;
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 180px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+}
+
+.card__info {
+    z-index: 2;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 8px 20px 20px 20px;
+}
+
+.card__category {
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: #5675E5;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.card__by {
+    
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.card__author {
+    font-weight: 600;
+    text-decoration: none;
+    color: #5675E5;
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+}
+/* Estrellas */
+
+::ng-deep label.star{
+    font-size: 0.7rem !important;
+    float: right !important;
+    padding: 0 3px !important;
+}
+::ng-deep label.star:checked, ::ng-deep label.star:before{
+    text-shadow: 0 0 10px #b00f99 !important;
+    color: #b00f99 !important;
 }

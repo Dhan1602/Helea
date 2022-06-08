@@ -13,6 +13,7 @@ input {
     font-size: 20px;
     display: block;
     width: 35vw;
+    height: 3.3rem;
     margin-bottom: 10px;
     background-color: #aab7e8;
     border: none;
@@ -38,10 +39,10 @@ input::placeholder {
 }
 
 #btnSearch {
-    margin: -8.08rem;
+    margin: -8.6rem;
     border: none;
     width: 8rem;
-    height: 2rem;
+    height: 3rem;
     background-color: #5675E5;
     font-size: 20px;
     font-weight: 100;
@@ -55,35 +56,47 @@ input::placeholder {
     align-items: center;
 }
 
-#barraBusqueda{
-    margin-top: 2.6rem;
+#barraBusqueda {
+    margin-top: 6rem;
 }
 
 #addAndFilter {
-    margin-top: 2.6rem;
-    align-self: flex-end;
-    margin-right: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 18rem;
+    margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;
+    width: 100%;
+    align-items: flex-end;
+}
+
+
+
+#createLink {
+    width: 8em;
+    height: 2.6em;
 }
 
 #addAndFilter select {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     border: none !important;
-    outline: none;
-    background-color: #aab7e8;
-    border-radius: 5px;
+    outline: none !important;
+    background-color: #1e193d;
+    border-radius: 6px;
+    border-style: none;
+    cursor: pointer;
     color: white;
-    font-weight: 700;
-    margin-bottom: 15px;
+    font-weight: 400;
+    padding: 6px;
 }
 
 #addAndFilter a {
-    color: #FFF;
     text-decoration: none;
 }
 
-#Content {
+.Content {
+    margin: 1rem 0;
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 25px;
@@ -102,7 +115,7 @@ input::placeholder {
 
 .card {
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-    height: 21rem;
+    height: 22rem;
     width: 16rem;
     background-color: #fff;
     position: relative;
@@ -148,6 +161,7 @@ input::placeholder {
 }
 
 .card__img--hover {
+    cursor: pointer;
     transition: 0.2s all ease-out;
     background-size: cover;
     background-position: center;
@@ -174,6 +188,8 @@ input::placeholder {
     letter-spacing: 2px;
     font-weight: 500;
     color: #5675E5;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .card__title {
@@ -204,4 +220,15 @@ input::placeholder {
 
 .card:hover .card__info-hover {
     opacity: 1;
+}
+/* Estrellas */
+
+::ng-deep label.star{
+    font-size: 1rem !important;
+    float: right !important;
+    padding: 0 3px !important;
+}
+::ng-deep label.star:checked, ::ng-deep label.star:before{
+    text-shadow: 0 0 10px #b00f99 !important;
+    color: #b00f99 !important;
 }

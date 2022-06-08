@@ -3,14 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FeedComponent } from './feed/feed.component';
-import { RedirectorComponent } from './redirector/redirector.component';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
+<<<<<<< HEAD
 
 const routes: Routes = [{
   path:"chat-heleo",
+=======
+import { PerfilComponent } from "./perfil/perfil.component"
+
+const routes: Routes = [{
+  path:"chat/:heleo",
+>>>>>>> main
   component: ChatComponent
 },
 {
@@ -38,14 +44,13 @@ const routes: Routes = [{
   component:FeedComponent
 },
 {
-  path:"red/:name",
-  component:RedirectorComponent
- 
+  path:"verMas/:id",
+  component:ContenidoComponent
 },
 {
-  path:"contenido",
-  component:ContenidoComponent
-}
+  path:"perfil",
+  component: PerfilComponent
+},
 ];
 
 @NgModule({

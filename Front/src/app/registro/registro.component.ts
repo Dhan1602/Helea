@@ -3,6 +3,10 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { perfiles } from '../Models/perfiles';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
 @Component({
   selector: 'app-registro',
@@ -19,6 +23,7 @@ export class RegistroComponent implements OnInit {
   }
 
   constructor(private servidor: PublicacionesService, private router: Router) { }
+<<<<<<< HEAD
 
   ngOnInit(): void {
   }
@@ -29,6 +34,23 @@ export class RegistroComponent implements OnInit {
       this.router.navigate(['feed']);
     },
     error: e => {
+=======
+  ngOnInit(): void {
+  }
+  sendPerfil(form: NgForm){
+    this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {
+      alert(r.response);
+      this.servidor.createChat(r.idCreado).subscribe({next: (r2:any)=>{
+        console.log(r2.response);
+      },
+      error: (e2:any)=>{
+        console.log(e2);
+      }
+    });
+      this.router.navigate(['feed']);
+    },
+    error: (e:any) => {
+>>>>>>> main
       console.log(e);
     }});
   }

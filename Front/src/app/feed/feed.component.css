@@ -63,7 +63,7 @@ input::placeholder {
 #addAndFilter {
     display: flex;
     justify-content: flex-end;
-    padding-right: 18rem;
+    margin-right: 18rem;
     margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;

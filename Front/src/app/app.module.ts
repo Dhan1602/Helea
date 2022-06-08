@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularEditorModule } from "@kolkov/angular-editor"
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -15,6 +16,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { angularEditorConfig } from '@kolkov/angular-editor/lib/config';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

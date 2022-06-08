@@ -9,7 +9,7 @@
 
       <img src="{{peticion.documentos[0].background}}" alt="">
 
-      <p>{{peticion.documentos[0].descripcion}}</p>
+      <p id="content" [innerHTML]="peticion.documentos[0].descripcion"></p>
 
     </div>
 

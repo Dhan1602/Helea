@@ -2,17 +2,24 @@
   <navBar></navBar>
 
 
-<div id="padre" *ngIf="temporizador==1">
-  <div id="cuerpo">
+  <div id="padre" *ngIf="temporizador==1">
+    <div id="cuerpo">
 
-    <h2>{{peticion.documentos[0].titulo}}</h2>
+      <h2>{{peticion.documentos[0].titulo}}</h2>
 
-    <img src="{{peticion.documentos[0].background}}" alt="">
+      <img src="{{peticion.documentos[0].background}}" alt="">
 
-    <p>{{peticion.documentos[0].descripcion}}</p>
-      
+      <p>{{peticion.documentos[0].descripcion}}</p>
+
+    </div>
+
+    <div id="rating">
+      <div id="rCenter">
+        <ngx-star-rating [ngModel]="peticion.documentos[0].calificacion" id="star"></ngx-star-rating>
+      </div>
+    </div>
+
   </div>
-</div>
 
 
 </section>

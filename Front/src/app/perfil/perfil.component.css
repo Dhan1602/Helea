@@ -1,3 +1,37 @@
-p{
-    color: red;
+#contenido{
+    background: url(https://i.imgur.com/il6TlTp.png) no-repeat #1e193d;
+    object-fit: cover;
+    background-size: cover;
+    color: #dee3f5;
+    font-weight: 500;
+    min-height: 100vh;
+    width: 100vw;
+}
+#sections{
+    padding: 8rem 6rem 1rem 6rem;
+    display: flex;
+    justify-content: space-around;
+
+}
+.columna{
+    text-align: center;
+    
+    border-radius: 15px;
+    background-color: #c4d0f881;
+}
+#cards{
+    height: 80vh;
+    width: 45vw;
+}
+#profile{
+    height: 80vh;
+    width: 30vw;
+    
+}
+#profile img {
+    width: 12rem;
+    border-radius: 50%;
+}
+#descripcion{
+    padding: 0 4rem;
 }

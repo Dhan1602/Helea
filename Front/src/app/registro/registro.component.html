@@ -1,13 +1,13 @@
 <section id="generalSession">
     <div id="centrar-x">
         <div id="centar">
-            <form>
+            <form #formPerfil="ngForm" (submit)="sendPerfil(formPerfil)">
                 <h3>Registro</h3>
-                <input type="text" placeholder="Nombre de usuario">
-                <textarea placeholder="Descripción (opcional)"></textarea>
-                <input type="text" placeholder="Url-imagen (opcional)">
-                <input type="text" placeholder="Correo electrónico">
-                <input type="text" placeholder="Contraseña">
+                <input name="userName" type="text" placeholder="Nombre de usuario" [(ngModel)]="perfil.userName">
+                <textarea name="userDescripcion" placeholder="Descripción (opcional)" [(ngModel)]="perfil.userDescripcion"></textarea>
+                <input name="urlImage" type="text" placeholder="Url-imagen (opcional)" [(ngModel)]="perfil.urlImage">
+                <input name="email" type="text" placeholder="Correo electrónico" [(ngModel)]="perfil.email">
+                <input name="contrasena" type="password" placeholder="Contraseña" [(ngModel)]="perfil.contrasena">
                 <button type="submit">Enviar datos</button>
             </form>
             <div>

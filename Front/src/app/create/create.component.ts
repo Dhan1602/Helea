@@ -14,11 +14,13 @@ export class CreateComponent implements OnInit {
 
   fecha = ""
 
+  camposRellenos = true
+
   ngOnInit(): void {
     this.obtenerDatos();
   }
 
-  obtenerDatos(){
+  obtenerDatos() {
     this.peticiones.getCategories().subscribe({
       next: (res) => {
         this.peticiones.doccategorias = res;
@@ -28,21 +30,27 @@ export class CreateComponent implements OnInit {
   };
 
   create(form: NgForm) {
-    var confirmacion = confirm("¿Desea confirmar su publicación?")
-    if (confirmacion) {
-      let hoy = new Date();
-      this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
-      form.value.fecha = this.fecha;
-      form.value.calificacion = 5;
-      this.peticiones.createPost(form.value).subscribe({
-        next: (res) => {
-          alert("Publicado exitosamente!")
-          form.reset();
-          this.router.navigate(['feed']);
-        },
-        error: (err) => console.log(err)
-      });
-    }
+    if (this.peticiones.data.titulo == "" || this.peticiones.data.descripcion == ""
+      || this.peticiones.data.background == "" || this.peticiones.data.categoria == "") {
+      this.camposRellenos = false;
+    } else {
+      this.camposRellenos = true;
+      var confirmacion = confirm("¿Desea confirmar su publicación?")
+      if (confirmacion) {
+        let hoy = new Date();
+        this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+        form.value.fecha = this.fecha;
+        form.value.calificacion = 0;
+        this.peticiones.createPost(form.value).subscribe({
+          next: (res) => {
+            alert("Publicado exitosamente!")
+            form.reset();
+            this.router.navigate(['feed']);
+          },
+          error: (err) => console.log(err)
+        });
+      }
+    };
   }
 
 

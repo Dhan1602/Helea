@@ -1,10 +1,11 @@
 <section id="generalSession">
+    <navBar></navBar>
     <div id="centrar-x">
         <div id="centar">
-            <form>
+            <form #formInicioSesion="ngForm" (submit)="verificarSingIn(formInicioSesion)">
                 <h3>Iniciar sesi&oacute;n</h3>
-                <input type="text" placeholder="Correo electrónico">
-                <input type="text" placeholder="Contraseña">
+                <input name="email" type="text" placeholder="Correo electrónico" [(ngModel)]="userSingIn.userName">
+                <input name="contrasena" type="text" placeholder="Contraseña" [(ngModel)]="userSingIn.email">
                 <button type="submit">Enviar datos</button>
             </form>
             <div>

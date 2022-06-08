@@ -1,41 +1,28 @@
 <section id="Feed">
     <navBar></navBar>
     <div id="principalFlex">
-        <div>
-            <input id="barraBusqueda" #search type="text" placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
+        <div id="searchContent">
+            <input id="barraBusqueda" #search type="text" (keypress)="enter($event, search)"
+                placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
             <button (click)="buscar(search)" id="btnSearch">Buscar</button>
         </div>
 
-
-        <!-- <div class="positionFiltrar">
-            <div class="containerChekBox">
-                <div class="containerChekBox-absulute containerChekBox-absulute1">
-                    <div id="componet-print">
-                        <input class="inputFilter" type="text" name="tipoFiltro" value="Tipo filtro" readonly>
-                        <div>></div>
-                    </div>
-                    <div class="componets componets1">Autor</div>
-                    <div class="componets componets1">Titulo</div>
-                    <div class="componets componets1">Descripcion</div>
-                    <div class="componets componets1">Imagen</div>
-                </div>
-            </div>
-        </div> -->
-
         <div id="addAndFilter">
-            <a routerLink="/create">Crear</a>&nbsp;&nbsp;
-            <select id="filtroSelect" #filter (change)="filtro(filter)">
-                <option name="all">Mostrar todos</option>
-                <option name="category">Categorías</option>
-                <option name="author">Autores</option>
-            </select>
+            
+            <div>
+                <select id="filtroSelect" #filter (change)="filtro(filter)" name="filtro">
+                    <option name="all">Mostrar todos</option>
+                    <option name="category">Categorías</option>
+                    <option name="author">Autores</option>
+                </select>
+            </div>
         </div>
 
         <!-- Mostrar todo -->
 
-        <section id="dataBaseCards" *ngIf="opcion == 0">
-            <div id="Content">
-                <article class="card" *ngFor="let card of peticiones.documentos">
+        <section class="dataBaseCards" *ngIf="opcion == 0">
+            <div class="Content">
+                <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
 
                     <div class="gridContent">
 
@@ -53,8 +40,9 @@
                             background-repeat: no-repeat; " class="card__img--hover"></div>
                         </a>
                         <div class="card__info">
-                            <span class="card__category">{{card.categoria}}</span>
+                            <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
+                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
                             <span class="card__by">por <a routerLink="/perfil/" class="card__author"
                                     title="Autor">Autor</a></span>
                         </div>
@@ -65,18 +53,18 @@
 
         <!-- Categoria -->
 
-        <section id="dataBaseCards" *ngIf="opcion == 1">
-            <div id="Content">
+        <section class="dataBaseCards" *ngIf="opcion == 1">
+            <div class="Content">
                 <article class="card" *ngFor="let card of peticiones.doccategorias">
 
                     <div class="gridContent">
 
                         <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
                             class="card__img"></div>
-                        <a routerLink="/red/{{card.basicName}}">
+                        <!-- <a routerLink="/red/{{card.basicName}}"> -->
                             <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
-                                class="card__img--hover"></div>
-                        </a>
+                                (click)="red(card.basicName)" class="card__img--hover"></div>
+                        <!-- </a> -->
                         <div class="card__info">
                             <h3 class="card__title">{{card.name}}</h3>
                         </div>
@@ -87,6 +75,25 @@
 
         <!-- Perfiles -->
 
+        <section class="dataBaseCards" *ngIf="opcion == 2">
+            <div class="Content">
+                <article class="card" *ngFor="let card of peticiones.docPerfiles">
+
+                    <div class="gridContent">
+
+                        <div style="background: url({{card.urlImage}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/perfil/{{card._id}}">
+                            <div style="background: url({{card.urlImage}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                                class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <h3 class="card__title">{{card.userName}}</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
     </div>
 </section>
-<script src="./select.js"></script>

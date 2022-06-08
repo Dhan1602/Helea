@@ -12,16 +12,20 @@ export class ContenidoComponent implements OnInit {
   nameParam = this.route.snapshot.params["id"];
   temporizador = 0;
 
-  constructor(private route : ActivatedRoute, public peticion : PublicacionesService) { }
+  constructor(private route : ActivatedRoute, public peticion : PublicacionesService) {}
 
   ngOnInit(): void {
     this.obtenerArticulo();
-    setTimeout(()=>{this.temporizador = 1},180)
+    // setTimeout(()=>{this.temporizador = 1},210)
   }
 
   obtenerArticulo(){
     this.peticion.obtenerArticulo(this.nameParam).subscribe({
-      next: (res)=>{this.peticion.documentos = res},
+      next: (res)=>
+      {
+        this.peticion.documentos = res
+        this.temporizador = 1
+      },
       error: (err)=>{}
     })
   }

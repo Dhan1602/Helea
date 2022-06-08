@@ -48,7 +48,7 @@ input, textarea, select{
     font-weight: 600;
     font-size: 18px;
 }select{
-    width: 36.5vw;
+    width: 36.064vw;
     color:#FFF;
 }
 
@@ -66,4 +66,9 @@ button{
 
 button:hover{
     background-color: #30479b;
+}
+#err{
+    color: #b00f99;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }

@@ -31,6 +31,9 @@ export class PublicacionesService {
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
+   createChat(idHeleo: any){
+    return this.http.get(this.URL_API+"/newChat/" + idHeleo);
+  }
 
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);

@@ -9,7 +9,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [{
-  path:"chat-heleo",
+  path:"chat/:heleo",
   component: ChatComponent
 },
 {

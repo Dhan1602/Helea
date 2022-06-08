@@ -5,20 +5,19 @@
     color: #dee3f5;
     font-weight: 500;
     min-height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
 }
 #padre{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-height: 100vw;
+    max-width: 100vw;
 }
 #cuerpo{
     padding-top: 4rem;
     display: inline-block;
     text-align: center;
-    width: 50vw;
 }
 #cuerpo p{
     text-align: justify;

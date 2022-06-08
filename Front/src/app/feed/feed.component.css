@@ -62,7 +62,8 @@ input::placeholder {
 
 #addAndFilter {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
+    padding-right: 18rem;
     margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;
@@ -70,57 +71,7 @@ input::placeholder {
     align-items: flex-end;
 }
 
-/* Efectos de botón */
-#butCreate {
-    cursor: pointer;
-    --color: #5675E5;
-    font-family: inherit;
-    display: inline-block;
-    width: 8em;
-    height: 2.6em;
-    line-height: 2.5em;
-    margin: 20px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--color);
-    transition: color .5s;
-    z-index: 1;
-    font-size: 17px;
-    border-radius: 6px;
-    font-weight: 500;
-    color: white;
-    background-color: var(--color);
-}
 
-#butCreate:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: white;
-    height: 150px;
-    width: 200px;
-    border-radius: 50%;
-}
-
-#butCreate:hover {
-    color: var(--color);
-}
-
-#butCreate:before {
-    top: 100%;
-    left: 100%;
-    transition: all .7s;
-}
-
-#butCreate:hover:before {
-    top: -30px;
-    left: -30px;
-}
-
-#butCreate:active:before {
-    background: #aab7e8;
-    transition: background 0s;
-}
 
 #createLink {
     width: 8em;
@@ -144,8 +95,8 @@ input::placeholder {
     text-decoration: none;
 }
 
-#Content {
-    margin-top: 1rem;
+.Content {
+    margin: 1rem 0;
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 25px;
@@ -164,7 +115,7 @@ input::placeholder {
 
 .card {
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-    height: 21rem;
+    height: 22rem;
     width: 16rem;
     background-color: #fff;
     position: relative;
@@ -210,6 +161,7 @@ input::placeholder {
 }
 
 .card__img--hover {
+    cursor: pointer;
     transition: 0.2s all ease-out;
     background-size: cover;
     background-position: center;
@@ -236,6 +188,8 @@ input::placeholder {
     letter-spacing: 2px;
     font-weight: 500;
     color: #5675E5;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .card__title {
@@ -266,4 +220,15 @@ input::placeholder {
 
 .card:hover .card__info-hover {
     opacity: 1;
+}
+/* Estrellas */
+
+::ng-deep label.star{
+    font-size: 1rem !important;
+    float: right !important;
+    padding: 0 3px !important;
+}
+::ng-deep label.star:checked, ::ng-deep label.star:before{
+    text-shadow: 0 0 10px #b00f99 !important;
+    color: #b00f99 !important;
 }

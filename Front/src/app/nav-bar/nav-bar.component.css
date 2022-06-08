@@ -1,19 +1,89 @@
 
+nav{
+    margin: 0;
+}
 ul{
     display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0 18rem;
-    padding-top: 2rem;
+    justify-content: space-between;
+    margin: 0 5rem;
+    align-items: center;
+    padding-top: 1rem;
 }
 
 li{
     list-style: none;
     margin: 0;
 }
-a{
+a, label{
     font-size: large;
     text-decoration: none;
     font-weight: 600;
     color: white;
+    cursor: pointer;
+}
+#logo{
+    margin: 0;
+    height: 4rem;
+}
+/* Efectos de botón */
+#butCreate {
+    cursor: pointer;
+    --color: #5675E5;
+    font-family: inherit;
+    display: inline-block;
+    width: 5em;
+    height: 2em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color);
+}
+
+#butCreate:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: white;
+    height: 100px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#butCreate:hover {
+    color: var(--color);
+}
+
+#butCreate:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+#butCreate:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+#butCreate:active:before {
+    background: #aab7e8;
+    transition: background 0s;
+}
+#btnRigth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profilePic{
+    height: 2.5em;
+    border-radius: 50%;
+    border: 3px white solid;
+    margin: 0;
+    padding: 0;
 }

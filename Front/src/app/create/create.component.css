@@ -67,3 +67,8 @@ button{
 button:hover{
     background-color: #30479b;
 }
+#err{
+    color: #b00f99;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}

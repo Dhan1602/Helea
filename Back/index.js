@@ -34,8 +34,7 @@ app.get("/perfiles", async (req, res)=>{
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
     let perfiles = await perfil_model.find();
-    console.log(perfiles);
-    res.send("lesto bro :D")
+    res.send(perfiles)
 });
 
 app.get("/posts", async (req, res)=>{
@@ -65,6 +64,11 @@ app.get("/searchByCategory/:name", async (req, res)=>{
 
 app.get("/searchArticle/:id", async (req, res)=>{
     let article = await publicaciones.find({_id: req.params.id});
+    res.send(article);
+});
+
+app.get("/searchByAuthor/:name", async (req, res)=>{
+    let article = await perfil_model.find({userName:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(article);
 });
 

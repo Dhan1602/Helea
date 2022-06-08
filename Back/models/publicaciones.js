@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let publicaciones = new Schema({
+const publicaciones = new Schema({
     titulo: String,
     descripcion: String,
     calificacion: String,

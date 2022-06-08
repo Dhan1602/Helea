@@ -10,11 +10,11 @@
     width: fit-content; height: fit-content;
 }#centar form{
     display: flex; flex-flow: column wrap; justify-content: space-around;
-    width: 500px; height: 230px; align-items: center;
+    width: 500px; height: 280px; align-items: center;
 }#centar h3{
     text-align: center; font-size: 18px;
 }#centar form input{
-    background: #5675E5; border: none; outline: none; width: 100%; color: #fff;
+    background: #aab7e8; border: none; outline: none; width: 100%; color: #fff;
     height: 40px; border-radius: 9.8px; padding: 6px; box-sizing: border-box;
 }#centar form input::placeholder{
     color: #fff;

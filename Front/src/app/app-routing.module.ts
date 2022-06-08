@@ -10,7 +10,7 @@ import { ChatComponent } from './chat/chat.component';
 import { PerfilComponent } from "./perfil/perfil.component"
 
 const routes: Routes = [{
-  path:"chat-heleo",
+  path:"chat/:heleo",
   component: ChatComponent
 },
 {

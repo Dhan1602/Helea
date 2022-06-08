@@ -25,9 +25,16 @@ export class RegistroComponent implements OnInit {
   sendPerfil(form: NgForm){
     this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {
       alert(r.response);
+      this.servidor.createChat(r.idCreado).subscribe({next: (r2:any)=>{
+        console.log(r2.response);
+      },
+      error: (e2:any)=>{
+        console.log(e2);
+      }
+    });
       this.router.navigate(['feed']);
     },
-    error: e => {
+    error: (e:any) => {
       console.log(e);
     }});
   }

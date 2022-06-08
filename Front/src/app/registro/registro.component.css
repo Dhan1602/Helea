@@ -10,7 +10,7 @@
     width: fit-content; height: fit-content;
 }#centar form{
     display: flex; flex-flow: column wrap; justify-content: space-around;
-    width: 500px; height: 440px; align-items: center;
+    width: 500px; height: 490px; align-items: center;
 }#centar h3{
     text-align: center; font-size: 18px;
 }#centar form input{

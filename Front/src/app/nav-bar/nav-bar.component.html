@@ -1,13 +1,14 @@
 <nav>
   <ul>
     <li>
-        <a routerLink="/feed" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
+        <a routerLink="/feed" *ngIf="isLoger" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
+        <a routerLink="/" *ngIf="!isLoger" title="Home"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
     </li>
     <li>
       <div id="btnRigth">
         <button id="butCreate" (click)="createRedirect()" *ngIf="isLoger">Crear</button>
-        <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sing in</button>
-      <img id="profilePic" *ngIf="isLoger" src="https://bestprofilepictures.com/wp-content/uploads/2020/07/Cool-Profile-Picture-For-Instagram-1003x1024.jpg" alt="">
+        <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sign in</button>
+      <img id="profilePic" *ngIf="isLoger" src="{{img}}" alt="">
     </div>
     </li>
   </ul>

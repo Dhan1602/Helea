@@ -90,6 +90,10 @@ export class PublicacionesService {
     return this.http.get<perfiles[]>(this.URL_API+"/perfiles");
   }
 
+  getProfileById(id: any){
+    return this.http.get<perfiles[]>(this.URL_API+"/perfiles/"+id);
+  }
+
   searchOne(busqueda: any){
     return this.http.get<post_model[]>(this.URL_API+"/searchName/" + busqueda)
   }

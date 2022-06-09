@@ -36,6 +36,7 @@ app.get("/deslogear/:id", (req,res)=>{
 });
 app.get("/verificarloger/:id", (req,res)=>{
     res.send(loger.isLoger(req.params.id));
+
 });
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -77,6 +78,12 @@ app.get("/perfiles", async (req, res)=>{
     let perfiles = await perfil_model.find();
     res.send(perfiles)
 });
+
+app.get("/perfiles/:id", async (req, res)=>{
+    let perfiles = await perfil_model.findById(req.params.id);
+    res.send(perfiles)
+});
+
 app.post("/perfil/:id", async (req, res)=>{
     let perfil = await perfil_model.findById(req.params.id);
     perfil.publicaciones.push(req.body.idPublicacion);

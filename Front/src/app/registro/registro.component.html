@@ -9,12 +9,13 @@
                 <input name="urlImage" type="text" placeholder="Url-imagen (opcional)" [(ngModel)]="perfil.urlImage">
                 <input name="email" type="text" placeholder="Correo electrónico" [(ngModel)]="perfil.email">
                 <input name="contrasena" type="password" placeholder="Contraseña" [(ngModel)]="perfil.contrasena">
+                <label id="err" *ngIf="!camposRellenos"> Por favor rellene los campos obligatorios </label>
                 <button type="submit">Enviar datos</button>
-                <label>¿Ya tienes una cuenta? <a routerLink="/inicio-sesion" style="color: #b00f99;">Sing in</a></label>
+                <label>¿Ya tienes una cuenta? <a routerLink="/inicio-sesion" style="color: #b00f99;">Inicia sesion aquí</a></label>
             </form>
             <div>
-                <img class="iconosSession" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504739.png?token=exp=1654298608~hmac=7352a2549ab8cb7b1d41373cf27a8082" alt="no found">
-                <img class="iconosSession" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="no found">
+                <img class="iconosSession" src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="not found">
+                <img class="iconosSession" src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="not found">
             </div>
         </div>
     </div>

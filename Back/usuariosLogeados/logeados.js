@@ -49,12 +49,12 @@ class Logeados{
         }
         return true;
     }
-    isLoger(userId){
+    isLoger(userIp){
         let estado = false, index = -1;
         proceso:{
             for(let user of this.usuariosLogeados){
                 index++;
-                if(user._ip == userId){
+                if(user._ip == userIp){
                     if(user.logeado){
                         estado = true;
                         break proceso;
@@ -62,7 +62,7 @@ class Logeados{
                 } 
             }
         }
-        if(estado) return { estado, index }; //esta logeado.
+        if(estado) return { estado, index, userID: this.usuariosLogeados[index]._id }; //esta logeado.
         return { estado, index }; // no esta logeado.
     }
 }

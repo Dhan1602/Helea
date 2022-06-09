@@ -70,12 +70,18 @@ app.post("/perfil-singIng", async (req, res)=>{
     if(perfil.length == 0){
         res.send({ noExiste: true });
     }else{
-        res.send(perfil);
+        res.send(perfil[0]);
     }
 });
 app.get("/perfiles", async (req, res)=>{
     let perfiles = await perfil_model.find();
     res.send(perfiles)
+});
+app.post("/perfil/:id", async (req, res)=>{
+    let perfil = await perfil_model.findById(req.params.id);
+    perfil.publicaciones.push(req.body.idPublicacion);
+    await perfil.save();
+    res.send({ response: "Publicacion anadidad" });
 });
 app.get("/perfiles2", async (req, res)=>{
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 

@@ -61,6 +61,9 @@ export class PublicacionesService {
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
+   guardarPublicacion(id: any, idPublicacion: any){
+      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion });
+   }
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);
   }

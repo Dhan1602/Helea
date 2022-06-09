@@ -41,12 +41,12 @@ export class RegistroComponent implements OnInit {
       }
       this.servidor.logear(logeo).subscribe({next: (r2:any)=>{
         if(r2) console.log("se ha logueado con exito");
+        
+        this.router.navigate(['feed']);
       },
       error: (e2:any)=>{
         console.log(e2);
       }});
-
-      this.router.navigate(['feed']);
     },
     error: (e:any) => {
       console.log(e);

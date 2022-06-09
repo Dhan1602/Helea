@@ -30,4 +30,10 @@
 }#centar div{
     display: flex; flex-flow: row wrap; justify-content: space-evenly;
     padding: 30px;
-}.iconosSession{ width: 45px; border-radius: 15px; }
+}.iconosSession{
+    width: 45px; border-radius: 15px; 
+}#err{
+    color: #b00f99;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}

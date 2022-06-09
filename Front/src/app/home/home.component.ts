@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 export class HomeComponent implements OnInit {
   descripciones = new Array();
   descCorta1 = "";
+  destacados = false;
 
   constructor(public peticiones: PublicacionesService, private _router: Router) { }
 
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
         this.descCorta1 = this.peticiones.documentos[i].descripcion.substring(0, 30) + "..."
         this.descripciones.push(this.descCorta1)
       }
+      this.destacados = true;
       },
       error: (err) => console.log(err),
       });

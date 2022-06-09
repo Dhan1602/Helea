@@ -23,7 +23,7 @@
 </section>
 
 <section id="destacados">
-  <div class="desElements" id="grupoDestacados">
+  <div class="desElements" id="grupoDestacados" *ngIf="destacados">
 
     <div id="test1" class="cards" title="{{peticiones.documentos[0].titulo}}" (click)="verMas(peticiones.documentos[0]._id)">
       <img src="{{peticiones.documentos[0].background}}" alt="">

@@ -18,12 +18,19 @@ export class RegistroComponent implements OnInit {
     email: "",
     contrasena: ""
   }
+  camposRellenos = true;
 
   constructor(private servidor: PublicacionesService, private router: Router) { }
   ngOnInit(): void {
   }
 
   sendPerfil(form: NgForm){
+    if(this.perfil.userName==""||this.perfil.email==""||this.perfil.contrasena==""){
+      this.camposRellenos = false;
+    }else{
+      if(this.perfil.urlImage==null||this.perfil.urlImage==""){
+        form.value.urlImage = "https://i.imgur.com/KC1KPDW.png";
+      };
     this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {
       alert(r.response);
       this.servidor.createChat(r.perfilCreado._id).subscribe({next: (r2:any)=>{
@@ -51,5 +58,5 @@ export class RegistroComponent implements OnInit {
     error: (e:any) => {
       console.log(e);
     }});
-  }
+  }};
 }

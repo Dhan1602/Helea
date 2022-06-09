@@ -16,13 +16,6 @@ mongoose.connect(process.env.LINK)
 const publicaciones = require("./models/publicaciones");
 const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
-<<<<<<< HEAD
-
-app.post("/perfil", async (req, res)=>{
-    let newPerfil = new perfil_model(req.body);
-    await newPerfil.save();
-    res.send({ response: "Se ha registrado exitosamente" });
-=======
 const chatMessages_model = require("./models/chatMessages");
 
 const usuariosLogeados = require("./usuariosLogeados/logeados");
@@ -71,7 +64,6 @@ app.post("/perfil", async (req, res)=>{
         response: "Se ha registrado exitosamente",
         perfilCreado: newPerfil
     });
->>>>>>> main
 });
 app.post("/perfil-singIng", async (req, res)=>{
     let perfil = await perfil_model.find(req.body);
@@ -95,17 +87,8 @@ app.get("/perfiles2", async (req, res)=>{
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
     let perfiles = await perfil_model.find();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    console.log(perfiles);
-    res.send("lesto bro :D")
-=======
-    res.send(perfiles)
->>>>>>> main
-=======
     console.log(perfiles);
     res.send("lesto bro");
->>>>>>> main
 });
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -133,24 +116,12 @@ app.get("/searchByCategory/:name", async (req, res)=>{
     let content = await publicaciones.find({categoria:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(content);
 });
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-app.post("/posts", async(req, res)=>{
-    var saving = new publicaciones(req.body);
-=======
-=======
->>>>>>> main
 
 app.get("/searchArticle/:id", async (req, res)=>{
     let article = await publicaciones.find({_id: req.params.id});
     res.send(article);
 });
 
-<<<<<<< HEAD
-app.post("/posts", async (req, res)=>{
-    let saving = new publicaciones(req.body);
->>>>>>> Stashed changes
-=======
 app.get("/searchByAuthor/:name", async (req, res)=>{
     let article = await perfil_model.find({userName:{$regex:req.params.name,$options:"i"}}).sort({name:1});
     res.send(article);
@@ -158,7 +129,6 @@ app.get("/searchByAuthor/:name", async (req, res)=>{
 
 app.post("/posts", async (req, res)=>{
     let saving = new publicaciones(req.body);
->>>>>>> main
     await saving.save();
     res.send(saving);
 });

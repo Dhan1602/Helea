@@ -61,19 +61,9 @@ export class PublicacionesService {
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-   createChat(idHeleo: any){
-    return this.http.get(this.URL_API+"/newChat/" + idHeleo);
-  }
->>>>>>> main
-
-=======
    guardarPublicacion(id: any, idPublicacion: any){
       return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion });
    }
->>>>>>> main
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);
   }

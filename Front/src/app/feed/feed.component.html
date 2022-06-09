@@ -8,7 +8,7 @@
         </div>
 
         <div id="addAndFilter">
-            
+
             <div>
                 <select id="filtroSelect" #filter (change)="filtro(filter)" name="filtro">
                     <option name="all">Mostrar todos</option>
@@ -42,7 +42,8 @@
                         <div class="card__info">
                             <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
-                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
+                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true">
+                            </ngx-star-rating>
                             <span class="card__by">por <a routerLink="/perfil/" class="card__author"
                                     title="Autor">Autor</a></span>
                         </div>
@@ -61,10 +62,8 @@
 
                         <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
                             class="card__img"></div>
-                        <!-- <a routerLink="/red/{{card.basicName}}"> -->
-                            <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
-                                (click)="red(card.basicName)" class="card__img--hover"></div>
-                        <!-- </a> -->
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            (click)="red(card.basicName)" class="card__img--hover"></div>
                         <div class="card__info">
                             <h3 class="card__title">{{card.name}}</h3>
                         </div>

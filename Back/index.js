@@ -19,18 +19,23 @@ const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
 
 const usuariosLogeados = require("./usuariosLogeados/logeados");
-const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar logeo
+const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar cliente - logeo
 
-// verificra logeo –––––––––––––––––––––––––––––––––––––––––––––––––––
-app.get("/agregarloger", (req,res)=>{
-    res.send(loger.logearUsuario({
-        _id: "asd",
-        logeado: true,
-        userName: "pedro"
-    }));
+// verificar cliente - logeo ––––––––––––––––––––––––––––––––––––––––––––––––
+app.get("/saveIPreferences/:ip", (req,res)=>{
+    res.send( loger.saveIPreferences(req.params.ip) );
 });
-app.get("/verificarloger", (req,res)=>{
-    res.send(loger.isLogeado("asd"));
+app.get("/exitsIPreferences/:ip", (req,res)=>{
+    res.send( loger.exitsIPreferences(req.params.ip) );
+});
+app.post("/logear", (req,res)=>{
+    res.send(loger.logearUsuario( req.body ));
+});
+app.get("/deslogear/:id", (req,res)=>{
+    // res.send(loger.isLogeado("asd"));
+});
+app.get("/verificarloger/:id", (req,res)=>{
+    res.send(loger.isLoger(req.params.id));
 });
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -57,7 +62,7 @@ app.post("/perfil", async (req, res)=>{
     await newPerfil.save();
     res.send({
         response: "Se ha registrado exitosamente",
-        idCreado: newPerfil._id
+        perfilCreado: newPerfil
     });
 });
 app.post("/perfil-singIng", async (req, res)=>{
@@ -69,10 +74,15 @@ app.post("/perfil-singIng", async (req, res)=>{
     }
 });
 app.get("/perfiles", async (req, res)=>{
+    let perfiles = await perfil_model.find();
+    res.send(perfiles)
+});
+app.get("/perfiles2", async (req, res)=>{
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
     let perfiles = await perfil_model.find();
-    res.send(perfiles)
+    console.log(perfiles);
+    res.send("lesto bro");
 });
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 

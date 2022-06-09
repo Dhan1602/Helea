@@ -25,6 +25,38 @@ export class PublicacionesService {
 
   constructor(private http: HttpClient) {}
 
+  // logeo ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  logear(logeo:any){
+    return this.http.post(this.URL_API+"/logear", logeo);
+  }
+  verifyLogeo(ip:any){
+    return this.http.get(this.URL_API+"/verificarloger/" + ip);
+  }
+  // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // verificar cliente ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+   getIPreferences(cambiar: boolean){
+    if(!cambiar){
+      let IPreference = localStorage.getItem("IPreference");
+      if(IPreference) return IPreference;
+      else{
+        localStorage.setItem("IPreference", "1000");
+        return "1000";
+      }
+    }else{
+      let IPreference:any = localStorage.getItem("IPreference");
+      IPreference = parseInt( IPreference );
+      IPreference++;
+      localStorage.setItem("IPreference", IPreference+"");
+      return IPreference;
+    }
+   }
+   saveIPreferences(ip:any){
+     return this.http.get(this.URL_API+"/saveIPreferences/" + ip);
+   }
+   exitsIPreferences(ip:any){
+    return this.http.get(this.URL_API+"/exitsIPreferences/" + ip);
+  }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);

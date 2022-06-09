@@ -1,28 +1,69 @@
 class Logeados{
-    usuariosLogeados = [];
+    usuariosLogeados = [/*{
+        _id: usuario._id,
+        logeado: true,
+        userName: usuario.userName
+    }*/];
+    IPreferences = [];
     constructor(){}
 
+    exitsIPreferences(ip){
+        let exits = false;
+        proceso:{
+            for(let ips of this.IPreferences){
+                if(ips == ip){
+                    exits = true;
+                    break proceso;
+                }
+            }
+        }
+        if(!exits) return false;
+        return true;
+    }
+    saveIPreferences(ip){
+        let exits = this.exitsIPreferences(ip);
+        if(!exits){
+            this.IPreferences.push(ip);
+            return false;
+        }
+        return true;
+    }
     logearUsuario(usuario){
-        this.usuariosLogeados.push({
-            _id: usuario._id,
-            logeado: true,
-            userName: usuario.userName
-        });
-        return "lesto";
+        let info = this.isLoger(usuario._id);
+        if(!info.estado){
+            this.usuariosLogeados.push({
+                _id: usuario._id,
+                _ip: usuario._ip,
+                logeado: true,
+                userName: usuario.userName
+            });
+        }else{
+            this.usuariosLogeados[info.index].logeado = true;
+        }
+        return true;
     }
     desLogearUsuario(userId){
-        this.usuariosLogeados.forEach(user=>{
-            if(user._id == userId) user.logeado = false;
-        });
-        return "lesto";
+        let info = this.isLoger(usuario._id);
+        if(info.estado){
+            this.usuariosLogeados[info.index].logeado = false;
+        }
+        return true;
     }
-    isLogeado(userId){
-        let esta = false;
-        this.usuariosLogeados.forEach(user=>{
-            if(user._id == userId) esta = true;
-        });
-        if(esta) return "esta logedo";
-        return "no esta logeado";
+    isLoger(userId){
+        let estado = false, index = -1;
+        proceso:{
+            for(let user of this.usuariosLogeados){
+                index++;
+                if(user._ip == userId){
+                    if(user.logeado){
+                        estado = true;
+                        break proceso;
+                    }
+                } 
+            }
+        }
+        if(estado) return { estado, index }; //esta logeado.
+        return { estado, index }; // no esta logeado.
     }
 }
 

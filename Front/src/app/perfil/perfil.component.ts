@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
-import { Rutasss } from '../prueba/prueba';
+import { Rutasss } from '../logicaExterna/router';
 
 @Component({
   selector: 'app-perfil',

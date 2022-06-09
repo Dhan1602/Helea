@@ -12,9 +12,10 @@
                     [(ngModel)]="peticiones.data.descripcion" [config]="editorConfig"></angular-editor>
 
                 <select name="categoria" [(ngModel)]="peticiones.data.categoria" required>
+                    <option value="" hidden disabled selected>Elige una categoría</option>
                     <option value="{{categories.name}}" *ngFor="let categories of peticiones.doccategorias">{{categories.name}}</option>
                 </select>
-                <input type="text" placeholder="URL del fondo" name="background"
+                <input type="text" placeholder="URL de imagen" name="background"
                     [(ngModel)]="peticiones.data.background" required>
                 <label id="err" *ngIf="!camposRellenos"> Debes rellenar todos los campos </label>
                 <button type="submit">Crear</button>

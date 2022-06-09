@@ -60,7 +60,7 @@
 #grupoDestacados{
     display: grid;
     justify-items: center;
-grid-template-columns: repeat(2, 1fr);
+grid-template-columns: repeat(2, 200px);
 grid-template-rows: repeat(2, auto);
 grid-gap: 5px;
 width: 27rem;
@@ -71,17 +71,53 @@ height: 33rem;
 -ms-transform: skew(-18deg, 0deg);
 transform: skew(-18deg, 0deg);
 
+
 }
 .cards{
     height: 15rem;
     width: 12rem;
-    background-color: #AAB7E8;
+    background-color: #DEE3F5;
     border-radius: 15px;
     margin: 4px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+#test1{
+    margin-top: 3rem;
+}
+#test2{
+    margin-top: -2.5rem;
 }
 .desElements{
     width: 50%;
     padding: 2rem;
+    text-shadow: #fff 0 0 60px;
+    transition: text-shadow 2s cubic-bezier(0, 1, 0, 1);
+}
+.desElements:hover {
+    text-shadow: #fff 0 0 5px;
+    transition: text-shadow 1s cubic-bezier(0, 0.75, 0, 1);
+}
+
+.cards img{
+    margin-top: 1.5rem;
+   height: 4rem;
+   object-fit:cover;
+    border-radius: 5px;
+    border: 3px #5675E5 solid;
+    
+}
+.cards label{
+    font-size: 12px;
+    margin: 15px;
+}
+.cards h4{
+    
+    margin: 10px 0px;
+}
+#starSpan{
+    margin-top: 15px;
 }
 
 #close{
@@ -104,4 +140,20 @@ transform: skew(-18deg, 0deg);
     font-weight: 800;
     color: #DEE3F5;
     text-align: right;
+}
+
+
+#starSpan{
+    display: flex;
+    justify-content: center;
+
+}
+.cards ::ng-deep label.star{
+    font-size: 1rem !important;
+    float: right !important;
+    padding: 0 3px !important;
+}
+.cards ::ng-deep label.star:checked, ::ng-deep label.star:before{
+    text-shadow: 0 0 10px #b00f99 !important;
+    color: #b00f99 !important;
 }

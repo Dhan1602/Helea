@@ -5,7 +5,7 @@
             <form #formInicioSesion="ngForm" (submit)="verificarSingIn(formInicioSesion)">
                 <h3>Iniciar sesi&oacute;n</h3>
                 <input name="email" type="text" placeholder="Correo electrónico" [(ngModel)]="userSingIn.userName">
-                <input name="contrasena" type="text" placeholder="Contraseña" [(ngModel)]="userSingIn.email">
+                <input name="contrasena" type="password" placeholder="Contraseña" [(ngModel)]="userSingIn.email">
                 <button type="submit">Enviar datos</button>
                 <label>¿No tienes cuenta? <a routerLink="/registrarse" style="color: #b00f99;">Crear una</a></label>
             </form>

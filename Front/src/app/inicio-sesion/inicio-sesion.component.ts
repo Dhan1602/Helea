@@ -21,8 +21,21 @@ export class InicioSesionComponent implements OnInit {
 
   verificarSingIn(form: NgForm){
     this.servidor.singIn(form.value).subscribe({next: (r:any)=>{
-      if(r.noExiste) alert("No se ha podido niciar sesion, verifique que todo esté correctamente");
-      else this.router.navigate(['feed']);
+      if(r.noExiste) alert("No se ha podido iniciar sesion, verifique que todo esté correctamente");
+      else{
+        let logeo = {
+          _id: r._id,
+          _ip: this.servidor.getIPreferences(false),
+          userName: r.userName
+        }
+        this.servidor.logear(logeo).subscribe({next: (r2:any)=>{
+          if(r2) console.log("se ha logueado con exito");
+        },
+        error: (e2:any)=>{
+          console.log(e2);
+        }});
+        this.router.navigate(['feed']);
+      }
     },
     error: e=>{
       console.log(e);

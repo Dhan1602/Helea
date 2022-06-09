@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicacionesService } from '../Services/publicaciones-service.service';
+import { Rutasss } from '../prueba/prueba';
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(public peticiones: PublicacionesService, private direccionar: Rutasss) { }
 
   ngOnInit(): void {
+    this.getContent();
+  }
+  getContent() {
+
+    this.peticiones.getPost().subscribe({
+      next: (res) => {
+        this.peticiones.documentos = res;
+      },
+      error: (err) => console.log(err),
+    });
+
+  }
+
+  red(param: any){
+    this.direccionar.rect(param);
   }
 
 }

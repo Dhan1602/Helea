@@ -37,17 +37,31 @@ export class RegistroComponent implements OnInit {
 =======
   ngOnInit(): void {
   }
+
   sendPerfil(form: NgForm){
     this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {
       alert(r.response);
-      this.servidor.createChat(r.idCreado).subscribe({next: (r2:any)=>{
-        console.log(r2.response);
+      this.servidor.createChat(r.perfilCreado._id).subscribe({next: (r2:any)=>{
+          console.log(r2.response);
+        },
+        error: (e2:any)=>{
+          console.log(e2);
+        }
+      });
+      
+      let logeo = {
+        _id: r.perfilCreado._id,
+        _ip: this.servidor.getIPreferences(false),
+        userName: r.perfilCreado.userName
+      }
+      this.servidor.logear(logeo).subscribe({next: (r2:any)=>{
+        if(r2) console.log("se ha logueado con exito");
+        
+        this.router.navigate(['feed']);
       },
       error: (e2:any)=>{
         console.log(e2);
-      }
-    });
-      this.router.navigate(['feed']);
+      }});
     },
     error: (e:any) => {
 >>>>>>> main

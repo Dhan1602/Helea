@@ -8,9 +8,7 @@ import { perfiles } from '../Models/perfiles';
   providedIn: 'root'
 })
 export class PublicacionesService {
-
-  constructor(private http: HttpClient) {}
-
+  URL_API = "http://localhost:3000";
   docPerfiles: perfiles[] = [];
   documentos: post_model[] = [];
   doccategorias: categoria_model[] = [];
@@ -24,13 +22,46 @@ export class PublicacionesService {
     fecha: "",
     autorID: ""
    };
-   
 
-  URL_API = "http://localhost:3000"
+  constructor(private http: HttpClient) {}
 
+  // logeo ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  logear(logeo:any){
+    return this.http.post(this.URL_API+"/logear", logeo);
+  }
+  verifyLogeo(ip:any){
+    return this.http.get(this.URL_API+"/verificarloger/" + ip);
+  }
+  // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // verificar cliente ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+   getIPreferences(cambiar: boolean){
+    if(!cambiar){
+      let IPreference = localStorage.getItem("IPreference");
+      if(IPreference) return IPreference;
+      else{
+        localStorage.setItem("IPreference", "1000");
+        return "1000";
+      }
+    }else{
+      let IPreference:any = localStorage.getItem("IPreference");
+      IPreference = parseInt( IPreference );
+      IPreference++;
+      localStorage.setItem("IPreference", IPreference+"");
+      return IPreference;
+    }
+   }
+   saveIPreferences(ip:any){
+     return this.http.get(this.URL_API+"/saveIPreferences/" + ip);
+   }
+   exitsIPreferences(ip:any){
+    return this.http.get(this.URL_API+"/exitsIPreferences/" + ip);
+  }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
    createPerfil(perfil: perfiles){
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
    createChat(idHeleo: any){
@@ -38,9 +69,20 @@ export class PublicacionesService {
   }
 >>>>>>> main
 
+=======
+   guardarPublicacion(id: any, idPublicacion: any){
+      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion });
+   }
+>>>>>>> main
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);
   }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+   createChat(idHeleo: any){
+    return this.http.get(this.URL_API+"/newChat/" + idHeleo);
+  }
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
   createPost(data : post_model){
     return this.http.post(this.URL_API+"/posts", data);

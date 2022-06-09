@@ -5,19 +5,19 @@
     color: #dee3f5;
     font-weight: 500;
     min-height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
 }
 #padre{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 100vw;
 }
 #cuerpo{
     padding-top: 4rem;
     display: inline-block;
     text-align: center;
-    width: 50vw;
 }
 #cuerpo p{
     text-align: justify;
@@ -26,22 +26,27 @@
     height: 20rem;
 }
 #rating{
-    background-color: rgba(255, 255, 255, 0.766);
-    width: 50vw;
-    border-radius: 5px;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
+.children{
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    padding: 1vw;
+    width: 49vw;
+}
+
 /* Estrellas */
 
-::ng-deep label.star{
+#rating ::ng-deep label.star{
     font-size: 2rem !important;
     float: right !important;
     padding: 0 3px !important;
 }
-::ng-deep label.star:checked, ::ng-deep label.star:before{
+#rating ::ng-deep label.star:checked, ::ng-deep label.star:before{
     text-shadow: 0 0 10px #b00f99 !important;
     color: #b00f99 !important;
 }

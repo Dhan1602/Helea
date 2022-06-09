@@ -9,8 +9,7 @@
 }#nameProfe div:nth-child(1){
     flex-grow: 100;
 }#nameProfe div:nth-child(2){
-    flex-grow: 20;
-    /* display: flex; justify-content: end; */
+    flex-grow: 30;
 }#containerChat{
     flex-grow: 1; display: flex; flex-direction: column;
 }#mesasge{
@@ -50,22 +49,22 @@
     flex-grow: 15; padding: 0 20px; box-sizing: border-box;
 }.containerChekBox{
     position: relative; width: fit-content; height: fit-content; margin: 0 auto;
-    width: 100%; height: fit-content; background: pink; padding: 0;
-}#componet-print{
+    width: 100%; height: fit-content; padding: 0;
+}.componet-print{
     display: flex; flex-flow: row wrap;
-}#componet-print input{
+}.componet-print input{
     width: 70%; height: 30px; background: none; border: none; padding: 10px;
-    border-style: none; outline: none; color: #000;
-}#componet-print div{
+    border-style: none; outline: none; color: #fff; font-weight: bold;
+}.componet-print div{
     flex-grow: 15; text-align: center; font-size: 25px; box-sizing: border-box; font-weight: bold;
-    display: flex; flex-flow: column wrap; justify-content: center; color: #000;
+    display: flex; flex-flow: column wrap; justify-content: center; color: #fff;
 }.containerChekBox-absulute{
     position: absolute; width: fit-content; height: fit-content; background: none;
-    background: #093; top: -20px; border-radius: 12px;
-}.containerChekBox-absulute:hover, #componet-print input{
+    background: #aa99ef; top: -20px; border-radius: 12px;
+}.containerChekBox-absulute:hover, .componet-print input{
     cursor: pointer;
 }.componets{
-    display: none; padding: 10px 5px; border-left: 1px solid #fff;
+    display: none; padding: 10px 5px;
 }.componets:hover{
-    background: #0c0; border-radius: 20px; cursor: pointer;
+    background: #9485d1; border-radius: 20px; cursor: pointer;
 }

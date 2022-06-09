@@ -29,7 +29,8 @@
     flex-direction: column;
 }
 
-input, textarea, select{
+input, select,
+:host /deep/ angular-editor .angular-editor-textarea{
     font-size: 20px;
     display: block;
     width: 35vw;
@@ -41,6 +42,7 @@ input, textarea, select{
     padding-left: 15px;
     outline: none;
     resize: none;
+    color: #445496;;
 }textarea:focus::placeholder,input:focus::placeholder{
     color: #FFF;
 }input::placeholder, textarea::placeholder{
@@ -49,7 +51,7 @@ input, textarea, select{
     font-size: 18px;
 }select{
     width: 36.064vw;
-    color:#FFF;
+    color: #445496;
 }
 
 button{
@@ -71,4 +73,32 @@ button:hover{
     color: #b00f99;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+/*Editor de texto*/
+
+:host /deep/ angular-editor{
+    background-color: #aab7e8;
+    margin-bottom: 10px;
+    border-radius:  7px;
+    color: #445496;
+    width: 36vw;
+}
+:host /deep/ angular-editor .angular-editor-textarea, 
+:host /deep/ angular-editor .angular-editor-wrapper{
+    border-radius:  7px;
+    resize: none;
+    border: none !important;
+}
+:host /deep/ angular-editor .angular-editor-textarea::after{
+    content: none;
+}
+:host /deep/ angular-editor .angular-editor-toolbar{
+    border-top-left-radius:  7px;
+    border-top-right-radius: 7px;
+    background-color: #5675e5 !important;
+    border: none;
+}
+:host /deep/ angular-editor .angular-editor-button.active {
+    background-color: #aab7e8 !important;
 }

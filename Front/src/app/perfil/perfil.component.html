@@ -3,9 +3,42 @@
 
 
   <div id="sections">
+    
         <div id="cards" class="columna">
+          <div>
+          <section class="dataBaseCards">
+            <div class="Content">
+                <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
+
+                    <div class="gridContent">
+
+                        <div class="card__info-hover">
+                            <div class="card__clock-info">
+                                <span class="card__time">{{card.fecha}}</span>
+                            </div>
+                        </div>
+
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/verMas/{{card._id}}">
+                            <div style="background: url({{card.background}});      background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat; " class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
+                            <h3 class="card__title">{{card.titulo}}</h3>
+                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
+                            <span class="card__by">por <a routerLink="/perfil/" class="card__author"
+                                    title="Autor">Autor</a></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
 
         </div>
+      </div>
 
     <div id="profile" class="columna">
         <h2>Nombre</h2>

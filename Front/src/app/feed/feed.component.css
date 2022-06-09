@@ -35,7 +35,7 @@ input::placeholder {
 }
 
 #search {
-    margin: 40px auto auto;
+    margin: 20px 40px auto auto;
 }
 
 #btnSearch {
@@ -57,13 +57,13 @@ input::placeholder {
 }
 
 #barraBusqueda {
-    margin-top: 6rem;
+    margin-top: 2rem;
 }
 
 #addAndFilter {
     display: flex;
     justify-content: flex-end;
-    padding-right: 18rem;
+    margin-right: 18rem;
     margin-top: 5rem;
     font-size: 1.25rem;
     font-weight: 700;
@@ -223,12 +223,12 @@ input::placeholder {
 }
 /* Estrellas */
 
-::ng-deep label.star{
+.card__info ::ng-deep label.star{
     font-size: 1rem !important;
     float: right !important;
     padding: 0 3px !important;
 }
-::ng-deep label.star:checked, ::ng-deep label.star:before{
+.card__info ::ng-deep label.star:checked, ::ng-deep label.star:before{
     text-shadow: 0 0 10px #b00f99 !important;
     color: #b00f99 !important;
 }

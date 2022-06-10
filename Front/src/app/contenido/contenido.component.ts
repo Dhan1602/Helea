@@ -53,25 +53,27 @@ export class ContenidoComponent implements OnInit {
   }
 
   calificado() {
-    if (this.form.controls["rating"].value > 0 || this.form.controls["rating"].value != 0) {
-      let num = (this.form.controls["rating"].value).toString()
-      let ip = this.peticion.getIPreferences(false);
-      this.peticion.verifyLogeo(ip).subscribe({
-        next: (r: any) => {
-          if (r.estado) {
+
+    let num = (this.form.controls["rating"].value).toString()
+    let ip = this.peticion.getIPreferences(false);
+    this.peticion.verifyLogeo(ip).subscribe({
+      next: (r: any) => {
+        if (r.estado) {
+          if (this.form.controls["rating"].value > 0 || this.form.controls["rating"].value != 0) {
             this.login = false
             this.peticion.rank(this.nameParam, num).subscribe({
               next: (res) => { this.pCalificada = true },
               error: (err) => { console.log(err) }
             })
-          } else {
-            this.login = true
           }
-        },
-        error: (e: any) => {
-          console.log(e);
+        } else {
+          this.login = true
         }
-      });
-    }
+      },
+      error: (e: any) => {
+        console.log(e);
+      }
+    });
   }
+
 }

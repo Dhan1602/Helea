@@ -82,18 +82,7 @@ export class CreateComponent implements OnInit {
                     next: (res: any) => {
                       alert("Publicado exitosamente!")
                       form.reset();
-                          console.log(r);
-                          if (r.estado) {
-                            this.peticiones.guardarPublicacion(r.userID, res._id).subscribe({
-                              next: (r2: any) => { // se guarda la publicacion
-                                console.log(r2.response);
-                              },
-                              error: (e2: any) => {
-                                console.log(e2);
-                              }
-                            });
-                          }
-                        
+                      console.log(r);                        
                       this.router.navigate(['feed']);
                     },
                     error: (err) => console.log(err)

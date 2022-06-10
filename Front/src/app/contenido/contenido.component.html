@@ -17,16 +17,16 @@
     <div id="rating" class="children">
       <form id="rCenter" [formGroup]="form">
         <ngx-star-rating #star formControlName="rating" id="star"></ngx-star-rating>
-        <button id="calificar" (click)="calificado()">Calificar</button>
+        <button class="calificar" *ngIf="!pCalificada" (click)="calificado()">Calificar</button>
+  !      <button class="calificar" id="calificado" *ngIf="pCalificada" >Calificado!</button>
       </form>
-      <span *ngIf="login" id="loginErr">Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad</span>
+      <span *ngIf="login" id="loginErr">Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a
+          routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad</span>
     </div>
 
     <div id="user" class="children" (click)="goAuthor()">
       <div class="userChildren">
-        <img
-          src="{{urlImage}}"
-          alt="" id="profilePhoto">
+        <img src="{{urlImage}}" alt="" id="profilePhoto">
       </div>
       <div class="userChildren">
         <h2>{{peticion.documentos[0].autor}}</h2>

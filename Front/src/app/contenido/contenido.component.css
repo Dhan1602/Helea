@@ -56,7 +56,7 @@
 #rating ::ng-deep label.star:checked, ::ng-deep label.star:before{
     text-shadow: 0 0 10px #b00f99 !important;
     color: #b00f99 !important;
-}#calificar {
+}.calificar {
     cursor: pointer;
     --color: #b00f99;
     font-family: inherit;
@@ -76,7 +76,7 @@
     background-color: var(--color);
 }
 
-#calificar:before {
+.calificar:before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -86,19 +86,21 @@
     border-radius: 50%;
 }
 
-#calificar:hover {
+.calificar:hover {
     color: var(--color);
 }
 
-#calificar:before {
+.calificar:before {
     top: 100%;
     left: 100%;
     transition: all .7s;
 }
 
-#calificar:hover:before {
+.calificar:hover:before {
     top: -30px;
     left: -30px;
+}#calificado{
+    --color: #FFF;
 }
 
 #butCreate:active:before {

@@ -101,16 +101,10 @@ app.get("/perfiles2", async (req, res) => {
 app.put("/rank/:ruta", async (req, res) => {
     let calificacion = parseInt(req.body.calificacion)
     let publicacion = await publicaciones.findById(req.params.ruta);
-    var cnt = (publicacion.calificacion.cantidad + 1);
-    var tt = publicacion.calificacion.total + calificacion
-    var prm = (tt / cnt);
-    var calification = {
-        cantidad: cnt,
-        total: tt,
-        promedio: prm
-    }
-    await publicaciones.updateOne({ _id: req.params.id }, { calificacion: calification })
-    console.log(publicaciones)
+    publicacion.calificacion.cantidad = (publicacion.calificacion.cantidad + 1);
+    publicacion.calificacion.total = publicacion.calificacion.total + calificacion
+    publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
+    await publicacion.save();
     res.send({mensaje: "Todo okey"})
 });
 

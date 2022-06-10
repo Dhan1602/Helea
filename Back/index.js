@@ -105,7 +105,6 @@ app.get("/posts", async (req, res)=>{
 
 app.get("/tarjetas/:autor", async (req, res)=>{
     let content = await publicaciones.find({autorId: req.params.autor}).sort({fecha:-1});
-    console.log(content)
     res.send(content);
 });
 

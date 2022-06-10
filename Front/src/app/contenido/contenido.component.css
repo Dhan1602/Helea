@@ -101,6 +101,8 @@
     left: -30px;
 }#calificado{
     --color: #FFF;
+    cursor: default;
+    color: #b00f99;
 }
 
 #butCreate:active:before {

@@ -18,7 +18,7 @@
       <form id="rCenter" [formGroup]="form">
         <ngx-star-rating #star formControlName="rating" id="star"></ngx-star-rating>
         <button class="calificar" *ngIf="!pCalificada" (click)="calificado()">Calificar</button>
-  !      <button class="calificar" id="calificado" *ngIf="pCalificada" >Calificado!</button>
+        <button class="calificar" id="calificado" *ngIf="pCalificada">Listo!</button>
       </form>
       <span *ngIf="login" id="loginErr">Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a
           routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad</span>

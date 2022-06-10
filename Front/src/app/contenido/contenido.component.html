@@ -10,13 +10,26 @@
       <img src="{{peticion.documentos[0].background}}" alt="">
 
       <p id="content" [innerHTML]="peticion.documentos[0].descripcion"></p>
+      <Label>Publicado el {{peticion.documentos[0].fecha}}</Label>
 
+    </div>
+
+    <div id="user" class="children" (click)="goAuthor()">
+      <div class="userChildren">
+        <img
+          src="{{urlImage}}"
+          alt="" id="profilePhoto">
+      </div>
+      <div class="userChildren">
+        <h2>{{peticion.documentos[0].autor}}</h2>
+        <label style="color: #b00f99;">Autor</label>
+      </div>
     </div>
 
     <div id="rating" class="children">
       <div id="rCenter">
-          <ngx-star-rating #star [ngModel]="estrellas" id="star"></ngx-star-rating>
-          <button id="calificar" (click)="calificado(star)">Calificar</button>
+        <ngx-star-rating #star [ngModel]="estrellas" id="star"></ngx-star-rating>
+        <button id="calificar" (click)="calificado(star)">Calificar</button>
       </div>
     </div>
 

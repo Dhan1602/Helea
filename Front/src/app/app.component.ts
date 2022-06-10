@@ -43,4 +43,7 @@ export class AppComponent {
       }
     });
   }
+  desactivarMenu(e: Event){
+      console.log(e)
+  }
 }

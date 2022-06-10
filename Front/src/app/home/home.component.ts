@@ -14,8 +14,25 @@ export class HomeComponent implements OnInit {
 
   constructor(public peticiones: PublicacionesService, private _router: Router) { }
 
+  isLogged: boolean = false;
+
   ngOnInit(): void {
     this.getContent();
+    this.checkLog();
+  }
+
+  checkLog(){
+    let ip = this.peticiones.getIPreferences(false);
+    this.peticiones.verifyLogeo(ip).subscribe({
+      next: (r: any) => {
+        if (r.estado) {
+          this._router.navigate(["/feed"]);
+        }
+      },
+      error: (e: any) => {
+        console.log(e);
+      }
+    });
   }
 
   getContent(){

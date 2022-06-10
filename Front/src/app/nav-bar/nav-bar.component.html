@@ -1,13 +1,14 @@
 <nav>
   <ul>
     <li>
-      <a routerLink="/feed" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
+      <a routerLink="/feed" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt="" *ngIf="isLoger"></a>
+      <a routerLink="/" title="Home"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt="" *ngIf="!isLoger"></a>
     </li>
     <li>
       <div id="btnRigth">
         <button id="butCreate" (click)="createRedirect()" *ngIf="isLoger">Crear</button>
         <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sign in</button>
-        <img id="profilePic" *ngIf="isLoger" src="{{perfile.urlImage}}" alt="no fount" (click)="viewNavPerfil()">
+        <img id="profilePic" *ngIf="isLoger" src="{{perfile.urlImage}}" alt="Profile image" (click)="viewNavPerfil()">
       </div>
     </li>
   </ul>

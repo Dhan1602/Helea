@@ -42,7 +42,7 @@ const routes: Routes = [{
   component:ContenidoComponent
 },
 {
-  path:"perfil",
+  path:"perfil/:id",
   component: PerfilComponent
 },
 ];

@@ -43,7 +43,7 @@ class Logeados{
         return true;
     }
     desLogearUsuario(userId){
-        let info = this.isLoger(usuario._id);
+        let info = this.isLoger(userId);
         if(info.estado){
             this.usuariosLogeados[info.index].logeado = false;
         }

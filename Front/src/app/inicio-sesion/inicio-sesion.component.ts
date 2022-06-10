@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
@@ -8,6 +8,11 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css']
 })
+
+@Injectable({
+  providedIn: "root"
+})
+
 export class InicioSesionComponent implements OnInit {
   userSingIn = {
     userName: "",

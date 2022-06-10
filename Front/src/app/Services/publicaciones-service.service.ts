@@ -20,7 +20,8 @@ export class PublicacionesService {
     background: "",
     categoria: "",
     fecha: "",
-    autorID: ""
+    autor: "",
+    autorId: "",
    };
 
   constructor(private http: HttpClient) {}
@@ -28,6 +29,9 @@ export class PublicacionesService {
   // logeo ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   logear(logeo:any){
     return this.http.post(this.URL_API+"/logear", logeo);
+  }
+  deslogear(ip:any){
+    return this.http.get(this.URL_API+"/deslogear/" + ip);
   }
   verifyLogeo(ip:any){
     return this.http.get(this.URL_API+"/verificarloger/" + ip);
@@ -62,7 +66,7 @@ export class PublicacionesService {
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
    guardarPublicacion(id: any, idPublicacion: any){
-      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion });
+      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion});
    }
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);
@@ -71,6 +75,18 @@ export class PublicacionesService {
   // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
    createChat(idHeleo: any){
     return this.http.get(this.URL_API+"/newChat/" + idHeleo);
+  }
+  cargarChat(heleo: any){
+    return this.http.get(this.URL_API+"/cargarChat/" + heleo);
+  }
+  saveMessage(id: any,cuerpo: any){
+    return this.http.post(this.URL_API+"/saveMessage/" + id, cuerpo);
+  }
+  verCambios(){
+    return this.http.get(this.URL_API+"/verCambios");
+  }
+  newCategory(id:any, cuerpo:any){
+    return this.http.post(this.URL_API+"/newCategory/" + id, cuerpo);
   }
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -82,12 +98,20 @@ export class PublicacionesService {
     return this.http.get<post_model[]>(this.URL_API+"/posts");
   }
 
+  getMyCards(perfiles: any){
+    return this.http.get <post_model[]>(this.URL_API+"/tarjetas/" +perfiles);
+  }
+
   getCategories(){
     return this.http.get<categoria_model[]>(this.URL_API+"/posts/categories");
   }
 
   getProfiles(){
     return this.http.get<perfiles[]>(this.URL_API+"/perfiles");
+  }
+
+  getProfileById(id: any){
+    return this.http.get<perfiles[]>(this.URL_API+"/perfiles/"+id);
   }
 
   searchOne(busqueda: any){

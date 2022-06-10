@@ -11,7 +11,6 @@ const perfiles = new Schema({
         type: String,
         default: null
     },
-    publicaciones: [],
     email: String,
     contrasena: String
 });

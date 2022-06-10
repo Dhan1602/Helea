@@ -20,7 +20,8 @@ export class PublicacionesService {
     background: "",
     categoria: "",
     fecha: "",
-    autorID: ""
+    autor: "",
+    autorId: "",
    };
 
   constructor(private http: HttpClient) {}
@@ -65,7 +66,7 @@ export class PublicacionesService {
      return this.http.post(this.URL_API+"/perfil", perfil);
    }
    guardarPublicacion(id: any, idPublicacion: any){
-      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion });
+      return this.http.post(this.URL_API+"/perfil/" + id, { idPublicacion});
    }
    singIn(user: any){
     return this.http.post(this.URL_API+"/perfil-singIng", user);

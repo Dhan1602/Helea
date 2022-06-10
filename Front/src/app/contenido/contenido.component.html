@@ -15,7 +15,8 @@
 
     <div id="rating" class="children">
       <div id="rCenter">
-        <ngx-star-rating [ngModel]="estrellas" id="star"></ngx-star-rating>
+          <ngx-star-rating #star [ngModel]="estrellas" id="star"></ngx-star-rating>
+          <button id="calificar" (click)="calificado(star)">Calificar</button>
       </div>
     </div>
 

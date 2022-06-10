@@ -28,9 +28,9 @@
                         <div class="card__info">
                             <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
+                            <div id="stars">
                             <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
-                            <span class="card__by">por <a routerLink="/perfil/" class="card__author"
-                                    title="Autor">Autor</a></span>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -45,6 +45,8 @@
         <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" alt="">
         <div id="descripcion">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nihil velit facilis rerum, aut atque? Dolorum nostrum quidem dolores a autem assumenda, incidunt praesentium quam ipsam perspiciatis aspernatur nobis ipsa.</p>
+        <h5>Email: <span id="mailPerfil" >placeholder@mail.com</span> </h5>
+        <button id="btnChat">Abrir chat</button>
         </div>
     </div>
   </div>

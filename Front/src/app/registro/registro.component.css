@@ -16,6 +16,8 @@
 }#centar form input{
     background: #aab7e8; border: none; outline: none; width: 100%; color: #fff;
     height: 40px; border-radius: 9.8px; padding: 6px; box-sizing: border-box;
+}#error{
+    background: #ff96a5 !important;
 }#centar form textarea{
     background: #aab7e8; border: none; outline: none; width: 100%; color: #fff;
     height: 89px; border-radius: 10px; padding: 6px; box-sizing: border-box; resize: none;

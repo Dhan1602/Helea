@@ -19,7 +19,9 @@ export class RegistroComponent implements OnInit {
     email: "",
     contrasena: ""
   }
-  camposRellenos = true;
+  comfirContrasena: any = "";
+  camposRellenos: boolean = true;
+  contrasenaIgual: boolean = true;
 
   constructor(private servidor: PublicacionesService, private router: Router) { }
   ngOnInit(): void {
@@ -28,7 +30,10 @@ export class RegistroComponent implements OnInit {
   sendPerfil(form: NgForm){
     if(this.perfil.userName.trim()==""||this.perfil.email?.trim()==""||this.perfil.contrasena?.trim()==""){
       this.camposRellenos = false;
+    }else if(this.perfil.contrasena.trim() != this.comfirContrasena.trim()){
+      this.contrasenaIgual = false;
     }else{
+      this.contrasenaIgual = true;
       if(this.perfil.urlImage?.trim()==null || this.perfil.urlImage?.trim()==""){
         form.value.urlImage = "https://i.imgur.com/KC1KPDW.png";
       };

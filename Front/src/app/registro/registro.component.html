@@ -12,6 +12,7 @@
                 <input *ngIf="contrasenaIgual" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
                 <input *ngIf="!contrasenaIgual" id="error" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
                 <label id="err" *ngIf="!camposRellenos"> Por favor rellene los campos obligatorios </label>
+                <label id="err" *ngIf="!contrasenaIgual"> Las contraseña son diferentes </label>
                 <button type="submit">Enviar datos</button>
                 <label>¿Ya tienes una cuenta? <a routerLink="/inicio-sesion" style="color: #b00f99;">Inicia sesion aquí</a></label>
             </form>

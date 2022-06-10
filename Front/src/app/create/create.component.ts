@@ -71,7 +71,11 @@ export class CreateComponent implements OnInit {
                   let hoy = new Date();
                   this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
                   form.value.fecha = this.fecha;
-                  form.value.calificacion = 0;
+                  form.value.calificacion = {
+                    cantidad: 0,
+                    total: 0,
+                    promedio: 0
+                  };
                   form.value.autor = res.userName
                   form.value.autorId = r.userID
                   this.peticiones.createPost(form.value).subscribe({ //Crear la publicacion

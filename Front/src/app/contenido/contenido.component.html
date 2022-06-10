@@ -14,6 +14,14 @@
 
     </div>
 
+    <div id="rating" class="children">
+      <form id="rCenter" [formGroup]="form">
+        <ngx-star-rating #star formControlName="rating" id="star"></ngx-star-rating>
+        <button id="calificar" (click)="calificado()">Calificar</button>
+      </form>
+      <span *ngIf="login" id="loginErr">Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad</span>
+    </div>
+
     <div id="user" class="children" (click)="goAuthor()">
       <div class="userChildren">
         <img
@@ -23,13 +31,6 @@
       <div class="userChildren">
         <h2>{{peticion.documentos[0].autor}}</h2>
         <label style="color: #b00f99;">Autor</label>
-      </div>
-    </div>
-
-    <div id="rating" class="children">
-      <div id="rCenter">
-        <ngx-star-rating #star [ngModel]="estrellas" id="star"></ngx-star-rating>
-        <button id="calificar" (click)="calificado(star)">Calificar</button>
       </div>
     </div>
 

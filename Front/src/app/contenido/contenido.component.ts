@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router"
 import { PublicacionesService } from '../Services/publicaciones-service.service';
 import { Router } from '@angular/router';
-import { post_model } from '../Models/publicaciones';
+import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-contenido',
@@ -14,9 +14,16 @@ export class ContenidoComponent implements OnInit {
   nameParam = this.route.snapshot.params["id"];
   temporizador = 0;
   estrellas = 0;
-  urlImage: String = ""
+  login = false
+  urlImage: String = "";
+  public form!: FormGroup;
 
-  constructor(private _router: Router, private route : ActivatedRoute, public peticion : PublicacionesService) {}
+  constructor(private fb: FormBuilder, private _router: Router,
+    private route : ActivatedRoute, public peticion : PublicacionesService) {
+      this.form = this.fb.group({
+        rating: ["", Validators.required],
+      })
+    }
 
   
   ngOnInit(): void {
@@ -45,8 +52,25 @@ export class ContenidoComponent implements OnInit {
     })
   }
 
-  calificado(puntuacion: any){
-    console.log(puntuacion)
+  calificado(){
+    let num = (this.form.controls["rating"].value).toString()
+    let ip = this.peticion.getIPreferences(false);
+    this.peticion.verifyLogeo(ip).subscribe({
+      next: (r: any) => {
+        if (r.estado) {
+          this.login = false
+          this.peticion.rank(this.nameParam, num).subscribe({
+            next: (res)=>{},
+            error: (err)=>{console.log(err)}
+          })
+        }else{
+          this.login = true
+        }
+      },
+      error: (e: any) => {
+        console.log(e);
+      }
+    });
   }
 
 }

@@ -29,6 +29,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }#rCenter{
     display: flex;
     width: 100%;
@@ -121,4 +122,6 @@
     background-color: rgba(40, 40, 40, 0.2);  
 }.userChildren{
     top: 3px
+}#loginErr a{
+    color: #b00f99;
 }

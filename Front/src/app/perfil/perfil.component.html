@@ -29,7 +29,7 @@
                             <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
                             <div id="stars">
-                            <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
+                            <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true"></ngx-star-rating>
                             </div>
                         </div>
                     </div>

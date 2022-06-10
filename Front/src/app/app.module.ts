@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularEditorModule } from "@kolkov/angular-editor"
@@ -37,7 +37,8 @@ import { angularEditorConfig } from '@kolkov/angular-editor/lib/config';
     HttpClientModule,
     FormsModule,
     NgxStarRatingModule,
-    AngularEditorModule
+    AngularEditorModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

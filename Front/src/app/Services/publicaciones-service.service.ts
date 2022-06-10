@@ -16,7 +16,11 @@ export class PublicacionesService {
   data: post_model = {
     titulo: "",
     descripcion: "",
-    calificacion: 0,
+    calificacion: {
+      cantidad:0,
+      total:0,
+      promedio:0
+    },
     background: "",
     categoria: "",
     fecha: "",
@@ -116,6 +120,12 @@ export class PublicacionesService {
   }
   obtenerArticulo(parametro : any){
     return this.http.get<post_model[]>(this.URL_API+"/searchArticle/"+parametro)
+  }
+
+  // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+  rank(ruta: any, calificacion: string){
+    return this.http.put<post_model[]>(this.URL_API+"/rank/"+ruta, {"calificacion": calificacion})
   }
 
 }

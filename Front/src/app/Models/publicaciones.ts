@@ -1,7 +1,11 @@
 export interface post_model {
     titulo: string,
     descripcion: string,
-    calificacion: number,
+    calificacion: {
+      cantidad:number,
+      total:number,
+      promedio:number
+    },
     background: string,
     categoria: string,
     fecha: string,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router"
-import { Rutasss } from '../prueba/prueba';
+import { Rutasss } from '../logicaExterna/router';
 
 @Component({
   selector: 'app-feed',

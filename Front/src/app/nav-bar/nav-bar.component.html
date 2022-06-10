@@ -5,8 +5,9 @@
     </li>
     <li>
       <div id="btnRigth">
-      <button id="butCreate" (click)="createRedirect()">Crear</button>
-      <img id="profilePic" src="https://bestprofilepictures.com/wp-content/uploads/2020/07/Cool-Profile-Picture-For-Instagram-1003x1024.jpg" alt="">
+        <button id="butCreate" (click)="createRedirect()" *ngIf="isLoger">Crear</button>
+        <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sing in</button>
+      <img id="profilePic" *ngIf="isLoger" src="https://bestprofilepictures.com/wp-content/uploads/2020/07/Cool-Profile-Picture-For-Instagram-1003x1024.jpg" alt="">
     </div>
     </li>
   </ul>

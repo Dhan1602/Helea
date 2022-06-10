@@ -65,10 +65,27 @@ export class CreateComponent implements OnInit {
         this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
         form.value.fecha = this.fecha;
         form.value.calificacion = 0;
+        
         this.peticiones.createPost(form.value).subscribe({
-          next: (res) => {
+          next: (res:any) => {
             alert("Publicado exitosamente!")
             form.reset();
+
+            let ip = this.peticiones.getIPreferences(false);
+            this.peticiones.verifyLogeo(ip).subscribe({next: (r:any)=>{ // se hace la verificacion del login
+              console.log(r);
+              if(r.estado){
+                this.peticiones.guardarPublicacion(r.userID, res._id).subscribe({next: (r2:any)=>{ // se guarda la publicacion
+                  console.log(r2.response);
+                },
+                error: (e2:any)=>{
+                  console.log(e2);
+                }});
+              }
+            },
+            error: (e:any)=>{
+              console.log(e);
+            }});
             this.router.navigate(['feed']);
           },
           error: (err) => console.log(err)

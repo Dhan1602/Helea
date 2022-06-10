@@ -18,6 +18,27 @@ const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
 
+const usuariosLogeados = require("./usuariosLogeados/logeados");
+const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar cliente - logeo
+
+// verificar cliente - logeo ––––––––––––––––––––––––––––––––––––––––––––––––
+app.get("/saveIPreferences/:ip", (req,res)=>{
+    res.send( loger.saveIPreferences(req.params.ip) );
+});
+app.get("/exitsIPreferences/:ip", (req,res)=>{
+    res.send( loger.exitsIPreferences(req.params.ip) );
+});
+app.post("/logear", (req,res)=>{
+    res.send(loger.logearUsuario( req.body ));
+});
+app.get("/deslogear/:id", (req,res)=>{
+    // res.send(loger.isLogeado("asd"));
+});
+app.get("/verificarloger/:id", (req,res)=>{
+    res.send(loger.isLoger(req.params.id));
+});
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.get("/newChat/:idHeleo", async (req,res)=>{
     let newChat = {
         idHeleo: req.params.idHeleo,
@@ -34,13 +55,14 @@ app.get("/chats", async (req,res)=>{
     let chats = await chatMessages_model.find();
     res.send(chats);
 });
-
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.post("/perfil", async (req, res)=>{
     let newPerfil = new perfil_model(req.body);
     await newPerfil.save();
     res.send({
         response: "Se ha registrado exitosamente",
-        idCreado: newPerfil._id
+        perfilCreado: newPerfil
     });
 });
 app.post("/perfil-singIng", async (req, res)=>{
@@ -48,15 +70,27 @@ app.post("/perfil-singIng", async (req, res)=>{
     if(perfil.length == 0){
         res.send({ noExiste: true });
     }else{
-        res.send(perfil);
+        res.send(perfil[0]);
     }
 });
 app.get("/perfiles", async (req, res)=>{
-    // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
-    // su string de conexión :)
     let perfiles = await perfil_model.find();
     res.send(perfiles)
 });
+app.post("/perfil/:id", async (req, res)=>{
+    let perfil = await perfil_model.findById(req.params.id);
+    perfil.publicaciones.push(req.body.idPublicacion);
+    await perfil.save();
+    res.send({ response: "Publicacion anadidad" });
+});
+app.get("/perfiles2", async (req, res)=>{
+    // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
+    // su string de conexión :)
+    let perfiles = await perfil_model.find();
+    console.log(perfiles);
+    res.send("lesto bro");
+});
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 app.get("/posts", async (req, res)=>{
     let content = await publicaciones.find().sort({fecha:-1});

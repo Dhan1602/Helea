@@ -103,6 +103,12 @@ app.get("/posts", async (req, res)=>{
     res.send(content);
 });
 
+app.get("/tarjetas/:autor", async (req, res)=>{
+    let content = await publicaciones.find({autorId: req.params.autor}).sort({fecha:-1});
+    console.log(content)
+    res.send(content);
+});
+
 app.get("/posts/categories", async (req, res)=>{
     let content = await categorias.find().sort({name:1});
     res.send(content);

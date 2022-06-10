@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { perfiles } from '../Models/perfiles';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
+import { perfilRutas } from '../logicaExterna/routerPerfil'
 
 @Component({
   selector: 'navBar',
@@ -18,12 +19,13 @@ export class NavBarComponent implements OnInit {
     userDescripcion: undefined,
     urlImage: "",
     email: "",
-    contrasena: ""
+    contrasena: "",
+    _id:""
   }
   isLoger: boolean = false;
   disployNav: boolean = false;
 
-  constructor(private _router: Router, private servidor: PublicacionesService) { }
+  constructor(private _router: Router, private servidor: PublicacionesService, private linkPerfil: perfilRutas) { }
 
   ngOnInit(): void {
     let ip = this.servidor.getIPreferences(false);
@@ -45,6 +47,10 @@ export class NavBarComponent implements OnInit {
         console.log(e);
       }
     });
+  }
+   
+  goProfile(){
+    this.linkPerfil.rect(this.perfile._id)
   }
 
   createRedirect() {

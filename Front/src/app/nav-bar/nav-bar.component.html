@@ -1,15 +1,32 @@
 <nav>
   <ul>
     <li>
-        <a routerLink="/feed" *ngIf="isLoger" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
-        <a routerLink="/" *ngIf="!isLoger" title="Home"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
+      <a routerLink="/feed" title="Página de inicio"><img id="logo" src="https://i.imgur.com/VNjo6pz.png" alt=""></a>
     </li>
     <li>
       <div id="btnRigth">
         <button id="butCreate" (click)="createRedirect()" *ngIf="isLoger">Crear</button>
         <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sign in</button>
-      <img id="profilePic" *ngIf="isLoger" src="{{img}}" alt="">
-    </div>
+        <img id="profilePic" *ngIf="isLoger" src="{{perfile.urlImage}}" alt="no fount" (click)="viewNavPerfil()">
+      </div>
     </li>
   </ul>
 </nav>
+<section id="sec-navPerfil">
+  <div id="navPerfilName" *ngIf="disployNav">
+    <div>
+      <img id="profilePic2" *ngIf="isLoger" src="{{perfile.urlImage}}" alt="no fount">
+      <h6 style="cursor: default;">{{perfile.userName}}</h6>
+      <h6 style="font-size: 13px; cursor: default">{{perfile.email}}</h6>
+      <h6><button>Ver perfil</button></h6>
+    </div>
+    <label></label>
+    <div class="hove">
+      Ajustes
+    </div>
+    <label></label>
+    <div style="color: red;" class="hove" (click)="singOut()">
+      Sing out
+    </div>
+  </div>
+</section>

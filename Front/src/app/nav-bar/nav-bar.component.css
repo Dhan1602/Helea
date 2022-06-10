@@ -80,10 +80,42 @@ a, label{
     justify-content: center;
     align-items: center;
 }
-#profilePic{
+#profilePic, #profilePic2{
     height: 2.5em;
     border-radius: 50%;
     border: 3px white solid;
     margin: 0;
     padding: 0;
+}#profilePic2{ height: 3.6em; }
+#profilePic:hover{
+    cursor: pointer;
+}
+/* navPerfil –––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+#sec-navPerfil{
+    display: flex; justify-content: end; position: relative; padding-right: 5rem;
+}#navPerfilName{
+    display:  flex; flex-direction: column; border-radius: 10px; position: absolute;
+    background: #DEE3F5; width: fit-content; height: fit-content; padding: 0; z-index: 100000;
+}#navPerfilName label{
+    border-bottom: 1px solid #8a8d9be3;
+}#navPerfilName div{
+    display: flex; flex-direction: column; justify-content: center; 
+    align-items: center; flex-grow: 1; color: #000; padding: 30px 45px;
+}#navPerfilName div h6 button{
+    cursor: pointer;
+    --color: #5675E5;
+    font-family: inherit;
+    display: inline-block;
+    height: 2em; padding: 0 8px;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    font-size: 13px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: white;
+    background-color: var(--color);
+}.hove:hover{
+    cursor: pointer; background: #c1ccf5; border-radius: 10px;
+}#navPerfilName div:nth-child(1) h6{
+    margin: 0; font-size: 16px; margin-top: 10px;
 }

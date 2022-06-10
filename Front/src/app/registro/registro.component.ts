@@ -13,8 +13,9 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 export class RegistroComponent implements OnInit {
   perfil: perfiles = {
     userName: "",
+    publicaciones: [],
     userDescripcion: undefined,
-    urlImage: undefined,
+    urlImage: "",
     email: "",
     contrasena: ""
   }
@@ -25,10 +26,10 @@ export class RegistroComponent implements OnInit {
   }
 
   sendPerfil(form: NgForm){
-    if(this.perfil.userName==""||this.perfil.email==""||this.perfil.contrasena==""){
+    if(this.perfil.userName.trim()==""||this.perfil.email?.trim()==""||this.perfil.contrasena?.trim()==""){
       this.camposRellenos = false;
     }else{
-      if(this.perfil.urlImage==null||this.perfil.urlImage==""){
+      if(this.perfil.urlImage?.trim()==null || this.perfil.urlImage?.trim()==""){
         form.value.urlImage = "https://i.imgur.com/KC1KPDW.png";
       };
     this.servidor.createPerfil(form.value).subscribe({next: (r:any) => {

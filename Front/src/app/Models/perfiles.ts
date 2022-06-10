@@ -1,8 +1,9 @@
 export interface perfiles {
     userName: String,
-    userDescripcion?: String
+    userDescripcion?: String,
     urlImage?: String,
     email: String,
     contrasena: String,
-    _id?:String
+    _id?:String,
+    publicaciones: []
 }

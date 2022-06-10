@@ -32,11 +32,10 @@ app.post("/logear", (req,res)=>{
     res.send(loger.logearUsuario( req.body ));
 });
 app.get("/deslogear/:id", (req,res)=>{
-    // res.send(loger.isLogeado("asd"));
+    res.send(loger.desLogearUsuario(req.params.id));
 });
 app.get("/verificarloger/:id", (req,res)=>{
     res.send(loger.isLoger(req.params.id));
-
 });
 // ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // chat ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––

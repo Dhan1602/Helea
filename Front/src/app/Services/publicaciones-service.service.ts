@@ -29,6 +29,9 @@ export class PublicacionesService {
   logear(logeo:any){
     return this.http.post(this.URL_API+"/logear", logeo);
   }
+  deslogear(ip:any){
+    return this.http.get(this.URL_API+"/deslogear/" + ip);
+  }
   verifyLogeo(ip:any){
     return this.http.get(this.URL_API+"/verificarloger/" + ip);
   }

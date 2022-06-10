@@ -40,7 +40,6 @@ export class PerfilComponent implements OnInit {
   getCards() {
     this.peticiones.getMyCards(this.parametro).subscribe({
       next: (res) => {
-        console.log(res)
         this.peticiones.documentos = res;
       },
       error: (err) => console.log(err),

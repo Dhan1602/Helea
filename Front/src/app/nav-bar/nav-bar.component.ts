@@ -75,6 +75,7 @@ export class NavBarComponent implements OnInit {
       this.servidor.deslogear(ip).subscribe({
         next: (r2: any) => {
           console.log("se ha deslogeado con exito");
+          this._router.navigate(["/"]);
         },
         error: (e2: any) => {
           console.log(e2);

@@ -104,3 +104,21 @@
     background: #aab7e8;
     transition: background 0s;
 }
+/*Perfil*/
+#profilePhoto {
+    height: 5em;
+    width: 5em;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px white solid;
+    margin: 0 15px;
+    padding: 0;
+}#user{
+    display: flex;
+    align-content: top;
+    cursor: pointer;
+}#user:hover{
+    background-color: rgba(40, 40, 40, 0.2);  
+}.userChildren{
+    top: 3px
+}

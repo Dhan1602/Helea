@@ -8,7 +8,8 @@ const publicaciones = new Schema({
     background: String,
     categoria: String,
     fecha: String,
-    autorID: String
+    autor: String,
+    autorId: String
 });
 
 module.exports = mongoose.model( "Publicaciones" , publicaciones);

@@ -5,6 +5,7 @@ export interface post_model {
     background: string,
     categoria: string,
     fecha: string,
-    autorID: string,
+    autor: string,
+    autorId: string,
     _id?: string
    }

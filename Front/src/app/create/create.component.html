@@ -5,8 +5,8 @@
             <h2>Crear Publicacion</h2>
             <form id="Information" #postForm="ngForm" (ngSubmit)="create(postForm)">
                 <input type="text" placeholder="Título" name="titulo" [(ngModel)]="peticiones.data.titulo" required>
-                <!-- <textarea name="" id="" cols="30" rows="10" placeholder="Descripción" name="descripcion"
-                    [(ngModel)]="peticiones.data.descripcion" required></textarea> -->
+                <input type="hidden" name="autor" [(ngModel)]="peticiones.data.autor">
+                <input type="hidden" name="autorId" [(ngModel)]="peticiones.data.autorId">
 
                     <angular-editor id="texto" [placeholder]="'Escribe tu publicacion aquí...'" name="descripcion"
                     [(ngModel)]="peticiones.data.descripcion" [config]="editorConfig"></angular-editor>

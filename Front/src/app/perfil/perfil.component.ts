@@ -17,16 +17,25 @@ export class PerfilComponent implements OnInit {
     userDescripcion: "",
     urlImage: "",
     email: "",
-    contrasena: "",
-    publicaciones: []
+    contrasena: ""
   }
 
   constructor(public peticiones: PublicacionesService, private direccionar: Rutasss, private ruta: ActivatedRoute) { }
 
   parametro = this.ruta.snapshot.params["id"]
   mostrar = false
+  logerActual: any = { estado:false, index:-1, userID: null }
 
   ngOnInit(): void {
+    let ip = this.peticiones.getIPreferences(false);
+    this.peticiones.verifyLogeo(ip).subscribe({
+      next: (r:any)=>{
+        this.logerActual = r;
+      },
+      error: (e:any)=>{
+        console.log(e);
+      }
+    });
     this.getCards();
     this.peticiones.getProfileById(this.parametro).subscribe({
       next: (res: any) => {
@@ -40,7 +49,6 @@ export class PerfilComponent implements OnInit {
   getCards() {
     this.peticiones.getMyCards(this.parametro).subscribe({
       next: (res) => {
-        console.log(res)
         this.peticiones.documentos = res;
       },
       error: (err) => console.log(err),

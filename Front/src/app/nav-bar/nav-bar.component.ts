@@ -15,7 +15,6 @@ import { perfilRutas } from '../logicaExterna/routerPerfil'
 export class NavBarComponent implements OnInit {
   perfile: perfiles = {
     userName: "",
-    publicaciones: [],
     userDescripcion: undefined,
     urlImage: "",
     email: "",
@@ -54,7 +53,7 @@ export class NavBarComponent implements OnInit {
   }
 
   createRedirect() {
-    this._router.navigate(["create"]);
+    this._router.navigate(["/create"]);
   }
 
   viewNavPerfil(){
@@ -67,14 +66,12 @@ export class NavBarComponent implements OnInit {
   }
 
   singOut(){
-    this.viewNavPerfil();
     let cerrar = confirm("¿Deseas cerrar sesión?");
     if(cerrar){
-      this.isLoger = false;
       let ip = this.servidor.getIPreferences(false);
       this.servidor.deslogear(ip).subscribe({
         next: (r2: any) => {
-          console.log("se ha deslogeado con exito");
+          this._router.navigate(["/feed"]);
         },
         error: (e2: any) => {
           console.log(e2);

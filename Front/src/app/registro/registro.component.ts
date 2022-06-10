@@ -13,7 +13,6 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 export class RegistroComponent implements OnInit {
   perfil: perfiles = {
     userName: "",
-    publicaciones: [],
     userDescripcion: undefined,
     urlImage: "",
     email: "",

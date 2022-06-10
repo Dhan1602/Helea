@@ -76,6 +76,18 @@ export class PublicacionesService {
    createChat(idHeleo: any){
     return this.http.get(this.URL_API+"/newChat/" + idHeleo);
   }
+  cargarChat(heleo: any){
+    return this.http.get(this.URL_API+"/cargarChat/" + heleo);
+  }
+  saveMessage(id: any,cuerpo: any){
+    return this.http.post(this.URL_API+"/saveMessage/" + id, cuerpo);
+  }
+  verCambios(){
+    return this.http.get(this.URL_API+"/verCambios");
+  }
+  newCategory(id:any, cuerpo:any){
+    return this.http.post(this.URL_API+"/newCategory/" + id, cuerpo);
+  }
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
   createPost(data : post_model){

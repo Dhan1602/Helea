@@ -1,7 +1,5 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
-const chatMessages = new Schema({
+export interface chats {
+    _id?: string,
     idHeleo: String,
     categorysChats: [{
         category: String,
@@ -14,6 +12,4 @@ const chatMessages = new Schema({
             }
         }]
     }]
-});
-
-module.exports = mongoose.model( "ChatMessages" , chatMessages);
+}

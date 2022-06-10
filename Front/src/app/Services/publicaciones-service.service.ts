@@ -86,6 +86,10 @@ export class PublicacionesService {
     return this.http.get<post_model[]>(this.URL_API+"/posts");
   }
 
+  getMyCards(perfiles: any){
+    return this.http.get <post_model[]>(this.URL_API+"/tarjetas/" +perfiles);
+  }
+
   getCategories(){
     return this.http.get<categoria_model[]>(this.URL_API+"/posts/categories");
   }

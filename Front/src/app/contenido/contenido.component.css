@@ -50,6 +50,7 @@
     font-size: 2rem !important;
     float: right !important;
     padding: 0 3px !important;
+    user-select: none;
 }
 #rating ::ng-deep label.star:checked, ::ng-deep label.star:before{
     text-shadow: 0 0 10px #b00f99 !important;
@@ -59,7 +60,7 @@
     --color: #b00f99;
     font-family: inherit;
     display: inline-block;
-    width: 5em;
+    width: 5.6em;
     height: 2em;
     margin: 20px;
     position: relative;

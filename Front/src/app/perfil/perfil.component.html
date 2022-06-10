@@ -40,12 +40,12 @@
         </div>
       </div>
 
-    <div id="profile" class="columna">
-        <h2>Nombre</h2>
-        <img src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" alt="">
+    <div  *ngIf="mostrar" id="profile" class="columna">
+        <h2>{{ perfil.userName }}</h2>
+        <img src="{{ perfil.urlImage }}" alt="">
         <div id="descripcion">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam nihil velit facilis rerum, aut atque? Dolorum nostrum quidem dolores a autem assumenda, incidunt praesentium quam ipsam perspiciatis aspernatur nobis ipsa.</p>
-        <h5>Email: <span id="mailPerfil" >placeholder@mail.com</span> </h5>
+        <p>{{ perfil.userDescripcion }}</p>
+        <h5>Email: {{ perfil.email }} </h5>
         <button id="btnChat">Abrir chat</button>
         </div>
     </div>

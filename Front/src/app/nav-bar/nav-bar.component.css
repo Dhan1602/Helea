@@ -1,121 +1,172 @@
-
-nav{
-    margin: 0;
-}
-ul{
-    display: flex;
-    justify-content: space-between;
-    margin: 0 5rem;
-    align-items: center;
-    padding-top: 1rem;
+nav {
+  margin: 0;
 }
 
-li{
-    list-style: none;
-    margin: 0;
+ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5rem;
+  align-items: center;
+  padding-top: 1rem;
 }
-a, label{
-    font-size: large;
-    text-decoration: none;
-    font-weight: 600;
-    color: white;
-    cursor: pointer;
+
+li {
+  list-style: none;
+  margin: 0;
 }
-#logo{
-    margin: 0;
-    height: 2rem;
+
+a,
+label {
+  font-size: large;
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
 }
+
+#logo {
+  margin: 0;
+  height: 2rem;
+}
+
 /* Efectos de botón */
 #butCreate {
-    cursor: pointer;
-    --color: #5675E5;
-    font-family: inherit;
-    display: inline-block;
-    width: 5em;
-    height: 2em;
-    margin: 20px;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--color);
-    transition: color .5s;
-    z-index: 1;
-    font-size: 14px;
-    border-radius: 5px;
-    font-weight: 500;
-    color: white;
-    background-color: var(--color);
+  cursor: pointer;
+  --color: #5675E5;
+  font-family: inherit;
+  display: inline-block;
+  width: 5em;
+  height: 2em;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  z-index: 1;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: white;
+  background-color: var(--color);
 }
 
 #butCreate:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: white;
-    height: 100px;
-    width: 200px;
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: white;
+  height: 100px;
+  width: 200px;
+  border-radius: 50%;
 }
 
 #butCreate:hover {
-    color: var(--color);
+  color: var(--color);
 }
 
 #butCreate:before {
-    top: 100%;
-    left: 100%;
-    transition: all .7s;
+  top: 100%;
+  left: 100%;
+  transition: all .7s;
 }
 
 #butCreate:hover:before {
-    top: -30px;
-    left: -30px;
+  top: -30px;
+  left: -30px;
 }
 
 #butCreate:active:before {
-    background: #aab7e8;
-    transition: background 0s;
+  background: #aab7e8;
+  transition: background 0s;
 }
-#btnRigth{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+#btnRigth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#profilePic, #profilePic2{
-    height: 2.5em;
-    border-radius: 50%;
-    border: 3px white solid;
-    margin: 0;
-    padding: 0;
-}#profilePic2{ height: 3.6em; }
-#profilePic:hover{
-    cursor: pointer;
+
+#profilePic,
+#profilePic2 {
+  height: 2.5em;
+  width: 2.5em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px white solid;
+  margin: 0;
+  padding: 0;
 }
+
+#profilePic2 {
+  height: 4.2em;
+  width: 4.2em;
+
+}
+
+#profilePic:hover {
+  cursor: pointer;
+}
+
 /* navPerfil –––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
-#sec-navPerfil{
-    display: flex; justify-content: end; position: relative; padding-right: 5rem;
-}#navPerfilName{
-    display:  flex; flex-direction: column; border-radius: 10px; position: absolute;
-    background: #DEE3F5; width: fit-content; height: fit-content; padding: 0; z-index: 100000;
-}#navPerfilName label{
-    border-bottom: 1px solid #8a8d9be3;
-}#navPerfilName div{
-    display: flex; flex-direction: column; justify-content: center; 
-    align-items: center; flex-grow: 1; color: #000; padding: 30px 45px;
-}#navPerfilName div h6 button{
-    cursor: pointer;
-    --color: #5675E5;
-    font-family: inherit;
-    display: inline-block;
-    height: 2em; padding: 0 8px;
-    border: 2px solid var(--color);
-    transition: color .5s;
-    font-size: 13px;
-    border-radius: 5px;
-    font-weight: 500;
-    color: white;
-    background-color: var(--color);
-}.hove:hover{
-    cursor: pointer; background: #c1ccf5; border-radius: 10px;
-}#navPerfilName div:nth-child(1) h6{
-    margin: 0; font-size: 16px; margin-top: 10px;
+#sec-navPerfil {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  padding-right: 5rem;
+}
+
+#navPerfilName {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: absolute;
+  background: #edf0fcb6;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  z-index: 100000;
+  backdrop-filter: blur(10px);
+  
+}
+
+#navPerfilName label {
+  border-bottom: 1px solid #8a8d9be3;
+}
+
+#navPerfilName div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  color: #000;
+  padding: 30px 45px;
+}
+
+#navPerfilName div h6 button {
+  cursor: pointer;
+  --color: #5675E5;
+  font-family: inherit;
+  display: inline-block;
+  height: 2em;
+  padding: 0 8px;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  font-size: 13px;
+  border-radius: 5px;
+  font-weight: 500;
+  color: white;
+  background-color: var(--color);
+}
+
+.hove:hover {
+  cursor: pointer;
+  background: #c1ccf5;
+  border-radius: 10px;
+}
+
+#navPerfilName div:nth-child(1) h6 {
+  margin: 0;
+  font-size: 16px;
+  margin-top: 10px;
 }

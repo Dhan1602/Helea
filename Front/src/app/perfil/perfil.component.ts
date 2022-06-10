@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionesService } from '../Services/publicaciones-service.service';
-import { Rutasss } from '../logicaExterna/router'; 
+import { Rutasss } from '../logicaExterna/router';
+import { ActivatedRoute } from '@angular/router';
+import { perfiles } from '../Models/perfiles';
+
 
 @Component({
   selector: 'app-perfil',
@@ -9,23 +12,42 @@ import { Rutasss } from '../logicaExterna/router';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor(public peticiones: PublicacionesService, private direccionar: Rutasss) { }
+  perfil: perfiles = {
+    userName: "",
+    userDescripcion: "",
+    urlImage: "",
+    email: "",
+    contrasena: "",
+    publicaciones: []
+  }
+
+  constructor(public peticiones: PublicacionesService, private direccionar: Rutasss, private ruta: ActivatedRoute) { }
+
+  parametro = this.ruta.snapshot.params["id"]
+  mostrar = false
 
   ngOnInit(): void {
-    this.getContent();
-  }
-  getContent() {
+    this.getCards();
+    this.peticiones.getProfileById(this.parametro).subscribe({
+      next: (res: any) => {
+        this.mostrar = true
+        this.perfil = res;
+      },
+      error: (err) => console.log(err),
+    });
+  };
 
-    this.peticiones.getPost().subscribe({
+  getCards() {
+    this.peticiones.getMyCards(this.parametro).subscribe({
       next: (res) => {
+        console.log(res)
         this.peticiones.documentos = res;
       },
       error: (err) => console.log(err),
     });
-
   }
 
-  red(param: any){
+  red(param: any) {
     this.direccionar.rect(param);
   }
 

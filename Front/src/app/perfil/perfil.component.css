@@ -28,10 +28,13 @@
 #profile{
     height: 85vh;
     width: 30vw;
+    background-color: rgba(0, 0, 0, 0.2);
     
 }
 #profile img {
     width: 11rem;
+    height: 11rem;
+    object-fit: cover;
     border-radius: 50%;
 }
 #descripcion{

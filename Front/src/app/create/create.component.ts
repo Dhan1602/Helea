@@ -12,29 +12,29 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class CreateComponent implements OnInit {
 
   constructor(public peticiones: PublicacionesService, private router: Router) { }
-  
+
   //wysiwyg (editor de texto)
   editorConfig: AngularEditorConfig = {
     editable: true,
     sanitize: false,
-    
+
     toolbarHiddenButtons: [
-      ['undo','redo','strikeThrough','subscript','superscript','indent','outdent','fontName', 'heading'],
+      ['undo', 'redo', 'strikeThrough', 'subscript', 'superscript', 'indent', 'outdent', 'fontName', 'heading'],
       ['fontSize',
-      'textColor',
-      'backgroundColor',
-      'customClasses',
-      'removeFormat',
-      'toggleEditorMode',
-      'unlink',
-      'insertImage',
-      'insertVideo'
-    ]
+        'textColor',
+        'backgroundColor',
+        'customClasses',
+        'removeFormat',
+        'toggleEditorMode',
+        'unlink',
+        'insertImage',
+        'insertVideo'
+      ]
     ]
   }
 
   fecha = ""
-
+  userName = ""
   camposRellenos = true
 
   ngOnInit(): void {
@@ -61,35 +61,49 @@ export class CreateComponent implements OnInit {
       this.camposRellenos = true;
       var confirmacion = confirm("¿Desea confirmar su publicación?")
       if (confirmacion) {
-        let hoy = new Date();
-        this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
-        form.value.fecha = this.fecha;
-        form.value.calificacion = 0;
-        
-        this.peticiones.createPost(form.value).subscribe({
-          next: (res:any) => {
-            alert("Publicado exitosamente!")
-            form.reset();
-
-            let ip = this.peticiones.getIPreferences(false);
-            this.peticiones.verifyLogeo(ip).subscribe({next: (r:any)=>{ // se hace la verificacion del login
-              console.log(r);
-              if(r.estado){
-                this.peticiones.guardarPublicacion(r.userID, res._id).subscribe({next: (r2:any)=>{ // se guarda la publicacion
-                  console.log(r2.response);
-                },
-                error: (e2:any)=>{
-                  console.log(e2);
-                }});
-              }
-            },
-            error: (e:any)=>{
-              console.log(e);
-            }});
-            this.router.navigate(['feed']);
+        let ip = this.peticiones.getIPreferences(false);
+        this.peticiones.verifyLogeo(ip).subscribe({
+          next: (r: any) => { // se hace la verificacion del login
+            console.log(r);
+            if (r.estado) {
+              this.peticiones.getProfileById(r.userID).subscribe({
+                next: (res: any) => {
+                  let hoy = new Date();
+                  this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
+                  form.value.fecha = this.fecha;
+                  form.value.calificacion = 0;
+                  form.value.autor = res.userName
+                  form.value.autorId = r.userID
+                  this.peticiones.createPost(form.value).subscribe({ //Crear la publicacion
+                    next: (res: any) => {
+                      alert("Publicado exitosamente!")
+                      form.reset();
+                          console.log(r);
+                          if (r.estado) {
+                            this.peticiones.guardarPublicacion(r.userID, res._id).subscribe({
+                              next: (r2: any) => { // se guarda la publicacion
+                                console.log(r2.response);
+                              },
+                              error: (e2: any) => {
+                                console.log(e2);
+                              }
+                            });
+                          }
+                        
+                      this.router.navigate(['feed']);
+                    },
+                    error: (err) => console.log(err)
+                  });
+                }, error: (err) => console.log(err)
+              })
+            }
           },
-          error: (err) => console.log(err)
+          error: (e: any) => {
+            console.log(e);
+          }
         });
+
+
       }
     };
   }

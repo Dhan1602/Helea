@@ -31,4 +31,8 @@ export class ContenidoComponent implements OnInit {
     })
   }
 
+  calificado(puntuacion: any){
+    console.log(puntuacion)
+  }
+
 }

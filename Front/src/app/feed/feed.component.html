@@ -44,8 +44,8 @@
                             <h3 class="card__title">{{card.titulo}}</h3>
                             <ngx-star-rating [ngModel]="card.calificacion" id="star_{{i}}" [disabled]="true">
                             </ngx-star-rating>
-                            <span class="card__by">por <a routerLink="/perfil/" class="card__author"
-                                    title="Autor">Autor</a></span>
+                            <span class="card__by">por <a routerLink="/perfil/{{card.autorId}}" class="card__author"
+                                    title="Autor">{{card.autor}}</a></span>
                         </div>
                     </div>
                 </article>

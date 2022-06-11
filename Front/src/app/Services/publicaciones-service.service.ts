@@ -94,6 +94,13 @@ export class PublicacionesService {
   }
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
+  savePublication(id: any, publicacion:any){
+    return this.http.post(this.URL_API+"/saveMine/"+id, {"publicacion":publicacion})
+  }
+  deleteSave(id: any, publicacion:any){
+    return this.http.post(this.URL_API+"/deleteSave/"+id, {"publicacion":publicacion})
+  }
+
   createPost(data : post_model){
     return this.http.post(this.URL_API+"/posts", data);
   }

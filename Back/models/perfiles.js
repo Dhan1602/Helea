@@ -12,6 +12,7 @@ const perfiles = new Schema({
         default: null
     },
     email: String,
+    likes: Array,
     contrasena: String
 });
 

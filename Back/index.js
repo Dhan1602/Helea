@@ -179,4 +179,18 @@ app.post("/posts", async (req, res) => {
     res.send(saving);
 });
 
+app.post("/saveMine/:id", async (req, res) => {
+    let perfil = await perfil_model.findById(req.params.id);
+    perfil.likes.push(req.body.publicacion)
+    await perfil.save();
+});
+app.post("/deleteSave/:id", async (req, res) => {
+    let perfil = await perfil_model.findById(req.params.id);
+    var i = perfil.likes.indexOf( req.body.publicacion );
+    if ( i !== -1 ) {
+        perfil.likes.splice( i, 1 );
+    }
+    await perfil.save();
+});
+
 app.listen(3000);

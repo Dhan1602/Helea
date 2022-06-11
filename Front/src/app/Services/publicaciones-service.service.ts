@@ -116,6 +116,11 @@ export class PublicacionesService {
 
   getProfileById(id: any){
     return this.http.get<perfiles[]>(this.URL_API+"/perfiles/"+id);
+
+  }
+  actPerfil(formulario: perfiles, id: any){
+    return this.http.put(this.URL_API+"/modificarPerfil/"+ id, formulario);
+
   }
 
   searchOne(busqueda: any){

@@ -47,7 +47,7 @@ export class NavBarComponent implements OnInit {
       }
     });
   }
-   
+
   goProfile(){
     this.linkPerfil.rect(this.perfile._id)
   }
@@ -65,6 +65,10 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  editarPerfil(){
+    this._router.navigate(["modificarPerfil/" + this.perfile._id ])
+  }
+
   singOut(){
     let cerrar = confirm("¿Deseas cerrar sesión?");
     if(cerrar){
@@ -79,4 +83,6 @@ export class NavBarComponent implements OnInit {
       });
     }
   }
+
+
 }

@@ -18,6 +18,7 @@ const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
 
+
 const usuariosLogeados = require("./usuariosLogeados/logeados");
 const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar cliente - logeo
 
@@ -131,6 +132,14 @@ app.put("/rank/:ruta", async (req, res) => {
     publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
     await publicacion.save();
     res.send({mensaje: "Todo okey"})
+});
+
+app.put("/modificarPerfil/:id", async (req, res) => {
+    await perfil_model.updateOne({_id: req.params.id}, req.body)
+  
+
+    res.send({mensaje:"Perfil actualizado!!"})
+    
 });
 
 app.get("/posts", async (req, res) => {

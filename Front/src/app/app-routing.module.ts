@@ -45,6 +45,12 @@ const routes: Routes = [{
   path:"perfil/:id",
   component: PerfilComponent
 },
+{
+  path:"modificarPerfil/:id",
+  component: RegistroComponent
+},
+
+
 ];
 
 @NgModule({

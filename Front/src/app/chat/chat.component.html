@@ -1,57 +1,62 @@
 <section id="abajo">
-    <div id="chat">
-        <navBar></navBar>
-        <div id="nameProfe">
-            <div id="heleo">
-                {{perfil.userName}}
-            </div>
-            <div id="filtro">
-                <div class="positionFiltrar"> <!-- este es el filter -->
-                    <div class="containerChekBox">
-                        <div class="containerChekBox-absulute">
-                            <div class="componet-print">
-                                <h6 class="inputFilter" id="inputFil">{{categorySelect}}</h6>
-                                <label>></label>
-                            </div>
-                            <div #cat (click)="cargarMensajeCategoria(cat)" class="componets componets1" style="font-size: 14px;" *ngFor="let c of chat.categorysChats"> {{c.category}} </div>
-                            <div (click)="newCategory()" class="componets componets1" style="font-size: 14px;" *ngIf="userActual._id == perfil._id">Crear categoria</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div id="chat">
+    <navBar></navBar>
+    <div id="centraY">
+      <div id="nameProfe">
+        <div id="heleo">
+          {{perfil.userName}}
         </div>
-        <div id="containerChat">
-            <div id="mesasge">
-                <div id="scroll">
-                    <ng-container *ngFor="let c of messagesCargar">
-                        <div class="messages you" *ngIf="c.userName == userActual.userName">
-                            <h6>Tu</h6>
-                            {{c.message}}
-                            <h6><b>{{c.fecha.hora}}</b></h6>
-                        </div>
-                        <div class="messages other" *ngIf="c.userName != userActual.userName">
-                            <h6>{{c.userName}}</h6>
-                            {{c.message}}
-                            <h6><b style="color: #000;">{{c.fecha.hora}}</b></h6>
-                        </div>
-                    </ng-container>
+        <div id="filtro">
+          <div class="positionFiltrar">
+            <!-- este es el filter -->
+            <div class="containerChekBox">
+              <div class="containerChekBox-absulute">
+                <div class="componet-print">
+                  <h6 class="inputFilter" id="inputFil">{{categorySelect}}</h6>
+                  <label>></label>
                 </div>
+                <div #cat (click)="cargarMensajeCategoria(cat)" class="componets componets1" style="font-size: 14px;"
+                  *ngFor="let c of chat.categorysChats"> {{c.category}} </div>
+                <div (click)="newCategory()" class="componets componets1" style="font-size: 14px;"
+                  *ngIf="userActual._id == perfil._id">Crear categoria</div>
+              </div>
             </div>
-            <div id="opcionesChat">
-                <input type="text" placeholder="Escribe un mensaje" [(ngModel)]="messageToSend">
-                <div>
-                    <button (click)="sendMessage()">Enviar</button>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div id="pregunta" *ngIf="viewPregunta">
-        <div>
-            <input type="text" name="cat" placeholder="Nueva categoría" [(ngModel)]="stringCategory">
+    <div id="containerChat">
+      <div id="mesasge">
+        <div id="scroll">
+          <ng-container *ngFor="let c of messagesCargar">
+            <div class="messages you" *ngIf="c.userName == userActual.userName">
+              <h6>Tu</h6>
+              {{c.message}}
+              <h6><b>{{c.fecha.hora}}</b></h6>
+            </div>
+            <div class="messages other" *ngIf="c.userName != userActual.userName">
+              <h6>{{c.userName}}</h6>
+              {{c.message}}
+              <h6><b style="color: #000;">{{c.fecha.hora}}</b></h6>
+            </div>
+          </ng-container>
         </div>
+      </div>
+      <div id="opcionesChat">
+        <input type="text" placeholder="Escribe un mensaje" [(ngModel)]="messageToSend">
         <div>
-            <button (click)="sendCategory()">Confirmar</button>
-            <button (click)="closePregunta()">Cancelar</button>
+          <button id="btnEnviar" (click)="sendMessage()">Enviar</button>
         </div>
+      </div>
     </div>
+  </div>
+  <div id="pregunta" *ngIf="viewPregunta">
+    <div>
+      <input type="text" name="cat" placeholder="Nueva categoría" [(ngModel)]="stringCategory">
+    </div>
+    <div>
+      <button (click)="sendCategory()">Confirmar</button>
+      <button (click)="closePregunta()">Cancelar</button>
+    </div>
+  </div>
 </section>

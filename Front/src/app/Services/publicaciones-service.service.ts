@@ -17,8 +17,8 @@ export class PublicacionesService {
     titulo: "",
     descripcion: "",
     calificacion: {
-      cantidad:0,
-      total:0,
+      cantidad: 0,
+      total: 0,
       promedio:0
     },
     background: "",
@@ -93,6 +93,13 @@ export class PublicacionesService {
     return this.http.post(this.URL_API+"/newCategory/" + id, cuerpo);
   }
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+  savePublication(id: any, publicacion:any){
+    return this.http.post(this.URL_API+"/saveMine/"+id, {"publicacion":publicacion})
+  }
+  deleteSave(id: any, publicacion:any){
+    return this.http.post(this.URL_API+"/deleteSave/"+id, {"publicacion":publicacion})
+  }
 
   createPost(data : post_model){
     return this.http.post(this.URL_API+"/posts", data);

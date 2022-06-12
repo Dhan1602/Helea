@@ -4,5 +4,6 @@ export interface perfiles {
     urlImage?: String,
     email: String,
     contrasena: String,
+    likes?: Array<String>,
     _id?:String
 }

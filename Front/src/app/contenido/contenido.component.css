@@ -15,7 +15,7 @@
     max-width: 100vw;
 }
 #cuerpo{
-    padding-top: 4rem;
+    padding-top: 1rem;
     display: inline-block;
     text-align: center;
 }
@@ -108,7 +108,27 @@
 #butCreate:active:before {
     background: #aab7e8;
     transition: background 0s;
+}#bSpan{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}#bookmark{
+    font-size: 2.3rem;
+    transition: all .1s ;
+    cursor: pointer;
+    color: #FFF;
+    user-select: none;
+}#bookmark:hover{
+    transform: scale(1.2, 1.2);
+}#bookmark:active{
+    transform: scale(1.2, 1.2);
+    color:#e28ed5;
+    transform:translateY(3px)
+}.bact{
+    color: #b00f99 !important;
+    text-shadow: 0 0 10px #b00f99;
 }
+
 /*Perfil*/
 #profilePhoto {
     height: 5em;

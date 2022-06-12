@@ -75,7 +75,7 @@ export class NavBarComponent implements OnInit {
       let ip = this.servidor.getIPreferences(false);
       this.servidor.deslogear(ip).subscribe({
         next: (r2: any) => {
-          this._router.navigate(["/feed"]);
+          this._router.navigate(["/"]);
         },
         error: (e2: any) => {
           console.log(e2);

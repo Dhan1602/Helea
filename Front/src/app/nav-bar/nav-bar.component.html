@@ -7,7 +7,8 @@
     <li>
       <div id="btnRigth">
         <button id="butCreate" (click)="createRedirect()" *ngIf="isLoger">Crear</button>
-        <button id="butCreate" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Sign in</button>
+        <button class="no-iniciado" [routerLink]="'/inicio-sesion'" *ngIf="!isLoger">Iniciar sesión</button>
+        <button class="no-iniciado" [routerLink]="'/registrarse'" *ngIf="!isLoger">Crear cuenta</button>
         <img id="profilePic" *ngIf="isLoger" src="{{perfile.urlImage}}" alt="Profile image" (click)="viewNavPerfil()">
       </div>
     </li>

@@ -154,7 +154,6 @@ app.get("/savedPosts/:id", async (req, res) => {
         let publicacion = await publicaciones.findById(content.likes[i]).sort({_id: -1});
         saved.push(publicacion);
     }
-    console.log(saved)
     res.send(saved);
 });
 

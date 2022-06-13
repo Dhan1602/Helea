@@ -12,6 +12,7 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 export class ChatComponent implements OnInit {
     perfil: perfiles = {
       userName: "",
+      userDescripcion: "",
       email: "",
       contrasena: ""
     }
@@ -31,6 +32,7 @@ export class ChatComponent implements OnInit {
     }
     userActual: perfiles = {
       userName: "",
+      userDescripcion: "",
       email: "",
       contrasena: ""
     }

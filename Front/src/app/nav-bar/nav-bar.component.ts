@@ -15,7 +15,7 @@ import { perfilRutas } from '../logicaExterna/routerPerfil'
 export class NavBarComponent implements OnInit {
   perfile: perfiles = {
     userName: "",
-    userDescripcion: undefined,
+    userDescripcion: "",
     urlImage: "",
     email: "",
     contrasena: "",

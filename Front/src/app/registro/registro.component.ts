@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RegistroComponent implements OnInit {
   perfil: perfiles = {
     userName: "",
-    userDescripcion: undefined,
+    userDescripcion: "",
     urlImage: "",
     email: "",
     contrasena: ""
@@ -35,10 +35,14 @@ export class RegistroComponent implements OnInit {
   }
 
   sendPerfil(form: NgForm) {
-    if (this.perfil.userName.trim() == "" || this.perfil.email?.trim() == "" || this.perfil.contrasena?.trim() == "") {
-      this.camposRellenos = false;
-    } else if (this.perfil.contrasena.trim() != this.comfirContrasena.trim()) {
+    if (this.perfil.contrasena.trim() != this.comfirContrasena.trim()) {
       this.contrasenaIgual = false;
+    }else {
+      this.contrasenaIgual = true;
+    }
+    if (this.perfil.userName.trim() == "" || this.perfil.email?.trim() == "" || 
+    this.perfil.contrasena?.trim() == "" || this.perfil.userDescripcion?.trim() == "") {
+      this.camposRellenos = false;
     } else {
       this.contrasenaIgual = true;
       if (this.perfil.urlImage?.trim() == null || this.perfil.urlImage?.trim() == "") {
@@ -78,6 +82,9 @@ export class RegistroComponent implements OnInit {
       });
     }
   };
+  isTyping(){
+    this.camposRellenos = true;
+  }
 
   modificarPerfil() {
 

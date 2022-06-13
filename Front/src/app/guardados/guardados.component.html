@@ -1,0 +1,38 @@
+<section id="guardados">
+    <navBar></navBar>
+    <div id="principalFlex">
+        <h1>Mis publicaciones guardadas</h1>
+    <section class="dataBaseCards" *ngIf="mostrar==true">
+        <div class="Content">
+            <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
+
+                <div class="gridContent">
+
+                    <div class="card__info-hover">
+                        <div class="card__clock-info">
+                            <span class="card__time">{{card.fecha}}</span>
+                        </div>
+                    </div>
+
+                    <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                        class="card__img"></div>
+                    <a routerLink="/verMas/{{card._id}}">
+                        <div style="background: url({{card.background}});      background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat; " class="card__img--hover"></div>
+                    </a>
+                    <div class="card__info">
+                        <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
+                        <h3 class="card__title" title="{{card.titulo}}">{{card.tituloC}}</h3>
+                        <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true">
+                        </ngx-star-rating>
+                        <span class="card__by">por <a routerLink="/perfil/{{card.autorId}}" class="card__author"
+                                title="Autor">{{card.autor}}</a></span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>
+</section>

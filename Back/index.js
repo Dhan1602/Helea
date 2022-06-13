@@ -143,12 +143,23 @@ app.put("/modificarPerfil/:id", async (req, res) => {
 });
 
 app.get("/posts", async (req, res) => {
-    let content = await publicaciones.find().sort({ fecha: -1 });
+    let content = await publicaciones.find().sort({_id: -1});
     res.send(content);
 });
 
+app.get("/savedPosts/:id", async (req, res) => {
+    let content = await perfil_model.findById(req.params.id);
+    let saved = []
+    for(let i = 0; i<content.likes.length; i++){
+        let publicacion = await publicaciones.findById(content.likes[i]).sort({_id: -1});
+        saved.push(publicacion);
+    }
+    console.log(saved)
+    res.send(saved);
+});
+
 app.get("/tarjetas/:autor", async (req, res) => {
-    let content = await publicaciones.find({ autorId: req.params.autor }).sort({ fecha: -1 });
+    let content = await publicaciones.find({ autorId: req.params.autor }).sort({ _id: -1 });
     res.send(content);
 });
 

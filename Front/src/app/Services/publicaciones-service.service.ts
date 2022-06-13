@@ -15,6 +15,7 @@ export class PublicacionesService {
 
   data: post_model = {
     titulo: "",
+    tituloC: "",
     descripcion: "",
     calificacion: {
       cantidad: 0,
@@ -107,6 +108,10 @@ export class PublicacionesService {
 
   getPost(){
     return this.http.get<post_model[]>(this.URL_API+"/posts");
+  }
+
+  getSavedPosts(id: any){
+    return this.http.get<post_model[]>(this.URL_API+"/savedPosts/"+id);
   }
 
   getMyCards(perfiles: any){

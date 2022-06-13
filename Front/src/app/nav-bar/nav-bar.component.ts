@@ -68,6 +68,9 @@ export class NavBarComponent implements OnInit {
   editarPerfil(){
     this._router.navigate(["modificarPerfil/" + this.perfile._id ])
   }
+  saved(){
+    this._router.navigate(["guardados/" + this.perfile._id ])
+  }
 
   singOut(){
     let cerrar = confirm("¿Deseas cerrar sesión?");

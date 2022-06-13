@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const publicaciones = new Schema({
     titulo: String,
+    tituloC: String,
     descripcion: String,
     calificacion: {
       cantidad:Number,

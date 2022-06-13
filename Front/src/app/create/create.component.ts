@@ -71,6 +71,11 @@ export class CreateComponent implements OnInit {
                   let hoy = new Date();
                   this.fecha = hoy.getDate() + "/" + (hoy.getMonth() + 1) + "/" + hoy.getFullYear() + " " + hoy.getHours() + ":" + hoy.getMinutes() + ":" + hoy.getSeconds();
                   form.value.fecha = this.fecha;
+                  if(form.value.titulo.length>20){
+                    form.value.tituloC = (form.value.titulo.substring(0, 20)+"...");
+                  }else{
+                    form.value.tituloC = form.value.titulo;
+                  }
                   form.value.calificacion = {
                     cantidad: 0,
                     total: 0,

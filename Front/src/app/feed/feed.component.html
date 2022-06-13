@@ -41,7 +41,7 @@
                         </a>
                         <div class="card__info">
                             <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
-                            <h3 class="card__title">{{card.titulo}}</h3>
+                            <h3 class="card__title" title="{{card.titulo}}">{{card.tituloC}}</h3>
                             <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true">
                             </ngx-star-rating>
                             <span class="card__by">por <a routerLink="/perfil/{{card.autorId}}" class="card__author"

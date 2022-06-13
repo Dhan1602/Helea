@@ -1,9 +1,7 @@
 <section id="home">
 
-  <div class="testNav">
     <navBar></navBar>
 
-  </div>
   <div id="hero">
     <div class="left">
       <h2 id="HeroTxt">Compart<span class="blue">e</span> lo <br> qu<span class="cyan">e</span> sab<span
@@ -28,9 +26,9 @@
     <div id="test1" class="cards" title="{{peticiones.documentos[0].titulo}}" (click)="verMas(peticiones.documentos[0]._id)">
       <img src="{{peticiones.documentos[0].background}}" alt="">
       <br>
-      <h4>{{peticiones.documentos[0].titulo}}</h4>
+      <h4>{{peticiones.documentos[0].tituloC}}</h4>
      
-      <label>{{descripciones[0]}}</label>
+      <!-- <label [innerText]="descripciones[0]">{{descripciones[0]}}</label> -->
       <br>
       <span id="starSpan">
         <ngx-star-rating [ngModel]="peticiones.documentos[0].calificacion.promedio" id="star_0" [disabled]="true">
@@ -41,9 +39,9 @@
     <div class="cards" title="{{peticiones.documentos[1].titulo}}" (click)="verMas(peticiones.documentos[1]._id)">
       <img src="{{peticiones.documentos[1].background}}" alt="">
       <br>
-      <h4>{{peticiones.documentos[1].titulo}}</h4>
+      <h4>{{peticiones.documentos[1].tituloC}}</h4>
      
-      <label>{{descripciones[1]}}</label>
+      <!-- <label>{{descripciones[1]}}</label> -->
       <br>
       <span id="starSpan">
         <ngx-star-rating [ngModel]="peticiones.documentos[1].calificacion.promedio" id="star_0" [disabled]="true">
@@ -54,9 +52,9 @@
     <div class="cards" title="{{peticiones.documentos[2].titulo}}" (click)="verMas(peticiones.documentos[2]._id)">
       <img src="{{peticiones.documentos[2].background}}" alt="">
       <br>
-      <h4>{{peticiones.documentos[2].titulo}}</h4>
+      <h4>{{peticiones.documentos[2].tituloC}}</h4>
      
-      <label>{{descripciones[2]}}</label>
+      <!-- <label>{{descripciones[2]}}</label> -->
       <br>
       <span id="starSpan">
         <ngx-star-rating [ngModel]="peticiones.documentos[2].calificacion.promedio" id="star_0" [disabled]="true">
@@ -67,9 +65,9 @@
     <div id="test2" class="cards" title="{{peticiones.documentos[3].titulo}}" (click)="verMas(peticiones.documentos[3]._id)">
       <img src="{{peticiones.documentos[3].background}}" alt="">
       <br>
-      <h4>{{peticiones.documentos[3].titulo}}</h4>
+      <h4>{{peticiones.documentos[3].tituloC}}</h4>
      
-      <label>{{descripciones[3]}}</label>
+      <!-- <label>{{descripciones[3]}}</label> -->
       <br>
       <span id="starSpan">
         <ngx-star-rating [ngModel]="peticiones.documentos[3].calificacion.promedio" id="star_0" [disabled]="true">

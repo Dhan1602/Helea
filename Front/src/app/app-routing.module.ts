@@ -8,6 +8,7 @@ import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ChatComponent } from './chat/chat.component';
 import { PerfilComponent } from "./perfil/perfil.component"
+import { GuardadosComponent } from './guardados/guardados.component';
 
 const routes: Routes = [{
   path:"chat/:heleo",
@@ -49,7 +50,10 @@ const routes: Routes = [{
   path:"modificarPerfil/:id",
   component: RegistroComponent
 },
-
+{
+  path:"guardados/:id",
+  component: GuardadosComponent
+}
 
 ];
 

@@ -17,6 +17,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { angularEditorConfig } from '@kolkov/angular-editor/lib/config';
+import { GuardadosComponent } from './guardados/guardados.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { angularEditorConfig } from '@kolkov/angular-editor/lib/config';
     RegistroComponent,
     ChatComponent,
     ContenidoComponent,
-    PerfilComponent
+    PerfilComponent,
+    GuardadosComponent
   ],
   imports: [
     BrowserModule,

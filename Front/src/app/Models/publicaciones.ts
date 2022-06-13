@@ -1,5 +1,6 @@
 export interface post_model {
     titulo: string,
+    tituloC: string,
     descripcion: string,
     calificacion: {
       cantidad:number,

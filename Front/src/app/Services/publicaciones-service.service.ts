@@ -18,8 +18,8 @@ export class PublicacionesService {
     tituloC: "",
     descripcion: "",
     calificacion: {
-      cantidad:0,
-      total:0,
+      cantidad: 0,
+      total: 0,
       promedio:0
     },
     background: "",

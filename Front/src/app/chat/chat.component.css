@@ -2,26 +2,51 @@
     display: flex; flex-direction: column; box-sizing: border-box; position: relative; order: 100;
     background-image: url("https://i.imgur.com/il6TlTp.png"); width: 100%; height: 100vh;
 }#nameProfe{
+
     display: flex; flex-direction: row; align-items: center;
-    width: 97.5%; height: 85px; background: #aa99ef; color: #fff;
+    width: 90%; height: 65px; background: #aa99ef; color: #fff;
     font-size: 24px; font-weight: bold; justify-content: space-between;
-    padding: 8.5px; box-sizing: border-box; border-radius: 120px; margin: 15px;
-}#heleo{
+    padding: 8.5px; box-sizing: border-box; border-radius: 10px; margin: 35px 0 10px 0;
+}
+#centraY{
+  display: flex; justify-content: center;
+}
+#heleo{
     display: inline-block; width: fit-content;
 }#filtro{
     display: inline-block; width: fit-content;
 }#containerChat{
-    flex-grow: 1; display: flex; flex-direction: column;
+    flex-grow: 1; display: flex; flex-direction: column; padding:  0 15vw;
 }#mesasge{
     flex-grow: 70; height: 0; box-sizing: border-box;
 }#scroll{
     display: flex; flex-direction: column;
     height: 100%; box-sizing: border-box; overflow-y: auto;
-}.messages{
-    border-radius: 15px; padding: 18px;
+
+}
+::-webkit-scrollbar {
+  width: 11px;
+
+}
+
+::-webkit-scrollbar-track {
+  background-color: #eef;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgb(67, 54, 92);
+
+}
+.messages{
+    border-radius: 10px; padding: 18px;
     min-width: 400px; max-width: 25%; height: fit-content; margin: 15px;
 }.you{
-    align-self: flex-end; 
+    align-self: flex-end;
     background: #658;
 }.other{
     background: #eef;
@@ -32,19 +57,63 @@
 }.messages h6 b{ color: #fff; margin-left: 10px; }
 #opcionesChat{
     display: flex; flex-flow: row wrap; align-items: center;
-    flex-grow: 1; padding: 25px; width: 100%; box-sizing: border-box;
+    flex-grow: 1; padding: 15px; width: 100%; box-sizing: border-box;
 }#opcionesChat input{
-    flex-grow: 100; height: 100%; border-radius: 12px; border: none; 
-    background: #eef; outline: none;
+    flex-grow: 100; height: 60px; border-radius: 8px; border: none;
+    background: #eef; outline: none; padding-left: 10px;
 }#opcionesChat div{
-    flex-grow: 10; height: 100%; display: flex; justify-content: center; align-items: center;
-}#opcionesChat div button{
-    width: 80px; height: 40px; border: none; border-radius: 12px;
-}#opcionesChat div button:hover{
-    cursor: pointer;
+    flex-grow: 5; height: 100%; display: flex; justify-content: end; align-items: center;
 }
+/* Efectos de botón */
+#btnEnviar {
+  cursor: pointer;
+  --color: #12f59f;
+  font-family: inherit;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  z-index: 1;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: var(--color);
+  letter-spacing: 1.3px;
+}
+
+#btnEnviar:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: white;
+  height: 100px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+#btnEnviar:before {
+  top: 100%;
+  left: 100%;
+  transition: all .7s;
+}
+
+#btnEnviar:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+#btnEnviar:active:before {
+  background: #aab7e8;
+  transition: background 0s;
+}
+
 /* filtro ––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
-.positionFiltrar:nth-child(1){
+.positionFiltrar{
+ height: fit-content;
     display: flex; flex-flow: column wrap; justify-content: center;
     flex-grow: 15; padding: 0 20px; box-sizing: border-box; width: 300px;
 }.containerChekBox{
@@ -53,7 +122,8 @@
 }.componet-print{
     display: flex; flex-flow: row wrap; justify-content: center; align-items: center;
 }.inputFilter{
-    width: fit-content; height: fit-content; background: none; border: none; 
+
+    width: fit-content; height: fit-content; background: none; border: none;
     padding: 0; margin: 0; font-size: 22px; margin-right: 20px;
     border-style: none; outline: none; color: #fff; font-weight: bold;
 }
@@ -71,22 +141,22 @@
 }
 /* newCategory ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 #abajo{
-    display: flex; flex-direction: column;
+    display: flex; flex-direction: column; align-items: center;
 }#pregunta{
     position: absolute; width: 100%; height: 100vh; background: rgba(238, 238, 255, 0.487);
-    display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     z-index: 999999999999999999; order: 0; transition: background 5s;
 }#pregunta div{
     padding: 20px 0;
 }#pregunta div input{
-    height: 45px; background: #12f59f; border: none; width: 50rem; 
+    height: 45px; background: #12f59f; border: none; width: 50rem;
     color: #000; font-weight: bold; border-radius: 8px; text-align: center;
     outline: none;
 }#pregunta div button:nth-child(1){
-    width: 80px; height: 40px; border: none; border-radius: 6px; 
+    width: 80px; height: 40px; border: none; border-radius: 6px;
     background: #12a5ef;
 }#pregunta div button:nth-child(2){
-    width: 80px; height: 40px; border: none; border-radius: 6px; 
+    width: 80px; height: 40px; border: none; border-radius: 6px;
     margin-left: 20px;
 }#pregunta div button:hover{
     cursor: pointer; transform: scale(1.2);

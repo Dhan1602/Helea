@@ -93,6 +93,12 @@ export class PublicacionesService {
   newCategory(id:any, cuerpo:any){
     return this.http.post(this.URL_API+"/newCategory/" + id, cuerpo);
   }
+  eliminarMensaje(id:any, categoria:any, nuevoArray:any){
+    return this.http.post(this.URL_API+"/eliminarMensaje/" + id, { categoria, nuevoArray });
+  }
+  eliminarCategoria(id:any, nuevoArray:any){
+    return this.http.post(this.URL_API+"/eliminarCategoria/" + id, { nuevoArray });
+  }
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
   savePublication(id: any, publicacion:any){

@@ -88,6 +88,32 @@ app.post("/newCategory/:id", async (req,res)=>{
     await chat.save();
     res.send( {response: "Creada con exito"} );
 });
+app.post("/eliminarMensaje/:id", async (req,res)=>{
+    let chat = await chatMessages_model.findById(req.params.id);
+    op:{
+        for(let m of chat.categorysChats){
+            if(m.category == req.body.categoria){
+                m.messages = req.body.nuevoArray;
+                break op;
+            }
+        }
+    }
+    await chat.save();
+    res.send( {response: "mensaje eliminado"} );
+});
+app.post("/eliminarCategoria/:id", async (req,res)=>{
+    let chat = await chatMessages_model.findById(req.params.id);
+    if(!req.body.nuevoArray){
+        chat.categorysChats[0] = {
+            category: "General",
+            messages: []
+        }
+    }else{
+        chat.categorysChats = req.body.nuevoArray;
+    }
+    await chat.save();
+    res.send( {response: "categoria eliminada"} );
+});
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.post("/perfil", async (req, res) => {
@@ -154,6 +180,7 @@ app.get("/savedPosts/:id", async (req, res) => {
         let publicacion = await publicaciones.findById(content.likes[i]).sort({_id: -1});
         saved.push(publicacion);
     }
+    console.log(saved)
     res.send(saved);
 });
 

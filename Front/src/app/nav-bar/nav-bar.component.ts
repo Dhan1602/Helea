@@ -49,7 +49,10 @@ export class NavBarComponent implements OnInit {
   }
 
   goProfile(){
-    this.linkPerfil.rect(this.perfile._id)
+    this.linkPerfil.rect(this.perfile._id);
+  }
+  goChat(){
+    this.linkPerfil.chat(this.perfile._id);
   }
 
   createRedirect() {

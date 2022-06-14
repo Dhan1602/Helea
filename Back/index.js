@@ -194,10 +194,9 @@ app.get("/savedPosts/:id", async (req, res) => {
     let content = await perfil_model.findById(req.params.id);
     let saved = []
     for(let i = 0; i<content.likes.length; i++){
-        let publicacion = await publicaciones.findById(content.likes[i]).sort({_id: -1});
+        let publicacion = await publicaciones.findById(content.likes[i]).sort({titulo: 1});
         saved.push(publicacion);
     }
-    console.log(saved)
     res.send(saved);
 });
 
@@ -212,8 +211,14 @@ app.get("/posts/categories", async (req, res) => {
 });
 
 app.get("/searchName/:name", async (req, res) => {
-    let content = await publicaciones.find({ titulo: { $regex: req.params.name, $options: "i" } }).sort({ name: 1 });
-    res.send(content);
+    let title = await publicaciones.find({ titulo: { $regex: req.params.name, $options: "i" } }).sort({ titulo: 1 });
+    let content = await publicaciones.find({ descripcion: { $regex: req.params.name, $options: "i" } }).sort({ descripcion: 1 });
+    let response = {
+        titulo: title,
+        contenido: content,
+        busqueda: req.params.name
+    }
+    res.send(response);
 });
 
 app.get("/searchCategory/:name", async (req, res) => {

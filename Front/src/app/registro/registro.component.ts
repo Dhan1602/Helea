@@ -20,9 +20,11 @@ export class RegistroComponent implements OnInit {
     email: "",
     contrasena: ""
   }
+  error:any = {
+    es: false,
+    message: ""
+  }
   comfirContrasena: any = "";
-  camposRellenos: boolean = true;
-  contrasenaIgual: boolean = true;
   urlMod = this.rutaMod.snapshot.params["id"];
   titulo = "Registro";
 
@@ -36,45 +38,51 @@ export class RegistroComponent implements OnInit {
 
   sendPerfil(form: NgForm) {
     if (this.perfil.contrasena.trim() != this.comfirContrasena.trim()) {
-      this.contrasenaIgual = false;
-    }else {
-      this.contrasenaIgual = true;
-    }
-    if (this.perfil.userName.trim() == "" || this.perfil.email?.trim() == "" || 
+      this.error.es = true;
+      this.error.message = "Las contraseñas no coinciden";
+    
+    }else if (this.perfil.userName.trim() == "" || this.perfil.email?.trim() == "" || 
     this.perfil.contrasena?.trim() == "" || this.perfil.userDescripcion?.trim() == "") {
-      this.camposRellenos = false;
+      this.error.es = true;
+      this.error.message = "Por favor rellene los campos obligatorios";
     } else {
-      this.contrasenaIgual = true;
+      this.error.es = false; this.error.message = "";
+
       if (this.perfil.urlImage?.trim() == null || this.perfil.urlImage?.trim() == "") {
         form.value.urlImage = "https://i.imgur.com/KC1KPDW.png";
       };
       this.servidor.createPerfil(form.value).subscribe({
         next: (r: any) => {
-          alert(r.response);
-          this.servidor.createChat(r.perfilCreado._id).subscribe({
-            next: (r2: any) => {
-              console.log(r2.response);
-            },
-            error: (e2: any) => {
-              console.log(e2);
+          if(r.error){
+            this.error.es = true;
+            this.error.message = r.response;
+          }else{
+            alert(r.response);
+            this.servidor.createChat(r.perfilCreado._id).subscribe({
+              next: (r2: any) => {
+                console.log(r2.response);
+              },
+              error: (e2: any) => {
+                console.log(e2);
+              }
+            });
+  
+            let logeo = {
+              _id: r.perfilCreado._id,
+              _ip: this.servidor.getIPreferences(false),
+              userName: r.perfilCreado.userName
             }
-          });
-
-          let logeo = {
-            _id: r.perfilCreado._id,
-            _ip: this.servidor.getIPreferences(false),
-            userName: r.perfilCreado.userName
+            this.servidor.logear(logeo).subscribe({
+              next: (r2: any) => {
+                if (r2) console.log("se ha logueado con exito");
+  
+                this.router.navigate(['feed']);
+              },
+              error: (e2: any) => {
+                console.log(e2);
+              }
+            });
           }
-          this.servidor.logear(logeo).subscribe({
-            next: (r2: any) => {
-              if (r2) console.log("se ha logueado con exito");
-
-              this.router.navigate(['feed']);
-            },
-            error: (e2: any) => {
-              console.log(e2);
-            }
-          });
         },
         error: (e: any) => {
           console.log(e);
@@ -83,7 +91,7 @@ export class RegistroComponent implements OnInit {
     }
   };
   isTyping(){
-    this.camposRellenos = true;
+    this.error.es = false;
   }
 
   modificarPerfil() {
@@ -104,11 +112,13 @@ export class RegistroComponent implements OnInit {
 
   actualizarPerfil(formulario: NgForm) {
     if (this.perfil.userName.trim() == "" || this.perfil.email?.trim() == "" || this.perfil.contrasena?.trim() == "") {
-      this.camposRellenos = false;
+      this.error.es = true;
+      this.error.message = "Por favor rellene los campos obligatorios";
     } else if (this.perfil.contrasena.trim() != this.comfirContrasena.trim()) {
-      this.contrasenaIgual = false;
+      this.error.es = true;
+      this.error.message = "Las contraseñas no coinciden";
     } else {
-      this.contrasenaIgual = true;
+      this.error.es = false;
       if (this.perfil.urlImage?.trim() == null || this.perfil.urlImage?.trim() == "") {
         formulario.value.urlImage = "https://i.imgur.com/KC1KPDW.png";
       };

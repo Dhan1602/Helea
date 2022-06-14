@@ -117,12 +117,29 @@ app.post("/eliminarCategoria/:id", async (req,res)=>{
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.post("/perfil", async (req, res) => {
-    let newPerfil = new perfil_model(req.body);
-    await newPerfil.save();
-    res.send({
-        response: "Se ha registrado exitosamente",
-        perfilCreado: newPerfil
+    let p = req.body;
+    let existe = await perfil_model.find({
+        $or:[
+            {userName: p.userName},
+            {$and:[
+                {email: p.email},
+                {contrasena: p.contrasena }
+            ]}
+        ]
     });
+    if(existe.length > 0){
+        res.send({
+            error: true,
+            response: "Este perfil ya existe, intente cambiar la contrasena o nombre de usuario"
+        });
+    }else{
+        let newPerfil = new perfil_model(p);
+        await newPerfil.save();
+        res.send({
+            response: "Se ha registrado exitosamente",
+            perfilCreado: newPerfil
+        });
+    }
 });
 app.post("/perfil-singIng", async (req, res) => {
     let perfil = await perfil_model.find(req.body);

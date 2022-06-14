@@ -177,7 +177,7 @@ app.get("/savedPosts/:id", async (req, res) => {
     let content = await perfil_model.findById(req.params.id);
     let saved = []
     for(let i = 0; i<content.likes.length; i++){
-        let publicacion = await publicaciones.findById(content.likes[i]).sort({_id: -1});
+        let publicacion = await publicaciones.findById(content.likes[i]).sort({titulo: 1});
         saved.push(publicacion);
     }
     res.send(saved);

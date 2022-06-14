@@ -3,6 +3,7 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router"
 import { Rutasss } from '../logicaExterna/router';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Component({
   selector: 'app-feed',
@@ -18,11 +19,15 @@ export class FeedComponent implements OnInit {
 
   opcion = 0; //Filtro seleccionado
 
-  searchPlaceholder = "Ingresa un tema";
+  searchPlaceholder = "Busca un nombre o una palabra clave";
 
   searchValue = "";
 
   nameParam = this.route.snapshot.params["name"];
+
+  encontrados: Boolean = true
+
+  btnTxt = "Buscar";
 
   ngOnInit(): void {
     this.getContent();
@@ -75,26 +80,38 @@ export class FeedComponent implements OnInit {
     }
   }
 
-  red(param: any){
+  red(param: any) {
     this.direccionar.rect(param);
   }
 
   filtro(filtro: any) {
     if (filtro.value == "Mostrar todos") {
       this.opcion = 0;
-      this.searchPlaceholder = "Ingresa un tema";
+      this.searchPlaceholder = "Busca un nombre o una palabra clave";
       this.getContent();
+      this.encontrados = true;
+      this.btnTxt = "Buscar"
+      document.querySelector("#btnSearch")?.classList.remove("categOrAuth")
+      this.searchValue = ""
     } else if (filtro.value == "Categorías") {
       this.opcion = 1;
       this.peticiones.documentos = [];
-      this.searchPlaceholder = "Ingresa una categoría";
+      this.searchPlaceholder = "Busca una categoría";
       this.getCategory();
+      this.encontrados = true;
+      document.querySelector("#btnSearch")?.classList.add("categOrAuth")
+      this.btnTxt = "Buscar categoría"
+      this.searchValue = ""
     } else if (filtro.value == "Autores") {
       this.opcion = 2;
       this.peticiones.documentos = [];
       this.peticiones.doccategorias = [];
-      this.searchPlaceholder = "Ingresa un autor";
+      this.searchPlaceholder = "Busca un autor";
       this.getProfile();
+      this.encontrados = true;
+      document.querySelector("#btnSearch")?.classList.add("categOrAuth")
+      this.btnTxt = "Buscar autor"
+      this.searchValue = ""
     }
   }
 
@@ -107,39 +124,57 @@ export class FeedComponent implements OnInit {
       if (search.value != "") {
         this.peticiones.searchOne(search.value).subscribe({
           next: (res) => {
-            this.peticiones.documentos = res;
-            this.searchValue = "";
+            if (res.length > 0) {
+              this.encontrados = true;
+              this.peticiones.documentos = res;
+              this.searchValue = "";
+            } else {
+              this.encontrados = false;
+            }
           },
           error: (err) => console.log(err),
 
         });
       } else {
         this.getContent();
+        this.encontrados = true;
       }
     } else if (this.opcion == 1) {
       if (search.value != "") {
         this.peticiones.searchTwo(search.value).subscribe({
           next: (res) => {
-            this.peticiones.doccategorias = res;
-            this.searchValue = "";
+            if (res.length > 0) {
+              this.encontrados = true;
+              this.peticiones.doccategorias = res;
+              this.searchValue = "";
+            } else {
+              this.encontrados = false;
+            }
           },
           error: (err) => console.log(err),
         });
       } else {
         this.getCategory();
+        this.encontrados = true;
       }
 
     } else if (this.opcion == 2) {
       if (search.value != "") {
         this.peticiones.searchThree(search.value).subscribe({
           next: (res) => {
-            this.peticiones.docPerfiles = res;
-            this.searchValue = "";
+            if (res.length > 0) {
+              this.encontrados = true;
+              this.peticiones.docPerfiles = res;
+              this.searchValue = "";
+            } else {
+              this.encontrados = false;
+            }
           },
           error: (err) => console.log(err),
         });
       } else {
         this.getProfile();
+        this.encontrados = true;
       }
     };
 

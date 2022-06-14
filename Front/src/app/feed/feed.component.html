@@ -4,7 +4,7 @@
         <div id="searchContent">
             <input id="barraBusqueda" #search type="text" (keypress)="enter($event, search)"
                 placeholder="{{searchPlaceholder}}" [(ngModel)]="searchValue">
-            <button (click)="buscar(search)" id="btnSearch">Buscar</button>
+            <button (click)="buscar(search)" id="btnSearch">{{btnTxt}}</button>
         </div>
 
         <div id="addAndFilter">
@@ -21,7 +21,8 @@
         <!-- Mostrar todo -->
 
         <section class="dataBaseCards" *ngIf="opcion == 0">
-            <div class="Content">
+            <h1 *ngIf="encontrados == false">No se han encontrado publicaciones relacionadas a la búsqueda</h1>
+            <div class="Content" *ngIf="encontrados == true">
                 <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
 
                     <div class="gridContent">
@@ -55,7 +56,8 @@
         <!-- Categoria -->
 
         <section class="dataBaseCards" *ngIf="opcion == 1">
-            <div class="Content">
+            <h1 *ngIf="encontrados == false">No se han encontrado categorías relacionadas a la busqueda</h1>
+            <div class="Content" *ngIf="encontrados == true">
                 <article class="card" *ngFor="let card of peticiones.doccategorias">
 
                     <div class="gridContent">
@@ -75,7 +77,8 @@
         <!-- Perfiles -->
 
         <section class="dataBaseCards" *ngIf="opcion == 2">
-            <div class="Content">
+            <h1 *ngIf="encontrados == false">No se han encontrado autores relacionados a la busqueda</h1>
+            <div class="Content" *ngIf="encontrados == true">
                 <article class="card" *ngFor="let card of peticiones.docPerfiles">
 
                     <div class="gridContent">

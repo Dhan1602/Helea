@@ -9,6 +9,6 @@ export class Rutasss{
 
     rect(param: any){
         this._router.navigate(["/feed"]);
-        setTimeout(()=>{this._router.navigate(["/category/"+param]);}, 200 )
+        setTimeout(()=>{this._router.navigate(["/category/"+param]);}, 300 )
     }
 }

@@ -6,7 +6,7 @@
 }
 
 #HeroTxt{
-  font-size: 4rem;
+  font-size:  5vw;
   font-weight: 800;
   color: #DEE3F5;
   margin-left: 8rem;
@@ -28,7 +28,7 @@
 #hero button{
     margin: 4px;
     border: none;
-    width: 15rem;
+    width: 15vw;
     height: 3.5rem;
     background-color: #5675E5;
     font-size: medium;
@@ -98,14 +98,15 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+
 }
 #destacados h2{
-   
+
     margin: 0;
     font-size: 4rem;
   font-weight: 800;
   color: #DEE3F5;
-  
+
 }
 #grupoDestacados{
     display: grid;
@@ -156,14 +157,14 @@ transform: skew(-18deg, 0deg);
    object-fit:cover;
     border-radius: 5px;
     border: 3px #5675E5 solid;
-    
+
 }
 .cards label{
     font-size: 12px;
     margin: 15px;
 }
 .cards h4{
-    
+
     margin: 10px 0px;
 }
 #starSpan{
@@ -183,7 +184,7 @@ transform: skew(-18deg, 0deg);
     width: 40%;
 }
 #close h2{
-    
+
     margin-bottom: 10rem;
     margin-right: 5rem;
     font-size: 3rem;
@@ -206,4 +207,11 @@ transform: skew(-18deg, 0deg);
 .cards ::ng-deep label.star:checked, ::ng-deep label.star:before{
     text-shadow: 0 0 10px #b00f99 !important;
     color: #b00f99 !important;
+}
+
+@media (min-width: 1400px) {
+  #hero img{
+
+    height: 60vh;
+}
 }

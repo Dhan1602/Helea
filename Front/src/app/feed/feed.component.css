@@ -165,6 +165,7 @@ input::placeholder {
     width: 100%;
     opacity: 0;
     top: 0;
+
 }
 
 .card__img--hover {
@@ -187,6 +188,7 @@ input::placeholder {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
     padding: 16px 24px 24px 24px;
+    cursor: pointer;
 }
 
 .card__category {

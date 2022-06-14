@@ -8,7 +8,9 @@ export class perfilRutas{
     constructor(private _router:Router){}
 
     rect(param: any){
-        this._router.navigate(["/feed"]);
-        setTimeout(()=>{this._router.navigate(["/perfil/"+param]);}, 200 )
+        this._router.navigate(["/perfil/"+param]);
+    }
+    chat(param: any){
+        this._router.navigate(["/chat/"+param]);
     }
 }

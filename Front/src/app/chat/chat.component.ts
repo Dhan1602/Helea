@@ -12,6 +12,7 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 export class ChatComponent implements OnInit {
     perfil: perfiles = {
       userName: "",
+      userDescripcion: "",
       email: "",
       contrasena: ""
     }
@@ -31,18 +32,21 @@ export class ChatComponent implements OnInit {
     }
     userActual: perfiles = {
       userName: "",
+      userDescripcion: "",
       email: "",
       contrasena: ""
     }
     status: any = 0;
-    categorias: any = [];
+    viewFecha: String = "facha is here";
     categorySelect: String = "";
     messagesCargar:any = [];
     messageToSend: any = "";
     heleo = this.route.snapshot.params["heleo"];
 
     stringCategory: any = "";
+    quitarFecha:any = undefined;
     viewPregunta: boolean = false;
+    verFecha: boolean = false;
 
   constructor(private route: ActivatedRoute, private servidor: PublicacionesService) { }
   
@@ -71,22 +75,47 @@ export class ChatComponent implements OnInit {
       abrioLista = false;
         document.querySelectorAll(".containerChekBox-absulute").forEach(ele => {
           ele.addEventListener("click",e=>{
-              if(!abrioLista){
-                  abrioLista = true;
-                  document.querySelectorAll(".componets1").forEach(con => {
-                      con.style.display = "block";
-                  });
-              }else{
-                  abrioLista = false;
-                  document.querySelectorAll(".componets1").forEach(con => {
-                      con.style.display = "none";
-                  });
-              }
+            if(!abrioLista){
+              abrioLista = true;
+              document.querySelectorAll(".componets1").forEach(con => {
+                  con.style.display = "flex";
+              });
+            }else{
+              abrioLista = false;
+              document.querySelectorAll(".componets1").forEach(con => {
+                  con.style.display = "none";
+              });
+            }
           });
-      });
+        });
+      function scrollDown(){
+        let sc = document.querySelector("#scroll");
+        sc.scrollTop = sc.scrollHeight + 100010001000;
+      }
     `;
+    let sc:any = document.querySelector("#scroll");
+    sc.addEventListener("scroll", (e:any)=>{
+      this.cargarFecha(sc);
+    });
     aja.appendChild(script);
     setTimeout(()=> this.newMesaasges(),1000);
+  }
+  cargarFecha(sc:any){
+    let topTotal = sc.scrollTop + sc.offsetTop;
+    let allMensajes:any = document.querySelectorAll(".messages");
+    allMensajes.forEach((m:any, i:any)=>{
+      let topMensaje = m.offsetTop;
+      if(topMensaje < topTotal){
+        this.verFecha = true;
+        this.viewFecha = this.messagesCargar[i].fecha.fullDate;
+      }
+    });
+    if(!this.quitarFecha){
+      this.quitarFecha = setTimeout(()=>{ 
+        this.verFecha = false;
+        this.quitarFecha = undefined;
+      }, 2500);
+    }
   }
   cargarHeleo(cat:any){
     this.servidor.cargarChat(this.heleo).subscribe({
@@ -104,9 +133,15 @@ export class ChatComponent implements OnInit {
             }
           }
         }else{
-          this.messagesCargar = r.chat.categorysChats[0].messages;
-          this.categorySelect = r.chat.categorysChats[0].category;
+          if(r.chat.categorysChats[0]){
+            this.messagesCargar = r.chat.categorysChats[0].messages;
+            this.categorySelect = r.chat.categorysChats[0].category;
+          }
         }
+        setTimeout(()=>{
+          let w:any = window;
+          w.scrollDown();
+        },500);
       },
       error: (e:any)=>{
         console.log(e);
@@ -115,27 +150,34 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(){
-    let fecha = new Date();
-    let send = {
-      category: this.categorySelect,
-      message: {
-        userName: this.userActual.userName,
-        message: this.messageToSend,
-        fecha: {
-            fullDate: fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear(),
-            hora: fecha.getHours()+":"+fecha.getMinutes()
+    this.messageToSend = this.messageToSend.trim();
+    if(this.messageToSend != ""){
+      let fecha = new Date();
+      let send = {
+        category: this.categorySelect,
+        message: {
+          userName: this.userActual.userName,
+          message: this.messageToSend,
+          fecha: {
+              fullDate: fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear(),
+              hora: fecha.getHours()+":"+fecha.getMinutes()
+          }
         }
       }
+      this.servidor.saveMessage(this.chat._id, send).subscribe({
+        next: (r:any)=>{
+          this.cargarHeleo(this.categorySelect);
+          setTimeout(()=>{
+            let w:any = window;
+            w.scrollDown();
+          },500);
+        },
+        error: (e:any)=>{
+          console.log(e);
+        }
+      });
+      this.messageToSend = "";
     }
-    this.servidor.saveMessage(this.chat._id, send).subscribe({
-      next: (r:any)=>{
-        this.cargarHeleo(this.categorySelect);
-      },
-      error: (e:any)=>{
-        console.log(e);
-      }
-    });
-    this.messageToSend = "";
   }
   newMesaasges(){
     setInterval(()=> {
@@ -179,13 +221,67 @@ export class ChatComponent implements OnInit {
   }
 
   cargarMensajeCategoria(cat:any){
-    this.categorySelect = cat.innerHTML.trim()+"";
+    this.categorySelect = cat.innerText.trim()+"";
     operacion: {
       for(let m of this.chat.categorysChats){
         if(m.category == this.categorySelect){
           this.messagesCargar = m.messages;
           break operacion;
         }
+      }
+    }
+  }
+
+  eliminarMensaje(m:any){
+    let dele = confirm("¿Deseas eliminar el mensaje?");
+    if(dele){
+      let nuevoArray:any = [];
+      this.messagesCargar.forEach((men:any)=>{
+        if(m != men){
+          nuevoArray.push(men);
+        }
+      });
+      this.servidor.eliminarMensaje(this.chat._id, this.categorySelect, nuevoArray).subscribe({
+        next: (r:any)=>{
+          this.cargarHeleo(this.categorySelect);
+        },
+        error: (e:any)=>{
+          console.log(e);
+        }
+      });
+    }
+  }
+
+  eliminarCategoria(c:any){
+    if(c == this.chat.categorysChats[0]){
+      let eli = confirm("¿Desea vaciar el canal general?");
+      if(eli){
+        this.servidor.eliminarCategoria(this.chat._id, false).subscribe({
+          next: (r:any)=>{
+            this.cargarHeleo(false);
+          },
+          error: (e:any)=>{
+            console.log(e);
+          }
+        });
+      }
+    }else{
+      let eli = confirm("¿Desea eliminar el canal "+c.category+"?");
+      if(eli){
+        let nuevoArray:any = [];
+        this.chat.categorysChats.forEach((men:any)=>{
+          if(c != men){
+            nuevoArray.push(men);
+          }
+        });
+        this.servidor.eliminarCategoria(this.chat._id, nuevoArray).subscribe({
+          next: (r:any)=>{
+            this.cargarHeleo(false);
+          },
+          error: (e:any)=>{
+            console.log(e);
+          }
+        });
       }
     }
   }

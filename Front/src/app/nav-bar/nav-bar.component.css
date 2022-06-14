@@ -31,12 +31,12 @@ label {
 }
 
 /* Efectos de botón */
-#butCreate {
+#butCreate, .no-iniciado {
   cursor: pointer;
   --color: #5675E5;
   font-family: inherit;
   display: inline-block;
-  width: 5em;
+  width: fit-content;
   height: 2em;
   margin: 20px;
   position: relative;
@@ -51,7 +51,7 @@ label {
   background-color: var(--color);
 }
 
-#butCreate:before {
+#butCreate:before, .nono-iniciado:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -61,22 +61,22 @@ label {
   border-radius: 50%;
 }
 
-#butCreate:hover {
+#butCreate:hover, .nono-iniciado:hover {
   color: var(--color);
 }
 
-#butCreate:before {
+#butCreate:before, .nono-iniciado:before {
   top: 100%;
   left: 100%;
   transition: all .7s;
 }
 
-#butCreate:hover:before {
+#butCreate:hover:before, .nono-iniciado:hover:before {
   top: -30px;
   left: -30px;
 }
 
-#butCreate:active:before {
+#butCreate:active:before, .nono-iniciado:active:before {
   background: #aab7e8;
   transition: background 0s;
 }
@@ -125,7 +125,7 @@ label {
   width: fit-content;
   height: fit-content;
   padding: 0;
-  z-index: 100000;
+  z-index: 99999999999999999999999999999999999999999999999999999;
   backdrop-filter: blur(10px);
   
 }
@@ -150,7 +150,7 @@ label {
   font-family: inherit;
   display: inline-block;
   height: 2em;
-  padding: 0 8px;
+  padding: 0 8px; margin-left: 5px;
   border: 2px solid var(--color);
   transition: color .5s;
   font-size: 13px;

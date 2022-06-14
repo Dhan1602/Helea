@@ -21,7 +21,6 @@
         <!-- Mostrar todo -->
 
         <section class="dataBaseCards" *ngIf="opcion == 0">
-            <h1 *ngIf="encontrados == false">No se han encontrado publicaciones relacionadas a la búsqueda</h1>
             <div class="Content" *ngIf="encontrados == true">
                 <article class="card" *ngFor="let card of peticiones.documentos; let i = index">
 
@@ -91,6 +90,73 @@
                         </a>
                         <div class="card__info">
                             <h3 class="card__title">{{card.userName}}</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Busqueda -->
+
+        <section class="dataBaseCards" *ngIf="opcion == 3">
+            <h1 *ngIf="encontrados == true">Titulos encontrados por: {{busquedaResponse.busqueda}} ({{busquedaResponse.cantidadT}})</h1>
+            <h1 *ngIf="encontrados == false">No se han encontrado publicaciones relacionadas a la búsqueda</h1>
+            <div class="Content" *ngIf="encontrados == true">
+                <article class="card" *ngFor="let card of peticiones.documentos let i = index">
+
+                    <div class="gridContent">
+
+                        <div class="card__info-hover">
+                            <div class="card__clock-info">
+                                <span class="card__time">{{card.fecha}}</span>
+                            </div>
+                        </div>
+
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/verMas/{{card._id}}">
+                            <div style="background: url({{card.background}});      background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat; " class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
+                            <h3 class="card__title" title="{{card.titulo}}">{{card.tituloC}}</h3>
+                            <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true">
+                            </ngx-star-rating>
+                            <span class="card__by">por <a routerLink="/perfil/{{card.autorId}}" class="card__author"
+                                    title="Autor">{{card.autor}}</a></span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+            <h1 *ngIf="encontrados == true">Publicaciones que contienen: {{busquedaResponse.busqueda}} ({{busquedaResponse.cantidadC}})</h1>
+            <div class="Content" *ngIf="encontrados == true">
+                <article class="card" *ngFor="let card of peticiones.docContent let i = index">
+
+                    <div class="gridContent">
+
+                        <div class="card__info-hover">
+                            <div class="card__clock-info">
+                                <span class="card__time">{{card.fecha}}</span>
+                            </div>
+                        </div>
+
+                        <div style="background: url({{card.background}}); background-size: cover; background-position: center; background-repeat: no-repeat; "
+                            class="card__img"></div>
+                        <a routerLink="/verMas/{{card._id}}">
+                            <div style="background: url({{card.background}});      background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat; " class="card__img--hover"></div>
+                        </a>
+                        <div class="card__info">
+                            <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
+                            <h3 class="card__title" title="{{card.titulo}}">{{card.tituloC}}</h3>
+                            <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true">
+                            </ngx-star-rating>
+                            <span class="card__by">por <a routerLink="/perfil/{{card.autorId}}" class="card__author"
+                                    title="Autor">{{card.autor}}</a></span>
                         </div>
                     </div>
                 </article>

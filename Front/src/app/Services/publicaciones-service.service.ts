@@ -11,6 +11,7 @@ export class PublicacionesService {
   URL_API = "http://localhost:3000";
   docPerfiles: perfiles[] = [];
   documentos: post_model[] = [];
+  docContent: post_model[] = [];
   doccategorias: categoria_model[] = [];
 
   data: post_model = {

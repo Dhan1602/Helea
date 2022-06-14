@@ -3,7 +3,6 @@ import { PublicacionesService } from '../Services/publicaciones-service.service'
 import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router"
 import { Rutasss } from '../logicaExterna/router';
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 
 @Component({
   selector: 'app-feed',
@@ -28,6 +27,12 @@ export class FeedComponent implements OnInit {
   encontrados: Boolean = true
 
   btnTxt = "Buscar";
+
+  busquedaResponse = {
+    cantidadT: 0,
+    cantidadC: 0,
+    busqueda: ""
+  }
 
   ngOnInit(): void {
     this.getContent();
@@ -120,22 +125,23 @@ export class FeedComponent implements OnInit {
   }
 
   buscar(search: any) {
-    if (this.opcion == 0) {
+    if (this.opcion == 0 || this.opcion == 3 ) {
       if (search.value != "") {
         this.peticiones.searchOne(search.value).subscribe({
-          next: (res) => {
-            if (res.length > 0) {
+          next: (res: any) => {
+              this.opcion = 3;
               this.encontrados = true;
-              this.peticiones.documentos = res;
+              this.peticiones.documentos = res.titulo;
+              this.peticiones.docContent = res.contenido;
+              this.busquedaResponse.cantidadT = res.titulo.length;
+              this.busquedaResponse.cantidadC = res.contenido.length;
+              this.busquedaResponse.busqueda = res.busqueda;
               this.searchValue = "";
-            } else {
-              this.encontrados = false;
-            }
           },
           error: (err) => console.log(err),
-
         });
       } else {
+        this.opcion = 0;
         this.getContent();
         this.encontrados = true;
       }

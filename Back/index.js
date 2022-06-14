@@ -168,8 +168,14 @@ app.get("/posts/categories", async (req, res) => {
 });
 
 app.get("/searchName/:name", async (req, res) => {
-    let content = await publicaciones.find({ titulo: { $regex: req.params.name, $options: "i" } }).sort({ name: 1 });
-    res.send(content);
+    let title = await publicaciones.find({ titulo: { $regex: req.params.name, $options: "i" } }).sort({ titulo: 1 });
+    let content = await publicaciones.find({ descripcion: { $regex: req.params.name, $options: "i" } }).sort({ descripcion: 1 });
+    let response = {
+        titulo: title,
+        contenido: content,
+        busqueda: req.params.name
+    }
+    res.send(response);
 });
 
 app.get("/searchCategory/:name", async (req, res) => {

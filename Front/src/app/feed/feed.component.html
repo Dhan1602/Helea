@@ -39,7 +39,7 @@
                             background-position: center;
                             background-repeat: no-repeat; " class="card__img--hover"></div>
                         </a>
-                        <div class="card__info">
+                        <div class="card__info" routerLink="/verMas/{{card._id}}">
                             <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
                             <h3 class="card__title">{{card.titulo}}</h3>
                             <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}" [disabled]="true">

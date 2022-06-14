@@ -135,7 +135,7 @@ export class FeedComponent implements OnInit {
               this.peticiones.docContent = res.contenido;
               this.busquedaResponse.cantidadT = res.titulo.length;
               this.busquedaResponse.cantidadC = res.contenido.length;
-              this.busquedaResponse.busqueda = res.busqueda;
+              this.busquedaResponse.busqueda = (res.busqueda.substring(0, 1).toUpperCase())+(res.busqueda.substring(1));
               this.searchValue = "";
           },
           error: (err) => console.log(err),

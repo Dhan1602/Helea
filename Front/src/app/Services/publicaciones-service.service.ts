@@ -32,6 +32,16 @@ export class PublicacionesService {
 
   constructor(private http: HttpClient) {}
 
+  // comentarios –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+  getComentarios(idpublic: any){
+    return this.http.get(this.URL_API+"/comentarios/" + idpublic);
+  }
+  newComentario(cuerpo:any){
+    return this.http.post(this.URL_API+"/comentario", cuerpo);
+  }
+  eliminarComentario(id: any){
+    return this.http.get(this.URL_API+"/comentario/" + id);
+  }
   // logeo ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
   logear(logeo:any){
     return this.http.post(this.URL_API+"/logear", logeo);

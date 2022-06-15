@@ -17,6 +17,7 @@ const publicaciones = require("./models/publicaciones");
 const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
+const comentarios_model = require("./models/comentarios");
 
 
 const usuariosLogeados = require("./usuariosLogeados/logeados");
@@ -25,6 +26,20 @@ const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar clie
 const men = require("./usuariosLogeados/mensajes");
 const mensajes = new men.men(); // uso exclusivo para verificar mensajes nuevos
 
+// comentarios de los post ––––––––––––––––––––––––––––––––––––––––––––––––––
+app.get("/comentarios/:idPublic", async (req, res) => {
+    let mes = await comentarios_model.find({ idPublicacion: req.params.idPublic });
+    res.send( mes );
+});
+app.post("/comentario", async (req, res) => {
+    let newMensaje = new comentarios_model(req.body);
+    await newMensaje.save();
+    res.send({ response: "mensaje guardado" });
+});
+app.get("/comentario/:idPublic", async (req, res) => {
+    await comentarios_model.findByIdAndRemove(req.params.idPublic);
+    res.send({ response: "mensaje eliminado" });
+});
 // verificar cliente - logeo ––––––––––––––––––––––––––––––––––––––––––––––––
 app.get("/saveIPreferences/:ip", (req, res) => {
     res.send(loger.saveIPreferences(req.params.ip));
@@ -162,8 +177,8 @@ app.get("/perfiles/:id", async (req, res) => {
 app.get("/perfiles2", async (req, res) => {
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
-    let perfiles = await chatMessages_model.find();
-    res.send(perfiles);
+    // let perfiles = await comentarios_model.remove();
+    // res.send(perfiles);
 });
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 

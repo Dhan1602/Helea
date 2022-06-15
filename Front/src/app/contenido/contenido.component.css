@@ -149,3 +149,89 @@
 }#loginErr a{
     color: #b00f99;
 }
+/* comentarios ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.comentarios{
+    background: rgba(255, 255, 255, 0.395); display: flex; border-radius: 12px; 
+    align-items: center; margin-top: 15px;
+}.foto{
+    width: fit-content; height: fit-content; border-radius: 50%;
+}.foto img{
+    height: 2em;
+    width: 2em;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px white solid;
+    margin: 0 15px;
+    padding: 0;
+}.contenidoComent{
+    flex-grow: 1; display: flex; flex-direction: column;
+}.contenidoComent h6{
+    display: flex; align-items: center; color: #000;
+    padding: 5px 12px; margin: 5px 0;
+}.contenidoComent h6:nth-child(1){
+    font-size: 24px; font-weight: 700; display: flex;
+}.t1, .t2{
+    flex-grow: 1; 
+}.t2{
+    text-align: right;
+}.t2 span{
+    background: #000; color: #fff; font-size: 10px; padding: 5px;
+    border-radius: 25% 18% 16% 13% / 27% 28% 20% 25%;
+}.t2 span:hover{
+    cursor: pointer;
+}.contenidoComent h6:nth-child(2){
+    padding-left: 16px; height: fit-content; box-sizing: border-box; font-size: 16;
+}.contenidoComent h6:nth-child(3){
+    font-size: 14; font-weight: 700; justify-content: end;
+}#enviar{
+    display: flex; justify-content: space-between; margin-top: 25px; align-items: center;
+}#enviar input{
+    width: 85%; background: #eef; outline: none; padding-left: 10px;
+    height: 60px; border: none; border-radius: 8px;
+}
+/* Efectos de botón */
+#enviar button {
+cursor: pointer;
+--color: #12f59f;
+font-family: inherit;
+display: inline-block;
+width: 80px;
+height: 40px;
+margin: 20px;
+position: relative;
+overflow: hidden;
+border: 2px solid var(--color);
+transition: color .5s;
+z-index: 1;
+font-size: 14px;
+border-radius: 5px;
+font-weight: 600;
+background-color: var(--color);
+letter-spacing: 1.3px;
+}
+
+#enviar button:before {
+content: "";
+position: absolute;
+z-index: -1;
+background: white;
+height: 100px;
+width: 200px;
+border-radius: 50%;
+}
+
+#enviar button:before {
+top: 100%;
+left: 100%;
+transition: all .7s;
+}
+
+#enviar button:hover:before {
+top: -30px;
+left: -30px;
+}
+
+#enviar button:active:before {
+background: #aab7e8;
+transition: background 0s;
+}

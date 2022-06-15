@@ -17,7 +17,7 @@ const publicaciones = require("./models/publicaciones");
 const categorias = require("./models/categories");
 const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
-
+const comentarios_model = require("./models/comentarios");
 
 const usuariosLogeados = require("./usuariosLogeados/logeados");
 const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar cliente - logeo
@@ -25,6 +25,20 @@ const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar clie
 const men = require("./usuariosLogeados/mensajes");
 const mensajes = new men.men(); // uso exclusivo para verificar mensajes nuevos
 
+// comentarios de los post ––––––––––––––––––––––––––––––––––––––––––––––––––
+app.get("/comentarios/:idPublic", async (req, res) => {
+    let mes = await comentarios_model.find({ idPublicacion: req.params.idPublic });
+    res.send( mes );
+});
+app.post("/comentario", async (req, res) => {
+    let newMensaje = new comentarios_model(req.body);
+    await newMensaje.save();
+    res.send({ response: "mensaje guardado" });
+});
+app.get("/comentario/:idPublic", async (req, res) => {
+    await comentarios_model.findByIdAndRemove(req.params.idPublic);
+    res.send({ response: "mensaje eliminado" });
+});
 // verificar cliente - logeo ––––––––––––––––––––––––––––––––––––––––––––––––
 app.get("/saveIPreferences/:ip", (req, res) => {
     res.send(loger.saveIPreferences(req.params.ip));
@@ -117,12 +131,29 @@ app.post("/eliminarCategoria/:id", async (req,res)=>{
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // perfiles ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 app.post("/perfil", async (req, res) => {
-    let newPerfil = new perfil_model(req.body);
-    await newPerfil.save();
-    res.send({
-        response: "Se ha registrado exitosamente",
-        perfilCreado: newPerfil
+    let p = req.body;
+    let existe = await perfil_model.find({
+        $or:[
+            {userName: p.userName},
+            {$and:[
+                {email: p.email},
+                {contrasena: p.contrasena }
+            ]}
+        ]
     });
+    if(existe.length > 0){
+        res.send({
+            error: true,
+            response: "Este perfil ya existe, intente cambiar la contrasena o nombre de usuario"
+        });
+    }else{
+        let newPerfil = new perfil_model(p);
+        await newPerfil.save();
+        res.send({
+            response: "Se ha registrado exitosamente",
+            perfilCreado: newPerfil
+        });
+    }
 });
 app.post("/perfil-singIng", async (req, res) => {
     let perfil = await perfil_model.find(req.body);
@@ -145,19 +176,28 @@ app.get("/perfiles/:id", async (req, res) => {
 app.get("/perfiles2", async (req, res) => {
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
-    let perfiles = await chatMessages_model.find();
+    let perfiles = await publicaciones.find();
     res.send(perfiles);
 });
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 app.put("/rank/:ruta", async (req, res) => {
-    let calificacion = parseInt(req.body.calificacion)
-    let publicacion = await publicaciones.findById(req.params.ruta);
-    publicacion.calificacion.cantidad = (publicacion.calificacion.cantidad + 1);
-    publicacion.calificacion.total = publicacion.calificacion.total + calificacion
-    publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
-    await publicacion.save();
-    res.send({mensaje: "Todo okey"})
+    let califico = await publicaciones.find({ "calificacion.personCalifi": req.body.quien });
+    if(califico.length != 0){
+        res.send({
+            yasTa: true,
+            mensaje: "Ya has calificado esta publicación"
+        });
+    }else{
+        let calificacion = parseInt(req.body.calificacion)
+        let publicacion = await publicaciones.findById(req.params.ruta);
+        publicacion.calificacion.cantidad = (publicacion.calificacion.cantidad + 1);
+        publicacion.calificacion.total = publicacion.calificacion.total + calificacion;
+        publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
+        publicacion.calificacion.personCalifi.push(req.body.quien);
+        await publicacion.save();
+        res.send({mensaje: "Todo okey"})
+    }
 });
 
 app.put("/modificarPerfil/:id", async (req, res) => {

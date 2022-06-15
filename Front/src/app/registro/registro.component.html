@@ -7,12 +7,11 @@
                 <input name="userName" type="text" placeholder="Nombre de usuario" [(ngModel)]="perfil.userName">
                 <textarea name="userDescripcion" placeholder="Meta o enfoque" [(ngModel)]="perfil.userDescripcion"></textarea>
                 <input name="urlImage" type="text" placeholder="Url-imagen (opcional)" [(ngModel)]="perfil.urlImage">
-                <input name="email" type="text" placeholder="Correo electrónico" [(ngModel)]="perfil.email">
+                <input name="email" type="email" placeholder="Correo electrónico" [(ngModel)]="perfil.email">
                 <input name="contrasena" type="password" placeholder="Contraseña" [(ngModel)]="perfil.contrasena">
-                <input *ngIf="contrasenaIgual" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
-                <input *ngIf="!contrasenaIgual" id="error" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
-                <label id="err" *ngIf="!camposRellenos"> Por favor rellene los campos obligatorios </label>
-                <label id="err" *ngIf="!contrasenaIgual"> Las contraseñas no coinciden </label>
+                <input *ngIf="error.message != 'Las contraseñas no coinciden'" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
+                <input *ngIf="error.message == 'Las contraseñas no coinciden'" id="error" name="segundaContrasena" type="password" placeholder="Confirmar contraseña" [(ngModel)]="comfirContrasena">
+                <label id="err" *ngIf="error.es"> {{error.message}} </label>
                 <button *ngIf="titulo == 'Registro' " type="submit">Enviar datos</button>
                 <button *ngIf="titulo == 'Modificar' " (click)="actualizarPerfil(formPerfil)"   type="button">Modificar datos</button>
                 <label *ngIf="titulo == 'Registro' ">¿Ya tienes una cuenta? <a routerLink="/inicio-sesion" style="color: #b00f99;">Inicia sesion aquí</a></label>

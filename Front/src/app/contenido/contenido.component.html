@@ -23,8 +23,12 @@
         <button class="calificar" *ngIf="!pCalificada" (click)="calificado()">Calificar</button>
         <button class="calificar" id="calificado" *ngIf="pCalificada">Listo!</button>
       </form>
-      <span *ngIf="login" id="loginErr">Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a
-          routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad</span>
+      <span *ngIf="errorCalificar.estado && errorCalificar.mensaje" id="loginErr">
+        {{errorCalificar.mensaje}}
+      </span>
+      <span *ngIf="errorCalificar.estado  && !errorCalificar.mensaje" id="loginErr">
+        Debes <a routerLink="/inicio-sesion">iniciar sesion</a> o <a routerLink="/registrarse">registrarte</a> para acceder a esta funcionalidad
+      </span>
     </div>
 
     <div id="user" class="children" (click)="goAuthor()">
@@ -39,9 +43,44 @@
 
     <div id="comments" class="children">
       <h2>Comentarios</h2>
+      <ng-container *ngFor="let c of comments">
+        <!-- es el dueno -->
+        <div class="comentarios"
+          *ngIf="userActual.userName == autorP.userName || userActual.userName == c.messages.userName">
+          <div class="foto">
+            <img src="{{c.messages.image}}" alt="not found">
+          </div>
+          <div class="contenidoComent">
+            <h6>
+              <label class="t1">{{c.messages.userName}}</label>
+              <label class="t2"><span (click)="eliminarComentario(c.messages)">X</span></label>
+            </h6>
+            <h6> {{c.messages.message}} </h6>
+            <h6> {{c.messages.fecha}} </h6>
+          </div>
+        </div>
+        <!-- no es el dueno -->
+        <div class="comentarios"
+          *ngIf="(userActual.userName != autorP.userName && userActual.userName != c.messages.userName) || !isLogeado">
+          <div class="foto">
+            <img src="{{c.messages.image}}" alt="not found">
+          </div>
+          <div class="contenidoComent">
+            <h6>
+              <label class="t1">{{c.messages.userName}}</label>
+            </h6>
+            <h6> {{c.messages.message}} </h6>
+            <h6> {{c.messages.fecha}} </h6>
+          </div>
+        </div>
+      </ng-container>
+      <!-- opciones de enviar -->
+      <form id="enviar" (submit)="sendMensaje()" *ngIf="isLogeado">
+        <input type="text" name="ms" placeholder="Mensaje" [(ngModel)]="messageSend">
+        <button type="submit">Enviar</button>
+      </form>
     </div>
 
   </div>
-
 
 </section>

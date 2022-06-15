@@ -8,7 +8,8 @@ const publicaciones = new Schema({
     calificacion: {
       cantidad:Number,
       total:Number,
-      promedio:Number
+      promedio:Number,
+      personCalifi: []
     },
     background: String,
     categoria: String,

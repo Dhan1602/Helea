@@ -16,7 +16,10 @@ export class ContenidoComponent implements OnInit {
   nameParam = this.route.snapshot.params["id"];
   temporizador = 0;
   estrellas = 0;
-  login = false
+  errorCalificar: any = {
+    mensaje: false,
+    estado: false
+  }
   urlImage: String = "";
   public form!: FormGroup;
   pCalificada = false;
@@ -24,10 +27,10 @@ export class ContenidoComponent implements OnInit {
   comments: Array<comentarios> = [{
     idPublicacion: "",
     messages: {
-        userName: "",
-        image: "",
-        message: "",
-        fecha: ""
+      userName: "",
+      image: "",
+      message: "",
+      fecha: ""
     }
   }]
   userActual: perfiles = {
@@ -59,20 +62,20 @@ export class ContenidoComponent implements OnInit {
 
     let ip = this.peticion.getIPreferences(false);
     this.peticion.verifyLogeo(ip).subscribe({
-      next: (r:any)=>{
-        if(r.estado){
+      next: (r: any) => {
+        if (r.estado) {
           this.isLogeado = r.estado;
           this.peticion.getProfileById(r.userID).subscribe({
-            next: (r2:any)=>{
+            next: (r2: any) => {
               this.userActual = r2;
             },
-            error: (e2:any)=>{
+            error: (e2: any) => {
               console.log(e2);
             }
           });
         }
       },
-      error: (e:any)=>{
+      error: (e: any) => {
         console.log(e);
       }
     });
@@ -151,21 +154,26 @@ export class ContenidoComponent implements OnInit {
   }
 
   calificado() {
-
     let num = (this.form.controls["rating"].value).toString()
     let ip = this.peticion.getIPreferences(false);
     this.peticion.verifyLogeo(ip).subscribe({
       next: (r: any) => {
         if (r.estado) {
           if (this.form.controls["rating"].value > 0 || this.form.controls["rating"].value != 0) {
-            this.login = false
-            this.peticion.rank(this.nameParam, num).subscribe({
-              next: (res) => { this.pCalificada = true },
+            this.errorCalificar.estado = false;
+            this.peticion.rank(this.nameParam, num, this.userActual._id).subscribe({
+              next: (res:any) => {
+                if(res.yasTa){
+                  this.errorCalificar.estado = true;
+                  this.errorCalificar.mensaje = res.mensaje;
+                }else this.pCalificada = true;
+              },
               error: (err) => { console.log(err) }
             })
           }
         } else {
-          this.login = true
+          this.errorCalificar.estado = true;
+          this.errorCalificar.mensaje = false;
         }
       },
       error: (e: any) => {
@@ -174,51 +182,51 @@ export class ContenidoComponent implements OnInit {
     });
   }
 
-  getComentarios(){
+  getComentarios() {
     this.peticion.getComentarios(this.nameParam).subscribe({
-      next: (r:any)=>{
+      next: (r: any) => {
         this.comments = r;
       },
-      error: (e:any)=>{
+      error: (e: any) => {
         console.log(e);
       }
     });
   }
-  sendMensaje(){
+  sendMensaje() {
     let fecha = new Date();
     let cuerpo = {
       idPublicacion: this.nameParam,
       messages: {
-          userName: this.userActual.userName,
-          image: this.userActual.urlImage,
-          message: this.messageSend,
-          fecha: fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear()
+        userName: this.userActual.userName,
+        image: this.userActual.urlImage,
+        message: this.messageSend,
+        fecha: fecha.getDate() + "/" + (fecha.getMonth() + 1) + "/" + fecha.getFullYear()
       }
     }
     this.messageSend = "";
     this.peticion.newComentario(cuerpo).subscribe({
-      next: (r:any)=>{
+      next: (r: any) => {
         this.getComentarios();
       },
-      error: (e:any)=>{
+      error: (e: any) => {
         console.log(e);
       }
     });
   }
-  eliminarComentario(men:any){
+  eliminarComentario(men: any) {
     let pre = confirm("¿Deseas eliminar este mensaje?");
-    if(pre){
+    if (pre) {
       let id: any
-      op:{
-        for(let m of this.comments){
-          if(men == m.messages) id = m._id;
+      op: {
+        for (let m of this.comments) {
+          if (men == m.messages) id = m._id;
         }
       }
       this.peticion.eliminarComentario(id).subscribe({
-        next: (r:any)=>{
+        next: (r: any) => {
           this.getComentarios();
         },
-        error: (e:any)=>{
+        error: (e: any) => {
           console.log(e);
         }
       });

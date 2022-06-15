@@ -19,7 +19,6 @@ const perfil_model = require("./models/perfiles");
 const chatMessages_model = require("./models/chatMessages");
 const comentarios_model = require("./models/comentarios");
 
-
 const usuariosLogeados = require("./usuariosLogeados/logeados");
 const loger = new usuariosLogeados.loger(); // uso exclusivo para verificar cliente - logeo
 
@@ -177,19 +176,28 @@ app.get("/perfiles/:id", async (req, res) => {
 app.get("/perfiles2", async (req, res) => {
     // ruta creada para ver si todo va ok en la DB ya que Daniel no me quiso pasar 
     // su string de conexión :)
-    // let perfiles = await comentarios_model.remove();
-    // res.send(perfiles);
+    let perfiles = await publicaciones.find();
+    res.send(perfiles);
 });
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 app.put("/rank/:ruta", async (req, res) => {
-    let calificacion = parseInt(req.body.calificacion)
-    let publicacion = await publicaciones.findById(req.params.ruta);
-    publicacion.calificacion.cantidad = (publicacion.calificacion.cantidad + 1);
-    publicacion.calificacion.total = publicacion.calificacion.total + calificacion
-    publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
-    await publicacion.save();
-    res.send({mensaje: "Todo okey"})
+    let califico = await publicaciones.find({ "calificacion.personCalifi": req.body.quien });
+    if(califico.length != 0){
+        res.send({
+            yasTa: true,
+            mensaje: "Ya has calificado esta publicación"
+        });
+    }else{
+        let calificacion = parseInt(req.body.calificacion)
+        let publicacion = await publicaciones.findById(req.params.ruta);
+        publicacion.calificacion.cantidad = (publicacion.calificacion.cantidad + 1);
+        publicacion.calificacion.total = publicacion.calificacion.total + calificacion;
+        publicacion.calificacion.promedio = Math.trunc(publicacion.calificacion.total / publicacion.calificacion.cantidad);
+        publicacion.calificacion.personCalifi.push(req.body.quien);
+        await publicacion.save();
+        res.send({mensaje: "Todo okey"})
+    }
 });
 
 app.put("/modificarPerfil/:id", async (req, res) => {

@@ -170,8 +170,8 @@ export class PublicacionesService {
 
   // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
-  rank(ruta: any, calificacion: string){
-    return this.http.put<post_model[]>(this.URL_API+"/rank/"+ruta, {"calificacion": calificacion})
+  rank(ruta: any, calificacion: string, quien:any){
+    return this.http.put<post_model[]>(this.URL_API+"/rank/"+ruta, {calificacion, quien})
   }
 
 }

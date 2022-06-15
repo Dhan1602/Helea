@@ -42,7 +42,7 @@
     </div>
 
     <div id="comments" class="children">
-      <h2>Comentarios</h2>
+      <h2>Comentarios ({{index}})</h2>
       <ng-container *ngFor="let c of comments">
         <!-- es el dueno -->
         <div class="comentarios"
@@ -55,9 +55,10 @@
               <label class="t1">{{c.messages.userName}}</label>
               <label class="t2"><span (click)="eliminarComentario(c.messages)">X</span></label>
             </h6>
-            <h6> {{c.messages.message}} </h6>
+            <p> {{c.messages.message}} </p>
             <h6> {{c.messages.fecha}} </h6>
           </div>
+         
         </div>
         <!-- no es el dueno -->
         <div class="comentarios"

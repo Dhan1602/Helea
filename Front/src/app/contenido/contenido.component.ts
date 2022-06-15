@@ -24,6 +24,7 @@ export class ContenidoComponent implements OnInit {
   public form!: FormGroup;
   pCalificada = false;
   mine = false;
+  index = 0;
 
   comments: Array<comentarios> = [{
     idPublicacion: "",
@@ -210,6 +211,7 @@ export class ContenidoComponent implements OnInit {
     this.peticion.getComentarios(this.nameParam).subscribe({
       next: (r: any) => {
         this.comments = r;
+        this.index = r.length
       },
       error: (e: any) => {
         console.log(e);

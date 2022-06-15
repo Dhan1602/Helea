@@ -18,6 +18,7 @@ export class ContenidoComponent implements OnInit {
   urlImage: String = "";
   public form!: FormGroup;
   pCalificada = false;
+  mine = false;
 
   constructor(private fb: FormBuilder, private _router: Router,
     private route: ActivatedRoute, public peticion: PublicacionesService) {
@@ -85,15 +86,38 @@ export class ContenidoComponent implements OnInit {
     });
   }
 
+  deletePost() {
+    let option = confirm("¿Deseas eliminar esta publicacion?")
+    if (option) {
+      this.peticion.deletePost(this.nameParam).subscribe({
+        next: (res: any) => { this._router.navigate(["feed"]) },
+        error: (err) => console.log(err)
+      });
+    }
+  }
+
 
   obtenerArticulo() {
     this.peticion.obtenerArticulo(this.nameParam).subscribe({
-      next: (res: any) => {
-        this.peticion.documentos = res
+      next: (res1: any) => {
+        this.peticion.documentos = res1
         this.temporizador = 1
-        this.peticion.getProfileById(res[0].autorId).subscribe({
+        this.peticion.getProfileById(res1[0].autorId).subscribe({
           next: (res: any) => {
             this.urlImage = res.urlImage
+            let ip = this.peticion.getIPreferences(false);
+            this.peticion.verifyLogeo(ip).subscribe({
+              next: (r: any) => {
+                if (r.estado) {
+                  if (r.userID == res1[0].autorId) {
+                    this.mine = true
+                  }
+                }
+              },
+              error: (e: any) => {
+                console.log(e);
+              }
+            });
           },
           error: (err) => console.log(err),
         });

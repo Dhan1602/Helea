@@ -117,6 +117,10 @@ export class PublicacionesService {
     return this.http.get<post_model[]>(this.URL_API+"/posts");
   }
 
+  deletePost(id: any){
+    return this.http.delete(this.URL_API+"/delete/"+id);
+  }
+
   getSavedPosts(id: any){
     return this.http.get<post_model[]>(this.URL_API+"/savedPosts/"+id);
   }
@@ -135,7 +139,6 @@ export class PublicacionesService {
 
   getProfileById(id: any){
     return this.http.get<perfiles[]>(this.URL_API+"/perfiles/"+id);
-
   }
   actPerfil(formulario: perfiles, id: any){
     return this.http.put(this.URL_API+"/modificarPerfil/"+ id, formulario);

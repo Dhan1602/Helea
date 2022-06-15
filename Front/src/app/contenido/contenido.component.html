@@ -4,7 +4,10 @@
 
   <div id="padre" *ngIf="temporizador==1">
     <div id="cuerpo" class="children">
-      <span id="bSpan"><i #bookmark (click)="savePub(bookmark)" id="bookmark" class="fa">&#xf097;</i></span>
+      <span id="bSpan">
+        <label #bookmark (click)="deletePost()" id="delete" title="Borrar publicacion" *ngIf="(mine==true)"><i class="fa fa-trash"></i></label>
+        <i #bookmark (click)="savePub(bookmark)" id="bookmark" class="fa">&#xf097;</i>
+      </span>
       <h2>{{peticion.documentos[0].titulo}}</h2>
 
       <img src="{{peticion.documentos[0].background}}" alt="">

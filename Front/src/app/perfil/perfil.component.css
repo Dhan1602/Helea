@@ -84,6 +84,16 @@
 .card__clock-info {
     float: right;
 }
+.card__delete{
+    float: right;
+    display: inline;
+    font-size: 17px;
+    left: 2px;
+    transition: all 0.2s ease;
+}
+.card__delete:hover{
+    color: red;
+}
 
 .card__img {
     visibility: hidden;

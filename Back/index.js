@@ -173,6 +173,11 @@ app.get("/posts", async (req, res) => {
     res.send(content);
 });
 
+app.delete("/delete/:id", async (req, res) => {
+    await publicaciones.findByIdAndDelete(req.params.id);
+    res.send({mensaje: "Eliminado correctamente"})
+});
+
 app.get("/savedPosts/:id", async (req, res) => {
     let content = await perfil_model.findById(req.params.id);
     let saved = []

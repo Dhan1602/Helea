@@ -22,7 +22,8 @@
                                 </a>
                                 <div class="card__info">
                                     <span class="card__category" (click)="red(card.categoria)">{{card.categoria}}</span>
-                                    <h3 class="card__title">{{card.titulo}}</h3>
+                                    <h3 class="card__title" title="{{card.titulo}}">{{card.tituloC}}</h3>
+                                    <div class="card__delete" *ngIf="logerActual.estado && logerActual.userID==parametro"><i class="fa fa-trash" (click)="deletePost(card._id, card.titulo)"></i></div>
                                     <div id="stars">
                                         <ngx-star-rating [ngModel]="card.calificacion.promedio" id="star_{{i}}"
                                             [disabled]="true"></ngx-star-rating>

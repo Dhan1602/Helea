@@ -110,17 +110,17 @@
     transition: background 0s;
 }#bSpan{
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-between;
     width: 100%;
-}#bookmark{
+}#bookmark, #delete{
     font-size: 2.3rem;
     transition: all .1s ;
     cursor: pointer;
     color: #FFF;
     user-select: none;
-}#bookmark:hover{
+}#bookmark:hover, #delete:hover{
     transform: scale(1.2, 1.2);
-}#bookmark:active{
+}#bookmark:active, #delete:active{
     transform: scale(1.2, 1.2);
     color:#e28ed5;
     transform:translateY(3px)

@@ -55,6 +55,19 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  deletePost(id: any, titulo: any){
+    let option = confirm('¿Deseas eliminar "'+titulo+'"?')
+    if (option) {
+      this.peticiones.deletePost(id).subscribe({
+        next: (res: any) => {
+          alert('"'+titulo+'" se ha eliminado correctamente')
+          this.getCards();
+        },
+        error: (err) => console.log(err)
+      });
+    }
+  }
+
   red(param: any) {
     this.direccionar.rect(param);
   }

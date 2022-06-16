@@ -144,7 +144,7 @@ app.post("/perfil", async (req, res) => {
     if(existe.length > 0){
         res.send({
             error: true,
-            response: "Este perfil ya existe, intente cambiar la contrasena o nombre de usuario"
+            response: "Este perfil ya existe, intente cambiar la contraseña o nombre de usuario"
         });
     }else{
         let newPerfil = new perfil_model(p);
@@ -182,7 +182,12 @@ app.get("/perfiles2", async (req, res) => {
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 app.put("/rank/:ruta", async (req, res) => {
-    let califico = await publicaciones.find({ "calificacion.personCalifi": req.body.quien });
+    let califico = await publicaciones.find({
+        $and:[
+            { _id: req.params.ruta },
+            { "calificacion.personCalifi": req.body.quien }
+        ]
+    });
     if(califico.length != 0){
         res.send({
             yasTa: true,

@@ -3,7 +3,7 @@
 }
 #createGroup{
     margin-top: 40px;
-    width: 55vw;
+    width: 85vw;
     padding: 2rem 0;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
@@ -25,8 +25,14 @@
 
 #Information{
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+.columnas{
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 350px; justify-content: center; padding: 15px;
+}.columnas:nth-child(2){
+    height: 57vh;
 }
 
 input, select,
@@ -79,25 +85,29 @@ button:hover{
 
 :host /deep/ angular-editor{
     background-color: #aab7e8;
-    margin-bottom: 10px;
     border-radius:  7px;
     color: #445496;
     width: 36vw;
+    height: 50vh;
+    box-sizing: border-box !important;
+    overflow-y: auto; overflow-x: hidden;
 }
 :host /deep/ angular-editor .angular-editor-textarea, 
 :host /deep/ angular-editor .angular-editor-wrapper{
     border-radius:  7px;
     resize: none;
     border: none !important;
+    position: relative;
 }
-:host /deep/ angular-editor .angular-editor-textarea::after{
-    content: none;
+:host /deep/ angular-editor .angular-editor-wrapper{
+    padding-top: 45px !important;
 }
 :host /deep/ angular-editor .angular-editor-toolbar{
     border-top-left-radius:  7px;
     border-top-right-radius: 7px;
     background-color: #5675e5 !important;
-    border: none;
+    border: none; width: 35.5vw;
+    position: fixed; z-index: 10000;
 }
 :host /deep/ angular-editor .angular-editor-button.active {
     background-color: #aab7e8 !important;

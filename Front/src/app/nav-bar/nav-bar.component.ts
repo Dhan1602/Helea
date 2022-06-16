@@ -35,6 +35,12 @@ export class NavBarComponent implements OnInit {
           this.servidor.getProfileById(r.userID).subscribe({
             next: (r2: any) => {
               this.perfile = r2;
+              let mage:any = document.querySelector("#profilePic");
+              mage.addEventListener("click", (e:any)=>{
+                e.stopPropagation();
+                if(this.disployNav) this.disployNav = false;
+                else this.disployNav = true;
+              });
             },
             error: (e2: any) => {
               console.log(e2);
@@ -44,6 +50,12 @@ export class NavBarComponent implements OnInit {
       },
       error: (e: any) => {
         console.log(e);
+      }
+    });
+    let bod:any = document.querySelector("body");
+    bod.addEventListener("click", ()=>{
+      if(this.disployNav){
+        this.disployNav = false;
       }
     });
   }
@@ -57,15 +69,6 @@ export class NavBarComponent implements OnInit {
 
   createRedirect() {
     this._router.navigate(["/create"]);
-  }
-
-  viewNavPerfil(){
-    if(this.disployNav){
-      this.disployNav = false;
-      let heightNav = document.querySelector("nav")?.offsetHeight;
-    }else{
-      this.disployNav = true;
-    }
   }
 
   editarPerfil(){

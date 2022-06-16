@@ -210,6 +210,7 @@ export class ContenidoComponent implements OnInit {
   getComentarios() {
     this.peticion.getComentarios(this.nameParam).subscribe({
       next: (r: any) => {
+        console.log(r)
         this.comments = r;
         this.index = r.length
       },

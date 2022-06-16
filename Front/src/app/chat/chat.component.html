@@ -23,7 +23,7 @@
                 <label class="t1" #cat>{{c.category}}</label>
                 <label class="t2" *ngIf="userActual.userName == perfil.userName"><span style="padding: 8px;" (click)="eliminarCategoria(c)">X</span></label>
               </div>
-                <div (click)="newCategory()" class="componets componets1" style="font-size: 14px; color: #12f59f;"
+                <div (click)="newCategory()" class="componets componets1" style="font-size: 14px; color: #b00f99"
                   *ngIf="userActual._id == perfil._id">Crear canal</div>
               </div>
             </div>
